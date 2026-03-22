@@ -290,7 +290,7 @@
 
         .pill[data-role="finance"].active {
             background-color: var(--role-finance-bg);
-            color: var(---role-finance);
+            color: var(--role-finance);
         }
 
         .pill[data-role="ecom"].active {
@@ -337,24 +337,6 @@
             background-color: var(--role-sales-bg);
             color: var(--role-sales);
         }
-         background-color: var(--role-mkkg-bg);
-            color: var(--role-mktg);
-        }
-
-        .pill[data-role="oe"].active {
-            background-color: var(--role-oe-bg);
-            color: var(--role-oe);
-        }
-
-        .pill[data-role="quality"].active {
-            background-color: var(--role-quality-bg);
-            color: var(--role-quality);
-        }
-
-        .pill[data-role="sales"].active {
-            background-color: var(--role-sales-bg);
-            color: var(--role-sales);
-        }
 
         /* Ansatz Pills */
         .pill[data-ansatz="buy"].active {
@@ -375,17 +357,17 @@
         /* Coverage Pills */
         .pill[data-coverage="high"].active {
             background-color: var(--cov-green);
-            color: var(-cov-green-border);
+            color: var(--cov-green-border);
         }
 
         .pill[data-coverage="medium"].active {
             background-color: var(--cov-yellow);
-            color: var(-cov-yellow-border);
+            color: var(--cov-yellow-border);
         }
 
         .pill[data-coverage="low"].active {
             background-color: var(--cov-red);
-            color: var(-cov-red-border);
+            color: var(--cov-red-border);
         }
 
         /* Effort Pills */
@@ -512,7 +494,6 @@
             font-size: 12px;
             font-weight: 500;
         }
-
 
         .role-badge.allbereich {
             background-color: var(--role-allbereich-bg);
@@ -729,7 +710,7 @@
             margin-top: 8px;
         }
 
-        .timeline-link  {
+        .timeline-link {
             display: inline-block;
             color: var(--green);
             text-decoration: none;
@@ -778,7 +759,7 @@
             margin-bottom: 12px;
         }
 
-        .footer-link  {
+        .footer-link {
             color: var(--green);
             text-decoration: none;
             font-weight: 600;
@@ -894,7 +875,7 @@
         <!-- Header -->
         <div class="header">
             <h1>GenAI <span>Use-Case</span>-Finder</h1>
-            <p>Finden Sie die passende K√ú-L√∂sung f√ºr Ihre Rolle und Ihren Use Case</p>
+            <p>Finden Sie die passende KI-L√∂sung f√ºr Ihre Rolle und Ihren Use Case</p>
         </div>
 
         <!-- Intro Box -->
@@ -906,10 +887,10 @@
                 <p>Dieser Finder hilft Ihnen, GenAI-Use-Cases zu entdecken, die f√ºr Ihre Rolle und Ihren Arbeitsbereich relevant sind.</p>
                 <p><strong>Wie nutzen Sie den Finder?</strong></p>
                 <ul>
-                    <li><strong>Filtre jach Rolle/Bereich:</strong> W√§hlen Sie Ihre Funktion oder mehrere Rollen aus, um relevante Use Cases zu sehen</li>
-                    <li><strong>Filtre jach Ansatz:</strong> Buy (vorgefertigte L√¥sungen), Hybrid (Kombination), oder Build (ma√ügeschneiderte Entwicklung)</li>
-                    <li><strong>Filtre jach Buy-Abdeckung:</strong> Wie gut k√∂nnen vorgefertigte Tools den Use Case unterst√ºtzen?</li>
-                    <li><strong>Filtre nach Aufwand:</strong> Einfach, Moderat oder Komplex - basierend auf ImplementierungsaufwA ¬§</li>
+                    <li><strong>Filtere nach Rolle/Bereich:</strong> W√§hlen Sie Ihre Funktion oder mehrere Rollen aus, um relevante Use Cases zu sehen</li>
+                    <li><strong>Filtere nach Ansatz:</strong> Buy (vorgefertigte L√∂sungen), Hybrid (Kombination), oder Build (ma√ügeschneiderte Entwicklung)</li>
+                    <li><strong>Filtere nach Buy-Abdeckung:</strong> Wie gut k√∂nnen vorgefertigte Tools den Use Case unterst√ºtzen?</li>
+                    <li><strong>Filtere nach Aufwand:</strong> Einfach, Moderat oder Komplex - basierend auf Implementierungsaufwand</li>
                     <li><strong>Suchfeld:</strong> Suchen Sie nach spezifischen Use Cases, Outcomes oder Rollen</li>
                 </ul>
                 <p>Klicken Sie auf einen Use-Case, um weitere Details wie Outcomes, L√∂sungsans√§tze, Kostenrahmen und verf√ºgbare Plattformen zu sehen.</p>
@@ -926,7 +907,6 @@
                 placeholder="Use Case, Rolle oder Outcome durchsuchen..."
             >
         </div>
-        To continue
 
         <!-- Filters -->
         <div class="filter-section">
@@ -937,9 +917,9 @@
                 <button class="pill" data-type="role" data-role="compliance">Compliance / Recht</button>
                 <button class="pill" data-type="role" data-role="finance">Controlling / Finance</button>
                 <button class="pill" data-type="role" data-role="ecom">E-Commerce / PM</button>
-                <button class="pill" data-type="role" data-role="lead">F√ºhrungkraft</button>
+                <button class="pill" data-type="role" data-role="lead">F√ºhrungskraft</button>
                 <button class="pill" data-type="role" data-role="hr">HR / Recruiting</button>
-                <button class="pill" data-type="role" data-role="it">IT / Entwicklung </button>
+                <button class="pill" data-type="role" data-role="it">IT / Entwicklung</button>
                 <button class="pill" data-type="role" data-role="service">Kundenservice</button>
                 <button class="pill" data-type="role" data-role="mktg">Marketing / Kommunikation</button>
                 <button class="pill" data-type="role" data-role="oe">OE / PE</button>
@@ -949,7 +929,7 @@
         </div>
 
         <div class="filter-section">
-            <span class="filter-title">K√â-Ansatz</span>
+            <span class="filter-title">KI-Ansatz</span>
             <div class="filter-pills" id="ansatzFilters">
                 <button class="pill active" data-type="ansatz" data-ansatz="all">Alle Ans√§tze</button>
                 <button class="pill" data-type="ansatz" data-ansatz="buy">Buy</button>
@@ -962,7 +942,7 @@
             <span class="filter-title">Buy-Abdeckung</span>
             <div class="filter-pills" id="coverageFilters">
                 <button class="pill active" data-type="coverage" data-coverage="all">Alle</button>
-                <button class="pill" data-type="coverage" data-coverage="high">‚ìº75%</button>
+                <button class="pill" data-type="coverage" data-coverage="high">‚â•75%</button>
                 <button class="pill" data-type="coverage" data-coverage="medium">50-74%</button>
                 <button class="pill" data-type="coverage" data-coverage="low">&lt;50%</button>
             </div>
@@ -991,13 +971,13 @@
         <div class="no-results" id="noResults" style="display: none;">
             <h3>Keine Use Cases gefunden</h3>
             <p>Versuchen Sie, die Filter anzupassen oder Ihre Suche zu verfeinern.</p>
-          </div>
+        </div>
 
         <!-- Footer -->
         <div class="footer">
             <p>Eine Perspektive von <a href="https://www.plan-a-consulting.ai" target="_blank" class="footer-link">plan a ¬∑ AI Solutions</a></p>
             <div class="footer-links">
-                <a href="https://alexandersisi.github.io/ki-wissen-hub/" target="_blank" class="footer-link">K√â-Wissen Hub</a>
+                <a href="https://alexandersisi.github.io/ki-wissen-hub/" target="_blank" class="footer-link">KI-Wissen Hub</a>
                 <a href="https://alexandersisi.github.io/genai-usecase-finder/" target="_blank" class="footer-link">Use-Case-Finder</a>
                 <a href="https://www.plan-a-consulting.ai/ki-nutzen-timeline" target="_blank" class="footer-link">Nutzen-Timeline</a>
                 <a href="https://www.plan-a-consulting.ai/ki-timeline" target="_blank" class="footer-link">Technologie-Timeline</a>
@@ -1008,9 +988,320 @@
     <script>
         // Data with extended fields
         const DATA = [
-            {nr:1, rolle:"Alle Bereicce", roleKey:"allbereich", usecase:"Meeting-Protokolle", outcome:"75 % Zeitersparnis bei Protokollen", ansatz: "Buy", coverage:85, coverageLabel:"85 %", buyShort:"Otter.ai, Fireflies, MS Copilot, Amberscript (EU)", eu:true, effort:"low", quickWin:true, costRange:" ‚Ç¨", timelineWeeks:1},
-            {nr:2, rolle:"Alle Bereiche", roleKey:"allbereich", usecase:"Internes Wissensmanagement", outcome:"70 % schnellere Informationssuche", ansatz,"Hybrid", coverage:70, coverageLabel:"70 %", buyShort:"Glean, Guru, MS Copilot, LangDock (EU)", eu:true, effort:"medium", quickWin:false, costRange:"‚Ç¨‚Ç¨", timelineWeeks:6},
-            {nr:3, rolle:"Assistenz / Admin", roleKey:"admin", usecase:"E-Mail-Entw√ºrfe und Korrespondenz.", outcome:"60 % schnellere Antwortzeit.outcome:"60 % schnellere Antwortz, ansatz:"Buy", coverage:80, coverageLabel:"80 %", buyShort:"MS Copilot (Outlook), Lavender, Superhuman AI", eu:false, effort:"low", quickWin:true, costRange:"‚Ç¨", timelineWeeks:1},
-            {nr:4, rolle:"Assistenz / Admin", roleKey:"admin", usecase:"Dokumentenzusammenfassung", outcome:"80 % wenier Lesezeit", ansatz,"Buy", coverage:75, coverageLabel:"75 %", buyShort:"ChatGPT Enterprise, Claude for Work, LangDock (EU)", eu:true, effort:"low", quickWin:true, costRange:"∏†´ã[Y[[ôUŸYZ‹Œå_Kà€úéçKõ€Nàê€€\X[òŸH»ôX⁄ãõ€RŸ^Nàò€€\X[òŸHã\ŸXÿ\ŸNàïô\ùòY‹ÿ[ò[\ŸHã›]€€YNàçÃ	Hÿ⁄ô[\ôH∞Ôù[ô»ã[úÿ]ãíXúöYã€›ô\òYŸNçå€›ô\òYŸSXô[àçå	Hãù^T⁄‹ùàì]\òK[Z[ò[òŸK€€ùòX›ŸZHã]Nôò[ŸKYôõ‹ùàõYY][Hã]ZX⁄’⁄[éôò[ŸK€‹›ò[ôŸNà∏†´8†´ã[Y[[ôUŸYZ‹ŒéKà€úéçãõ€Nàê€€\X[òŸH»ôX⁄ãõ€RŸ^Nàò€€\X[òŸHã\ŸXÿ\ŸNàê€€\X[òŸH[ôôY›[]‹öZ»ã›]€€YNàé	HŸ[öYŸ\àX[ùY[H∞ÔûôZ]ã[úÿ]éàêùZ[ã€›ô\òYŸNçMK€›ô\òYŸSXô[àçMH	Hãù^T⁄‹ùàê\ÿŸ[ùôY’X⁄’PëKô[]]ö]Hã]Nôò[ŸKYôõ‹ùàöY⁄ã]ZX⁄’⁄[éôò[ŸK€‹›ò[ôŸNàÆ(*Ó(*»ã[Y[[ôUŸYZ‹ŒåMüKà€úéçÀõ€Nàê€€ùõ€[ô»»ö[ò[òŸHãõ€RŸ^Nàôö[ò[òŸHã\ŸXÿ\ŸNàëö[ò^òô\öX⁄\ú›][ô»ã›]€€YNàçå	Hÿ⁄ô[\ôHô\öX⁄Ÿ\ú›[[ô»ã[úÿ]éàíXúöYã€›ô\òYŸNçL€›ô\òYŸSXô[àçL	Hãù^T⁄‹ùàîÿ[\Ÿõ‹òŸHZ[ú›Z[ã\Ÿ[‹
-UJK€‹ö⁄]òHã]NùùYKYôõ‹ùàõYY][Hã]ZX⁄’⁄[éôò[ŸK€‹›ò[ôŸNà∏†´8†´ã[Y[[ôUŸYZ‹ŒåLKà€ù\ééõ€Nàê€€ùõ€[ô»»ö[ò[òŸHãõ€RŸ^Nàôö[ò[òŸHã\ŸXÿ\ŸNàë][ò[ò[\ŸHŸ[ãTŸ\ùöXŸHã›]€€YNàé	HŸ[öY\àíKP[ôúòYŸ[àã[úÿ]ãêù^Hã€›ô\òYŸNçMK€›ô\òYŸSXô[àçMH	Hãù^T⁄‹ùàï›Y⁄‹›XõX]HRK›Ÿ\àíH€‹[›ã]Nôò[ŸKYôõ‹ùàõYY][Hã]ZX⁄’⁄[éôò[ŸK€‹›ò[ôŸNà∏†´8†´ã[Y[[ôUŸYZ‹ŒçüKà€úééKõ€NàëKP€€[Y\òŸH»õŸZ›X[òYŸ[Y[ùãõ€RŸ^NàôX€€Hã\ŸXÿ\ŸNàîõŸZ›ô\ÿ⁄ôZXù[ôŸ[àã›]€€YNàé	H]]€X]\⁄Y\ùã[úÿ]éàíXúöYã€›ô\òYŸNçÃ€›ô\òYŸSXô[àçÃ	Hãù^T⁄‹ùàí\›[ù\ŸHRK€‹KòZKZŸ[ô[»RH
-UJHã]NùùYKYôõ‹ùàõYY][Hã]ZX⁄’⁄[éôò[ŸK€‹›ò[ôŸNà∏†´8†´ã[Y[[ôUŸYZ‹ŒçKà€úéåLõ€NàëKP€€[Y\òŸH»õŸZ›X[òYŸ[Y[ùãõ€RŸ^NàôX€€Hã\ŸXÿ\ŸNàí›[ô[ôôYYòX⁄ÀP[ò[\ŸHã›]€€YNàê[ò[\Ÿ^ûZ€\Œà»[€ò]H8°§àHY»ã[úÿ]ãíXúöYã€›ô\òYŸNççK€›ô\òYŸSXô[àççH	Hãù^T⁄‹ùàìYY[XK]X[öX‹Àô[ô\⁄»PHã]Nôò[ŸKYôõ‹ùàõYY][Hã]ZX⁄’⁄[éôò[ŸK€‹›ò[ôŸNà∏†´8†´ã[Y[[ôUŸYZ‹ŒéKà€úéåLKõ€Nàë∞Ôù[ô⁄‹òYù»X[òYŸ[Y[ùãõ€RŸ^Nà
+            {nr:1, rolle:"Alle Bereiche", roleKey:"allbereich", usecase:"Meeting-Protokolle", outcome:"75 % Zeitersparnis bei Protokollen", ansatz:"Buy", coverage:85, coverageLabel:"85 %", buyShort:"Otter.ai, Fireflies, MS Copilot, Amberscript (EU)", eu:true, effort:"low", quickWin:true, costRange:"‚Ç¨", timelineWeeks:1},
+            {nr:2, rolle:"Alle Bereiche", roleKey:"allbereich", usecase:"Internes Wissensmanagement", outcome:"70 % schnellere Informationssuche", ansatz:"Hybrid", coverage:70, coverageLabel:"70 %", buyShort:"Glean, Guru, MS Copilot, LangDock (EU)", eu:true, effort:"medium", quickWin:false, costRange:"‚Ç¨‚Ç¨", timelineWeeks:6},
+            {nr:3, rolle:"Assistenz / Admin", roleKey:"admin", usecase:"E-Mail-Entw√ºrfe und Korrespondenz", outcome:"60 % schnellere Antwortzeit", ansatz:"Buy", coverage:80, coverageLabel:"80 %", buyShort:"MS Copilot (Outlook), Lavender, Superhuman AI", eu:false, effort:"low", quickWin:true, costRange:"‚Ç¨", timelineWeeks:1},
+            {nr:4, rolle:"Assistenz / Admin", roleKey:"admin", usecase:"Dokumentenzusammenfassungen", outcome:"80 % weniger Lesezeit", ansatz:"Buy", coverage:75, coverageLabel:"75 %", buyShort:"ChatGPT Enterprise, Claude for Work, LangDock (EU)", eu:true, effort:"low", quickWin:true, costRange:"‚Ç¨", timelineWeeks:1},
+            {nr:5, rolle:"Compliance / Recht", roleKey:"compliance", usecase:"Vertragsanalyse", outcome:"70 % schnellere Pr√ºfung", ansatz:"Hybrid", coverage:60, coverageLabel:"60 %", buyShort:"Litera, Luminance, ContractPodAi", eu:false, effort:"medium", quickWin:false, costRange:"‚Ç¨‚Ç¨", timelineWeeks:8},
+            {nr:6, rolle:"Compliance / Recht", roleKey:"compliance", usecase:"Compliance und Regulatorik", outcome:"80 % weniger manuelle Pr√ºfzeit", ansatz:"Build", coverage:55, coverageLabel:"55 %", buyShort:"Ascent RegTech, CUBE, Relativity", eu:false, effort:"high", quickWin:false, costRange:"‚Ç¨‚Ç¨‚Ç¨", timelineWeeks:16},
+            {nr:7, rolle:"Controlling / Finance", roleKey:"finance", usecase:"Finanzberichterstattung", outcome:"60 % schnellere Berichtserstellung", ansatz:"Hybrid", coverage:50, coverageLabel:"50 %", buyShort:"Salesforce Einstein, Yseop (EU), Workiva", eu:true, effort:"medium", quickWin:false, costRange:"‚Ç¨‚Ç¨", timelineWeeks:10},
+            {nr:8, rolle:"Controlling / Finance", roleKey:"finance", usecase:"Datenanalyse Self-Service", outcome:"80 % weniger BI-Anfragen", ansatz:"Buy", coverage:55, coverageLabel:"55 %", buyShort:"ThoughtSpot, Tableau AI, Power BI Copilot", eu:false, effort:"medium", quickWin:false, costRange:"‚Ç¨‚Ç¨", timelineWeeks:6},
+            {nr:9, rolle:"E-Commerce / Produktmanagement", roleKey:"ecom", usecase:"Produktbeschreibungen", outcome:"80 % automatisiert", ansatz:"Hybrid", coverage:70, coverageLabel:"70 %", buyShort:"Hypotenuse AI, Copy.ai, Akeneo AI (EU)", eu:true, effort:"medium", quickWin:false, costRange:"‚Ç¨‚Ç¨", timelineWeeks:4},
+            {nr:10, rolle:"E-Commerce / Produktmanagement", roleKey:"ecom", usecase:"Kundenfeedback-Analyse", outcome:"Analysezyklus: 3 Monate ‚Üí 1 Tag", ansatz:"Hybrid", coverage:65, coverageLabel:"65 %", buyShort:"Medallia, Qualtrics, Zendesk QA", eu:false, effort:"medium", quickWin:false, costRange:"‚Ç¨‚Ç¨", timelineWeeks:8},
+            {nr:11, rolle:"F√ºhrungskraft / Management", roleKey:"lead", usecase:"Strategische Entscheidungsunterst√ºtzung", outcome:"50 % schnellere Entscheidungsvorbereitung", ansatz:"Build", coverage:45, coverageLabel:"45 %", buyShort:"ChatGPT Enterprise, Claude, LangDock (EU)", eu:true, effort:"high", quickWin:false, costRange:"‚Ç¨‚Ç¨‚Ç¨", timelineWeeks:12},
+            {nr:12, rolle:"F√ºhrungskraft / Management", roleKey:"lead", usecase:"Management-Briefings und Reporting", outcome:"75 % weniger Aufwand", ansatz:"Hybrid", coverage:50, coverageLabel:"50 %", buyShort:"MS Copilot, Tableau Pulse, Power BI Copilot", eu:false, effort:"medium", quickWin:false, costRange:"‚Ç¨‚Ç¨", timelineWeeks:6},
+            {nr:13, rolle:"HR / Recruiting", roleKey:"hr", usecase:"Stellenausschreibungen und Recruiting", outcome:"40 % schnellere Kandidatenvorauswahl", ansatz:"Buy", coverage:60, coverageLabel:"60 %", buyShort:"HireVue, Eightfold AI, Textio", eu:false, effort:"low", quickWin:true, costRange:"‚Ç¨", timelineWeeks:2},
+            {nr:14, rolle:"HR / Recruiting", roleKey:"hr", usecase:"Onboarding-Begleitung", outcome:"40 % k√ºrzere Einarbeitungszeit", ansatz:"Build", coverage:60, coverageLabel:"60 %", buyShort:"Leena AI, Espressive, SAP Joule (EU)", eu:true, effort:"high", quickWin:false, costRange:"‚Ç¨‚Ç¨‚Ç¨", timelineWeeks:12},
+            {nr:15, rolle:"IT / Entwicklung", roleKey:"it", usecase:"Code-Assistenz", outcome:"25 % h√∂here Entwicklerproduktivit√§t", ansatz:"Buy", coverage:85, coverageLabel:"85 %", buyShort:"GitHub Copilot, Cursor, Amazon Q Developer", eu:false, effort:"low", quickWin:true, costRange:"‚Ç¨", timelineWeeks:1},
+            {nr:16, rolle:"IT / Entwicklung", roleKey:"it", usecase:"IT-Helpdesk und Support", outcome:"55 % schnellere Erstl√∂sung", ansatz:"Hybrid", coverage:70, coverageLabel:"70 %", buyShort:"ServiceNow VA, Moveworks, Freshservice AI", eu:false, effort:"medium", quickWin:false, costRange:"‚Ç¨‚Ç¨", timelineWeeks:8},
+            {nr:17, rolle:"Kundenservice / Support", roleKey:"service", usecase:"Kundenservice-Chatbot", outcome:"50 % weniger Tickets an Agenten", ansatz:"Buy", coverage:75, coverageLabel:"75 %", buyShort:"Zendesk AI, Intercom Fin, Ada", eu:false, effort:"medium", quickWin:false, costRange:"‚Ç¨‚Ç¨", timelineWeeks:6},
+            {nr:18, rolle:"Vertrieb / Marketing", roleKey:"sales", usecase:"Personalisierte Kundenansprache", outcome:"+25 % Conversion Rate", ansatz:"Hybrid", coverage:55, coverageLabel:"55 %", buyShort:"Salesforce Einstein, HubSpot AI, Adobe Sensei", eu:false, effort:"medium", quickWin:false, costRange:"‚Ç¨‚Ç¨", timelineWeeks:8},
+            {nr:19, rolle:"Marketing / Kommunikation", roleKey:"mktg", usecase:"Marketing-Content", outcome:"5√ó mehr Entw√ºrfe pro Woche", ansatz:"Hybrid", coverage:70, coverageLabel:"70 %", buyShort:"Jasper, Writer, Acrolinx (EU)", eu:true, effort:"low", quickWin:true, costRange:"‚Ç¨", timelineWeeks:2},
+            {nr:20, rolle:"Marketing / Kommunikation", roleKey:"mktg", usecase:"√úbersetzung und Lokalisierung", outcome:"90 % weniger √úbersetzungskosten", ansatz:"Buy", coverage:80, coverageLabel:"80 %", buyShort:"DeepL Pro (EU), Phrase (EU), Smartcat", eu:true, effort:"low", quickWin:true, costRange:"‚Ç¨", timelineWeeks:2},
+            {nr:21, rolle:"Personal- / Organisationsentwicklung", roleKey:"oe", usecase:"Schulungs- und Trainingsmaterial", outcome:"85 % schnellere Erstellung", ansatz:"Hybrid", coverage:55, coverageLabel:"55 %", buyShort:"Synthesia, Elai.io, iSpring AI", eu:false, effort:"medium", quickWin:false, costRange:"‚Ç¨‚Ç¨", timelineWeeks:6},
+            {nr:22, rolle:"Personal- / Organisationsentwicklung", roleKey:"oe", usecase:"Change-Kommunikation", outcome:"60 % weniger Aufwand", ansatz:"Hybrid", coverage:40, coverageLabel:"40 %", buyShort:"Staffbase (EU), Haiilo (EU), LumApps (EU)", eu:true, effort:"medium", quickWin:false, costRange:"‚Ç¨‚Ç¨", timelineWeeks:8},
+            {nr:23, rolle:"Qualit√§t / Operations", roleKey:"quality", usecase:"Prozessdokumentation (SOPs)", outcome:"75 % schnellere Erstellung", ansatz:"Hybrid", coverage:60, coverageLabel:"60 %", buyShort:"Scribe, Tango, Whale (EU)", eu:true, effort:"low", quickWin:true, costRange:"‚Ç¨", timelineWeeks:2},
+            {nr:24, rolle:"Qualit√§t / Operations", roleKey:"quality", usecase:"Audit- und Qualit√§tssicherung", outcome:"50 % weniger Vorbereitungszeit", ansatz:"Build", coverage:45, coverageLabel:"45 %", buyShort:"Qualio, MasterControl, iAuditor", eu:false, effort:"high", quickWin:false, costRange:"‚Ç¨‚Ç¨‚Ç¨", timelineWeeks:12},
+            {nr:25, rolle:"Vertrieb / Sales", roleKey:"sales", usecase:"Angebotserstellung", outcome:"30 % k√ºrzere Durchlaufzeit", ansatz:"Build", coverage:35, coverageLabel:"35 %", buyShort:"PandaDoc AI, Proposify, DealHub", eu:false, effort:"high", quickWin:false, costRange:"‚Ç¨‚Ç¨‚Ç¨", timelineWeeks:10},
+            {nr:26, rolle:"Vertrieb / Sales", roleKey:"sales", usecase:"RFP-/Ausschreibungsbearbeitung", outcome:"60 % schnellere Bearbeitungszeit", ansatz:"Hybrid", coverage:50, coverageLabel:"50 %", buyShort:"Loopio, Responsive, Qvidian", eu:false, effort:"medium", quickWin:false, costRange:"‚Ç¨‚Ç¨", timelineWeeks:8}
+        ];
+
+        // State
+        let activeRoleFilter = "allbereich";
+        let activeAnsatzFilter = "all";
+        let activeCoverageFilter = "all";
+        let activeEffortFilter = "all";
+        let searchQuery = "";
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            applyURLParameters();
+            renderUseCases();
+            setupEventListeners();
+        });
+
+        // Apply URL Parameters
+        function applyURLParameters() {
+            const params = new URLSearchParams(window.location.search);
+
+            if (params.has('role')) {
+                const role = params.get('role');
+                activeRoleFilter = role;
+                updateActivePill('[data-type="role"]', role);
+            }
+
+            if (params.has('ansatz')) {
+                const ansatz = params.get('ansatz');
+                activeAnsatzFilter = ansatz;
+                updateActivePill('[data-type="ansatz"]', ansatz);
+            }
+
+            if (params.has('effort')) {
+                const effort = params.get('effort');
+                activeEffortFilter = effort;
+                updateActivePill('[data-type="effort"]', effort);
+            }
+        }
+
+        // Update Active Pill
+        function updateActivePill(selector, value) {
+            const type = selector.match(/data-type="(\w+)"/)[1];
+            const attrName = type === 'role' ? 'data-role' : type === 'ansatz' ? 'data-ansatz' : type === 'coverage' ? 'data-coverage' : 'data-effort';
+
+            document.querySelectorAll(selector).forEach(btn => btn.classList.remove('active'));
+            document.querySelector(`${selector}[${attrName}="${value}"]`)?.classList.add('active');
+        }
+
+        // Setup Event Listeners
+        function setupEventListeners() {
+            // Role filters
+            document.querySelectorAll('[data-type="role"]').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('[data-type="role"]').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    activeRoleFilter = e.target.dataset.role;
+                    renderUseCases();
+                });
+            });
+
+            // Ansatz filters
+            document.querySelectorAll('[data-type="ansatz"]').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('[data-type="ansatz"]').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    activeAnsatzFilter = e.target.dataset.ansatz;
+                    renderUseCases();
+                });
+            });
+
+            // Coverage filters
+            document.querySelectorAll('[data-type="coverage"]').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('[data-type="coverage"]').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    activeCoverageFilter = e.target.dataset.coverage;
+                    renderUseCases();
+                });
+            });
+
+            // Effort filters
+            document.querySelectorAll('[data-type="effort"]').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('[data-type="effort"]').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    activeEffortFilter = e.target.dataset.effort;
+                    renderUseCases();
+                });
+            });
+
+            // Search input
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                searchQuery = e.target.value.toLowerCase();
+                renderUseCases();
+            });
+
+            // Intro box toggle
+            document.getElementById('introBox').addEventListener('click', (e) => {
+                if (e.target === document.getElementById('introBox') || e.target.closest('.intro-toggle')) {
+                    document.getElementById('introBox').classList.toggle('collapsed');
+                }
+            });
+        }
+
+        // Filter data
+        function getFilteredData() {
+            return DATA.filter(item => {
+                // Role filter
+                if (activeRoleFilter !== "allbereich" && item.roleKey !== activeRoleFilter) {
+                    return false;
+                }
+
+                // Ansatz filter
+                if (activeAnsatzFilter !== "all" && item.ansatz.toLowerCase() !== activeAnsatzFilter) {
+                    return false;
+                }
+
+                // Coverage filter
+                if (activeCoverageFilter !== "all") {
+                    const cov = item.coverage;
+                    if (activeCoverageFilter === "high" && cov < 75) return false;
+                    if (activeCoverageFilter === "medium" && (cov < 50 || cov >= 75)) return false;
+                    if (activeCoverageFilter === "low" && cov >= 50) return false;
+                }
+
+                // Effort filter
+                if (activeEffortFilter !== "all" && item.effort !== activeEffortFilter) {
+                    return false;
+                }
+
+                // Search filter
+                if (searchQuery) {
+                    const query = searchQuery;
+                    const usecase = item.usecase.toLowerCase();
+                    const role = item.rolle.toLowerCase();
+                    const outcome = item.outcome.toLowerCase();
+                    if (!usecase.includes(query) && !role.includes(query) && !outcome.includes(query)) {
+                        return false;
+                    }
+                }
+
+                return true;
+            });
+        }
+
+        // Get coverage class
+        function getCoverageClass(coverage) {
+            if (coverage >= 75) return "high-coverage";
+            if (coverage >= 50) return "medium-coverage";
+            return "low-coverage";
+        }
+
+        // Get role class for badges
+        function getRoleClass(roleKey) {
+            return roleKey;
+        }
+
+        // Get effort label
+        function getEffortLabel(effort) {
+            const labels = {
+                'low': 'Einfach',
+                'medium': 'Moderat',
+                'high': 'Komplex'
+            };
+            return labels[effort] || effort;
+        }
+
+        // Format buy options with EU highlighting
+        function formatBuyOptions(buyShort) {
+            let html = buyShort;
+            html = html.replace(/([^,]+)\s*\(EU\)/g, '<span class="eu-highlight">$1 (EU)</span>');
+            return html;
+        }
+
+        // Generate cost display
+        function generateCostDisplay(costRange) {
+            const counts = {
+                '‚Ç¨': 1,
+                '‚Ç¨‚Ç¨': 2,
+                '‚Ç¨‚Ç¨‚Ç¨': 3
+            };
+            const count = counts[costRange] || 1;
+            let html = '<span class="cost-display">';
+            for (let i = 0; i < 3; i++) {
+                html += `<span class="cost-symbol ${i < count ? 'active' : ''}">‚Ç¨</span>`;
+            }
+            html += '</span>';
+            return html;
+        }
+
+        // Render use cases
+        function renderUseCases() {
+            const filtered = getFilteredData();
+            const container = document.getElementById('usecasesContainer');
+            const noResults = document.getElementById('noResults');
+            const counter = document.getElementById('counter');
+
+            // Update counter
+            counter.textContent = `${filtered.length} von 26 Use Cases sichtbar`;
+
+            if (filtered.length === 0) {
+                container.style.display = 'none';
+                noResults.style.display = 'block';
+                return;
+            }
+
+            container.style.display = '';
+            noResults.style.display = 'none';
+
+            // Sort by role name, then by nr
+            const roleOrder = ['Alle Bereiche', 'Assistenz / Admin', 'Compliance / Recht', 'Controlling / Finance', 'E-Commerce / Produktmanagement', 'F√ºhrungskraft / Management', 'HR / Recruiting', 'IT / Entwicklung', 'Kundenservice / Support', 'Vertrieb / Marketing', 'Marketing / Kommunikation', 'Personal- / Organisationsentwicklung', 'Qualit√§t / Operations', 'Vertrieb / Sales'];
+
+            filtered.sort((a, b) => {
+                const roleIndexA = roleOrder.indexOf(a.rolle);
+                const roleIndexB = roleOrder.indexOf(b.rolle);
+                if (roleIndexA !== roleIndexB) return roleIndexA - roleIndexB;
+                return a.nr - b.nr;
+            });
+
+            container.innerHTML = filtered.map(item => {
+                const covClass = getCoverageClass(item.coverage);
+                const roleClass = getRoleClass(item.roleKey);
+                const buyOptionsHtml = formatBuyOptions(item.buyShort);
+                const effortLabel = getEffortLabel(item.effort);
+                const costDisplay = generateCostDisplay(item.costRange);
+                const quickWinBadge = item.quickWin ? `<span class="quickwin-badge">‚ö° Quick-Win</span>` : '';
+
+                return `
+                    <div class="usecase-card ${covClass}">
+                        <div class="usecase-header">
+                            <div class="usecase-header-left">
+                                <span class="usecase-nr">${item.nr}</span>
+                                <h3 class="usecase-title">${item.usecase}</h3>
+                                <div class="usecase-meta">
+                                    <span class="role-badge ${roleClass}">${item.rolle}</span>
+                                    <span class="coverage-badge">${item.coverageLabel}</span>
+                                </div>
+                            </div>
+                            <div class="usecase-header-right">
+                                <span class="effort-badge ${item.effort}">${effortLabel}</span>
+                                ${quickWinBadge}
+                            </div>
+                        </div>
+                        <div class="usecase-details">
+                            <div class="details-content">
+                                <div class="detail-row">
+                                    <span class="detail-label">Messbares Outcome</span>
+                                    <div class="detail-value outcome-text">${item.outcome}</div>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">KI-Ansatz</span>
+                                    <div class="detail-value">${item.ansatz}</div>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Buy-Abdeckung</span>
+                                    <div class="detail-value">${item.coverageLabel}</div>
+                                    <div class="coverage-bar-container">
+                                        <div class="coverage-bar" style="width: ${item.coverage}%;"></div>
+                                    </div>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Gesch√§tzter Kostenrahmen</span>
+                                    <div class="detail-value">
+                                        ${costDisplay}
+                                        <div class="timeline-info">ca. ${item.timelineWeeks} ${item.timelineWeeks === 1 ? 'Woche' : 'Wochen'} Implementierung</div>
+                                    </div>
+                                </div>
+                                <div class="detail-row">
+                                    <span class="detail-label">Plattformen & Tools</span>
+                                    <div class="detail-value buy-options">${buyOptionsHtml}</div>
+                                </div>
+                                <div class="detail-row">
+                                    <a href="https://www.plan-a-consulting.ai/ki-nutzen-timeline" target="_blank" class="timeline-link">Zur Nutzen-Timeline ‚Üí</a>
+                                    <a href="https://www.plan-a-consulting.ai/kontakt" class="cta-button" onclick="event.stopPropagation();">Beratungsgespr√§ch vereinbaren ‚Üí</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+
+            // Add click handlers for expanding cards
+            document.querySelectorAll('.usecase-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    card.classList.toggle('expanded');
+                });
+            });
+        }
+    </script>
+</body>
+</html>
