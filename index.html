@@ -279,8 +279,8 @@
 
         /* Legend */
         .legend {
-            background-color: var(--green-light);
-            border: 1px solid var(--green);
+            background-color: #f8f8fc;
+            border: 1px solid var(--border);
             border-radius: var(--radius-lg);
             padding: 20px;
             margin-bottom: 28px;
@@ -295,7 +295,7 @@
             justify-content: space-between;
             align-items: center;
             font-weight: 600;
-            color: var(--green-dark);
+            color: var(--text-secondary);
             user-select: none;
             margin-bottom: 0;
         }
@@ -306,6 +306,7 @@
             transition: transform var(--transition);
         }
 
+        .legend .legend-toggle::after { color: var(--text-muted); }
         .legend.collapsed .legend-toggle::after { transform: rotate(-90deg); }
 
         .legend-content {
@@ -397,7 +398,6 @@
         }
 
         .usecase-card:hover {
-            transform: translateX(4px);
             box-shadow: var(--shadow-md);
         }
 
@@ -422,6 +422,25 @@
             justify-content: space-between;
             align-items: flex-start;
             gap: 12px;
+            position: relative;
+        }
+
+        /* Expand/Collapse Chevron */
+        .expand-chevron {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 20px;
+            height: 20px;
+            flex-shrink: 0;
+            color: var(--text-muted);
+            transition: transform var(--transition), color var(--transition);
+            margin-top: 2px;
+        }
+
+        .usecase-card.expanded .expand-chevron {
+            transform: rotate(180deg);
+            color: var(--text-secondary);
         }
 
         .usecase-header-left { flex: 1; }
@@ -564,7 +583,7 @@
         .coverage-bar-container {
             background-color: rgba(255,255,255,0.6);
             border-radius: var(--radius-sm);
-            height: 6px;
+            height: 8px;
             overflow: hidden;
             margin-top: 6px;
         }
@@ -623,9 +642,9 @@
             margin-left: 3px;
             vertical-align: middle;
         }
-        .tool-size.size-1 { color: #cbd5e1; }
-        .tool-size.size-2 { color: #94a3b8; }
-        .tool-size.size-3 { color: #475569; }
+        .tool-size.size-1 { color: #a0aec0; }
+        .tool-size.size-2 { color: #718096; }
+        .tool-size.size-3 { color: #2d3748; }
 
         .coverage-note {
             font-style: italic;
@@ -652,11 +671,11 @@
         .detail-section:first-child { margin-top: 0; }
 
         .detail-section-title {
-            font-size: 10px;
+            font-size: 11px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.1em;
-            color: var(--text-muted);
+            color: var(--text-secondary);
             margin-bottom: 10px;
             padding-bottom: 6px;
             border-bottom: 1px solid var(--border-light);
@@ -665,9 +684,10 @@
         /* Beschreibungs-Box */
         .beschreibung-box {
             font-style: italic;
-            background-color: rgba(0,0,0,0.03);
+            background-color: rgba(255,255,255,0.7);
+            border-left: 3px solid var(--green);
             padding: 10px 14px;
-            border-radius: 8px;
+            border-radius: 0 8px 8px 0;
             font-size: 14px;
             color: var(--text);
             line-height: 1.6;
@@ -706,7 +726,7 @@
         }
 
         .metric-label {
-            font-size: 9px;
+            font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 0.08em;
             color: var(--text-muted);
@@ -986,15 +1006,15 @@
                         <div class="legend-section-desc">Besonders schnell umsetzbar mit hohem Sofort-Nutzen – perfekt für den schnellen Einstieg in GenAI.</div>
                     </div>
                     <div class="legend-section">
-                        <div class="legend-section-title">EUR-Symbole (Kostenrahmen)</div>
+                        <div class="legend-section-title">Kostenrahmen</div>
                         <div class="legend-item">
-                            <span class="legend-section-desc"><strong>EUR = Günstig/kostenlos</strong></span>
+                            <span class="legend-section-desc"><strong style="color: var(--green);">&euro;</strong><span style="color: #D1D5DB;">&euro;&euro;</span> = G&uuml;nstig/kostenlos</span>
                         </div>
                         <div class="legend-item">
-                            <span class="legend-section-desc"><strong>EUREUR = Mittel</strong></span>
+                            <span class="legend-section-desc"><strong style="color: var(--green);">&euro;&euro;</strong><span style="color: #D1D5DB;">&euro;</span> = Mittel</span>
                         </div>
                         <div class="legend-item">
-                            <span class="legend-section-desc"><strong>EUREUREUR = Hohe Investition</strong></span>
+                            <span class="legend-section-desc"><strong style="color: var(--green);">&euro;&euro;&euro;</strong> = Hohe Investition</span>
                         </div>
                     </div>
                     <div class="legend-section">
@@ -1248,6 +1268,8 @@
             const svgCost = '<svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v12M9 8.5c0 0 0-1 3-1s3 1.2 3 2.5-1 2.5-3 2.5-3 1.2-3 2.5 0 2 3 2 3-1 3-1" stroke-linecap="round"/></svg>';
             const svgTimeline = '<svg class="metric-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
 
+            const chevronSvg = '<span class="expand-chevron"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 8l5 5 5-5"/></svg></span>';
+
             container.innerHTML = filtered.map(item => {
                 const effortClass = getEffortClass(item.effort);
                 const effortLabel = getEffortLabel(item.effort);
@@ -1270,12 +1292,12 @@
                             '<div class="usecase-meta">' +
                                 '<span class="badge role-badge ' + item.roleKey + '">' + roleIconHtml + item.rolle + '</span>' +
                                 '<span class="badge ansatz-badge ' + item.ansatz.toLowerCase() + '">' + item.ansatz + '</span>' +
-                                '<span class="badge coverage-badge">' + item.coverageLabel + '</span>' +
                             '</div>' +
                         '</div>' +
                         '<div class="usecase-header-right">' +
                             '<span class="badge effort-badge ' + item.effort + '">' + effortLabel + '</span>' +
                             quickWinBadge +
+                            chevronSvg +
                         '</div>' +
                     '</div>' +
                     '<div class="usecase-details">' +
