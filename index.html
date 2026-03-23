@@ -7,1314 +7,595 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --green: #2EAD60;
-            --green-dark: #1a7a3e;
-            --green-light: #e8f7ee;
-            --red: #E83946;
-            --violet: #5c1444;
-            --gray-50: #f9fafb;
-            --gray-100: #f3f4f6;
-            --gray-200: #e5e7eb;
-            --gray-300: #d1d5db;
-            --gray-400: #9ca3af;
-            --gray-500: #6b7280;
-            --gray-600: #4b5563;
-            --gray-700: #374151;
-            --gray-800: #1f2937;
-            --gray-900: #111827;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Source Sans 3', sans-serif;
-            color: var(--gray-900);
-            background-color: var(--gray-50);
-            line-height: 1.6;
-        }
-
-        .hero {
-            background: linear-gradient(135deg, #ffffff 0%, var(--green-light) 100%);
-            padding: 80px 24px;
-            text-align: center;
-            border-bottom: 1px solid var(--gray-200);
-        }
-
-        .hero-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-            color: #1a7a3e;
-            letter-spacing: -0.5px;
-        }
-
-        .hero .subheadline {
-            font-size: 1.125rem;
-            color: var(--gray-700);
-            margin-bottom: 32px;
-            line-height: 1.7;
-        }
-
-        .hero-cta-group {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-bottom: 32px;
-        }
-
-        .btn {
-            padding: 12px 28px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            font-family: 'Source Sans 3', sans-serif;
-            text-decoration: none;
-            display: inline-block;
-        }
-
-        .btn-primary {
-            background-color: var(--green);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background-color: #1a7a3e;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(46, 173, 96, 0.3);
-        }
-
-        .btn-secondary {
-            background-color: white;
-            color: #1a7a3e;
-            border: 2px solid var(--green);
-        }
-
-        .btn-secondary:hover {
-            background-color: var(--green-light);
-            transform: translateY(-2px);
-        }
-
-        .btn-ghost {
-            background-color: transparent;
-            color: var(--gray-700);
-            border: 1px solid var(--gray-300);
-        }
-
-        .btn-ghost:hover {
-            background-color: var(--gray-100);
-            border-color: var(--gray-400);
-        }
-
-        .accordion {
-            margin-top: 24px;
-            border: 1px solid var(--gray-200);
-            border-radius: 8px;
-            overflow: hidden;
-            background: white;
-        }
-
-        .accordion-header {
-            padding: 16px 20px;
-            background: var(--gray-50);
-            cursor: pointer;
-            font-weight: 600;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            transition: background 0.2s ease;
-        }
-
-        .accordion-header:hover {
-            background: var(--gray-100);
-        }
-
-        .accordion-icon {
-            transition: transform 0.2s ease;
-        }
-
-        .accordion.active .accordion-icon {
-            transform: rotate(180deg);
-        }
-
-        .accordion-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease;
-        }
-
-        .accordion.active .accordion-content {
-            max-height: 500px;
-        }
-
-        .accordion-content p {
-            padding: 16px 20px;
-            color: var(--gray-700);
-            font-size: 0.95rem;
-            line-height: 1.7;
-        }
-
-        .accordion-content p:last-child {
-            padding-bottom: 24px;
-        }
-
-        .filter-toolbar {
-            position: sticky;
-            top: 0;
-            background: white;
-            border-bottom: 1px solid var(--gray-200);
-            padding: 16px 24px;
-            z-index: 100;
-            transition: box-shadow 0.2s ease;
-        }
-
-        .filter-toolbar.scrolled {
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-        }
-
-        .toolbar-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .toolbar-top {
-            display: flex;
-            gap: 12px;
-            align-items: center;
-            margin-bottom: 12px;
-        }
-
-        .search-input {
-            flex: 1;
-            min-width: 200px;
-            padding: 10px 16px;
-            border: 1px solid var(--gray-300);
-            border-radius: 6px;
-            font-size: 0.95rem;
-            font-family: 'Source Sans 3', sans-serif;
-            transition: border-color 0.2s ease;
-        }
-
-        .search-input:focus {
-            outline: none;
-            border-color: var(--green);
-            box-shadow: 0 0 0 3px rgba(46, 173, 96, 0.1);
-        }
-
-        .results-counter {
-            font-size: 0.9rem;
-            color: var(--gray-600);
-            font-weight: 500;
-            white-space: nowrap;
-        }
-
-        .legend-btn {
-            background: none;
-            border: 1px solid var(--gray-300);
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            font-size: 1.1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.2s ease;
-        }
-
-        .legend-btn:hover {
-            background-color: var(--gray-100);
-            border-color: var(--gray-400);
-        }
-
-        .toolbar-filters {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
-        }
-
-        .filter-select {
-            padding: 10px 16px;
-            border: 1px solid var(--gray-300);
-            border-radius: 6px;
-            font-size: 0.95rem;
-            font-family: 'Source Sans 3', sans-serif;
-            background: white;
-            cursor: pointer;
-            transition: border-color 0.2s ease;
-        }
-
-        .filter-select:focus {
-            outline: none;
-            border-color: var(--green);
-            box-shadow: 0 0 0 3px rgba(46, 173, 96, 0.1);
-        }
-
-        .filter-select.active {
-            border-color: var(--green);
-            background-color: var(--green-light);
-        }
-
-        .btn-reset {
-            padding: 8px 16px;
-            font-size: 0.9rem;
-        }
-
-        .reset-hidden {
-            display: none;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .modal.open {
-            display: flex;
-        }
-
-        .modal-content {
-            background: white;
-            border-radius: 12px;
-            padding: 32px;
-            max-width: 500px;
-            width: 90%;
-            max-height: 80vh;
-            overflow-y: auto;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-        }
-
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 24px;
-        }
-
-        .modal-header h2 {
-            font-size: 1.5rem;
-            color: var(--gray-900);
-        }
-
-        .modal-close {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: var(--gray-500);
-            transition: color 0.2s ease;
-        }
-
-        .modal-close:hover {
-            color: var(--gray-900);
-        }
-
-        .legend-section {
-            margin-bottom: 24px;
-        }
-
-        .legend-section h3 {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--gray-900);
-        }
-
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-        }
-
-        .legend-color {
-            width: 24px;
-            height: 24px;
-            border-radius: 4px;
-            flex-shrink: 0;
-            border: 1px solid var(--gray-300);
-        }
-
-        .legend-bar {
-            width: 40px;
-            height: 8px;
-            border-radius: 2px;
-            flex-shrink: 0;
-        }
-
-        .cards-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 48px 24px;
-        }
-
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-            gap: 24px;
-            margin-bottom: 48px;
-        }
-
-        @media (max-width: 768px) {
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        .card {
-            background: white;
-            border: 1px solid var(--gray-200);
-            border-radius: 12px;
-            padding: 24px;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            border-left: 4px solid var(--gray-300);
-        }
-
-        .card:hover {
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-            transform: translateY(-4px);
-        }
-
-        .card.effort-low {
-            border-left-color: var(--green);
-        }
-
-        .card.effort-medium {
-            border-left-color: #CA8A04;
-        }
-
-        .card.effort-high {
-            border-left-color: var(--red);
-        }
-
-        .card-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 12px;
-        }
-
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--gray-900);
-            margin: 0;
-            flex: 1;
-        }
-
-        .card-expand-icon {
-            font-size: 1.2rem;
-            color: var(--gray-400);
-            transition: transform 0.2s ease;
-        }
-
-        .card.expanded .card-expand-icon {
-            transform: rotate(180deg);
-        }
-
-        .card-outcome {
-            font-size: 0.95rem;
-            color: var(--gray-700);
-            margin-bottom: 16px;
-            font-style: italic;
-        }
-
-        .card-meta {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 16px;
-            font-size: 0.85rem;
-        }
-
-        .badge {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 4px 10px;
-            border-radius: 4px;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-
-        .badge-role {
-            background-color: var(--gray-100);
-            color: var(--gray-700);
-        }
-
-        .badge-effort-low {
-            background-color: var(--green-light);
-            color: #1a7a3e;
-        }
-
-        .badge-effort-medium {
-            background-color: #FFF9C4;
-            color: #CA8A04;
-        }
-
-        .badge-effort-high {
-            background-color: #FFCDD2;
-            color: var(--red);
-        }
-
-        .badge-quick-win {
-            background-color: var(--green-light);
-            color: #1a7a3e;
-        }
-
-        .badge-cost {
-            background-color: var(--gray-100);
-            color: var(--gray-700);
-        }
-
-        .badge-cost.active {
-            color: var(--green);
-            font-weight: 600;
-        }
-
-        .card-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-top: 1px solid var(--gray-200);
-            padding-top: 12px;
-            font-size: 0.9rem;
-        }
-
-        .card-details-link {
-            color: var(--green);
-            font-weight: 600;
-            text-decoration: none;
-            transition: color 0.2s ease;
-        }
-
-        .card-details-link:hover {
-            color: #1a7a3e;
-        }
-
-        .card-expanded-content {
-            display: none;
-        }
-
-        .card.expanded .card-expanded-content {
-            display: block;
-            margin-top: 20px;
-            animation: fadeIn 0.3s ease;
-        }
-
-        .description-box {
-            background-color: var(--green-light);
-            border-left: 4px solid var(--green);
-            padding: 16px;
-            border-radius: 4px;
-            margin-bottom: 20px;
-            font-style: italic;
-            color: var(--gray-700);
-            font-size: 0.95rem;
-        }
-
-        .metrics-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 12px;
-            margin-bottom: 20px;
-        }
-
-        .metric-card {
-            background: var(--gray-50);
-            padding: 16px;
-            border-radius: 8px;
-            border: 1px solid var(--gray-200);
-        }
-
-        .metric-label {
-            font-size: 0.8rem;
-            color: var(--gray-500);
-            font-weight: 600;
-            text-transform: uppercase;
-            margin-bottom: 6px;
-        }
-
-        .metric-value {
-            font-size: 0.95rem;
-            color: var(--gray-900);
-            font-weight: 600;
-        }
-
-        .implementation-section {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--gray-200);
-        }
-
-        .section-title {
-            font-size: 1rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: var(--gray-900);
-        }
-
-        .impl-row {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 12px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid var(--gray-200);
-        }
-
-        .impl-row:last-child {
-            border-bottom: none;
-            margin-bottom: 0;
-            padding-bottom: 0;
-        }
-
-        .impl-label {
-            font-weight: 500;
-            color: var(--gray-700);
-        }
-
-        .impl-value {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .coverage-bar {
-            width: 80px;
-            height: 8px;
-            background-color: var(--gray-200);
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .coverage-fill {
-            height: 100%;
-            border-radius: 4px;
-        }
-
-        .coverage-fill.high {
-            background-color: var(--green);
-        }
-
-        .coverage-fill.medium {
-            background-color: #CA8A04;
-        }
-
-        .coverage-fill.low {
-            background-color: var(--red);
-        }
-
-        .coverage-note {
-            font-size: 0.85rem;
-            color: var(--gray-600);
-            margin-top: 12px;
-            padding: 12px;
-            background-color: var(--gray-50);
-            border-radius: 4px;
-            border-left: 3px solid #CA8A04;
-        }
-
-        .tools-section {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--gray-200);
-        }
-
-        .tools-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 8px;
-        }
-
-        .tool-badge {
-            display: inline-block;
-            padding: 8px 12px;
-            border-radius: 6px;
-            background-color: var(--gray-100);
-            color: var(--gray-700);
-            text-decoration: none;
-            font-size: 0.85rem;
-            text-align: center;
-            transition: all 0.2s ease;
-            border: 1px solid var(--gray-200);
-        }
-
-        .tool-badge:hover {
-            background-color: var(--gray-200);
-            color: var(--gray-900);
-        }
-
-        .tool-badge.eu {
-            background-color: #D6EAF8;
-            color: #0A4F8C;
-            border-color: #A9D6FF;
-        }
-
-        .tool-badge.eu:hover {
-            background-color: #A9D6FF;
-        }
-
-        .tool-size {
-            display: inline-block;
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background-color: currentColor;
-            margin-left: 4px;
-        }
-
-        .timeline-link {
-            display: inline-block;
-            margin-top: 16px;
-            color: var(--green);
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.2s ease;
-        }
-
-        .timeline-link:hover {
-            color: #1a7a3e;
-        }
-
-        .cta-banner {
-            background: linear-gradient(135deg, var(--green-light) 0%, #ffffff 100%);
-            border: 1px solid var(--green);
-            border-radius: 12px;
-            padding: 32px 24px;
-            text-align: center;
-            margin: 48px auto;
-            max-width: 600px;
-        }
-
-        .cta-banner p {
-            font-size: 1.1rem;
-            color: var(--gray-800);
-            margin-bottom: 16px;
-            font-weight: 500;
-        }
-
-        .footer {
-            background: var(--gray-900);
-            color: white;
-            padding: 48px 24px;
-            margin-top: 80px;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 48px;
-            align-items: start;
-            margin-bottom: 32px;
-        }
-
-        @media (max-width: 768px) {
-            .footer-content {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-        }
-
-        .footer-branding {
-            font-size: 0.95rem;
-            color: var(--gray-400);
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 24px;
-            flex-wrap: wrap;
-            justify-content: flex-end;
-        }
-
-        @media (max-width: 768px) {
-            .footer-links {
-                justify-content: flex-start;
-            }
-        }
-
-        .footer-link {
-            color: var(--gray-300);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.2s ease;
-        }
-
-        .footer-link:hover {
-            color: white;
-        }
-
-        .footer-divider {
-            height: 1px;
-            background-color: var(--gray-700);
-            margin: 32px 0;
-        }
-
-        .footer-bottom {
-            font-size: 0.85rem;
-            color: var(--gray-500);
-        }
-
-        @media (max-width: 768px) {
-            .hero {
-                padding: 48px 24px;
-            }
-
-            .hero h1 {
-                font-size: 1.75rem;
-            }
-
-            .hero .subheadline {
-                font-size: 1rem;
-            }
-
-            .hero-cta-group {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
-            }
-
-            .toolbar-top {
-                flex-direction: column;
-            }
-
-            .search-input {
-                width: 100%;
-            }
-
-            .toolbar-filters {
-                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            }
-
-            .card {
-                padding: 16px;
-            }
-
-            .card-title {
-                font-size: 1.1rem;
-            }
-
-            .metrics-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .card {
-            animation: fadeIn 0.3s ease-out;
-        }
+/* ============================================
+   RESET & BASE
+   ============================================ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* ============================================
+   DESIGN TOKENS
+   ============================================ */
+:root {
+    --color-primary: #1a7a3e;
+    --color-primary-light: #2EAD60;
+    --color-primary-bg: #e8f7ee;
+    --color-primary-hover: #15632f;
+    --color-primary-shadow: rgba(46, 173, 96, 0.25);
+    --color-amber: #CA8A04;
+    --color-amber-bg: #FFF9C4;
+    --color-red: #E83946;
+    --color-red-bg: #FFCDD2;
+    --color-eu-blue: #0A4F8C;
+    --color-eu-blue-bg: #D6EAF8;
+    --color-eu-blue-border: #A9D6FF;
+    --color-surface: #ffffff;
+    --color-background: #f8f9fa;
+    --color-border: #e5e7eb;
+    --color-border-hover: #d1d5db;
+    --color-text: #111827;
+    --color-text-secondary: #4b5563;
+    --color-text-muted: #6b7280;
+    --color-text-light: #9ca3af;
+    --color-gray-50: #f9fafb;
+    --color-gray-100: #f3f4f6;
+    --color-gray-700: #374151;
+    --color-gray-900: #111827;
+    --space-xs: 4px;
+    --space-sm: 8px;
+    --space-md: 16px;
+    --space-lg: 24px;
+    --space-xl: 32px;
+    --space-2xl: 48px;
+    --space-3xl: 64px;
+    --space-4xl: 96px;
+    --font-family: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 2rem;
+    --text-4xl: 2.75rem;
+    --radius-sm: 6px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 16px;
+    --radius-full: 50%;
+    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+    --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+    --shadow-toolbar: 0 2px 8px rgba(0,0,0,0.08);
+    --shadow-card-hover: 0 12px 32px rgba(0,0,0,0.1);
+    --transition-fast: 150ms ease;
+    --transition-base: 200ms ease;
+    --transition-slow: 300ms ease;
+}
+
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--font-family);
+    color: var(--color-text);
+    background: var(--color-background);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { line-height: 1.3; letter-spacing: -0.02em; }
+.sr-only { position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0; }
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: var(--space-sm);
+    padding: 12px 28px; border-radius: var(--radius-md); font-size: var(--text-base);
+    font-weight: 600; font-family: var(--font-family); border: none; cursor: pointer;
+    text-decoration: none; transition: all var(--transition-base); white-space: nowrap;
+}
+.btn:focus-visible { outline: 2px solid var(--color-primary-light); outline-offset: 2px; }
+.btn-primary { background: var(--color-primary-light); color: white; }
+.btn-primary:hover { background: var(--color-primary-hover); transform: translateY(-1px); box-shadow: 0 4px 16px var(--color-primary-shadow); }
+.btn-secondary { background: white; color: var(--color-primary); border: 2px solid var(--color-primary-light); }
+.btn-secondary:hover { background: var(--color-primary-bg); transform: translateY(-1px); }
+.btn-ghost { background: transparent; color: var(--color-text-secondary); border: 1px solid var(--color-border); }
+.btn-ghost:hover { background: var(--color-gray-100); border-color: var(--color-border-hover); }
+.btn-sm { padding: 8px 16px; font-size: var(--text-sm); }
+
+/* ============================================
+   HERO
+   ============================================ */
+.hero {
+    background: linear-gradient(160deg, var(--color-surface) 0%, var(--color-primary-bg) 100%);
+    padding: var(--space-4xl) var(--space-lg) var(--space-3xl);
+    text-align: center; border-bottom: 1px solid var(--color-border);
+}
+.hero-inner { max-width: 760px; margin: 0 auto; }
+.hero h1 { font-size: var(--text-4xl); font-weight: 700; color: var(--color-primary); margin-bottom: var(--space-md); }
+.hero-subtitle {
+    font-size: var(--text-lg); color: var(--color-text-secondary); margin-bottom: var(--space-xl);
+    line-height: 1.75; max-width: 600px; margin-left: auto; margin-right: auto;
+}
+.hero-ctas { display: flex; gap: var(--space-md); justify-content: center; flex-wrap: wrap; margin-bottom: var(--space-xl); }
+
+/* Details/Accordion */
+.info-accordion {
+    text-align: left; max-width: 640px; margin: 0 auto;
+    border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+    background: white; overflow: hidden;
+}
+.info-accordion summary {
+    padding: var(--space-md) 20px; font-weight: 600; cursor: pointer;
+    display: flex; align-items: center; justify-content: space-between;
+    transition: background var(--transition-fast); list-style: none;
+}
+.info-accordion summary::-webkit-details-marker { display: none; }
+.info-accordion summary::after { content: "\25BE"; color: var(--color-text-muted); transition: transform var(--transition-base); }
+.info-accordion[open] summary::after { transform: rotate(180deg); }
+.info-accordion summary:hover { background: var(--color-gray-50); }
+.info-accordion-body { padding: 0 20px 20px; }
+.info-accordion-body p { font-size: var(--text-sm); color: var(--color-text-secondary); margin-bottom: var(--space-sm); line-height: 1.75; }
+.info-accordion-body p:last-child { margin-bottom: 0; }
+.info-accordion-body strong { color: var(--color-text); }
+
+/* ============================================
+   FILTER TOOLBAR
+   ============================================ */
+.filter-toolbar {
+    position: sticky; top: 0; z-index: 100; background: white;
+    border-bottom: 1px solid var(--color-border); padding: var(--space-md) var(--space-lg);
+    transition: box-shadow var(--transition-base);
+}
+.filter-toolbar.scrolled { box-shadow: var(--shadow-toolbar); }
+.toolbar-inner { max-width: 1200px; margin: 0 auto; }
+.toolbar-row-top { display: flex; gap: var(--space-sm); align-items: center; margin-bottom: var(--space-sm); }
+.search-input {
+    flex: 1; min-width: 200px; padding: 10px var(--space-md);
+    border: 1px solid var(--color-border); border-radius: var(--radius-sm);
+    font-size: var(--text-sm); font-family: var(--font-family);
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.search-input:focus { outline: none; border-color: var(--color-primary-light); box-shadow: 0 0 0 3px rgba(46,173,96,0.1); }
+.results-counter { font-size: var(--text-sm); color: var(--color-text-muted); font-weight: 500; white-space: nowrap; padding: 0 var(--space-sm); }
+.results-counter strong { color: var(--color-text); font-weight: 700; }
+.legend-btn {
+    width: 36px; height: 36px; border-radius: var(--radius-full);
+    border: 1px solid var(--color-border); background: white; cursor: pointer;
+    font-size: var(--text-base); font-weight: 600; color: var(--color-text-muted);
+    display: flex; align-items: center; justify-content: center;
+    transition: all var(--transition-fast); flex-shrink: 0;
+}
+.legend-btn:hover { background: var(--color-gray-100); }
+.legend-btn:focus-visible { outline: 2px solid var(--color-primary-light); outline-offset: 2px; }
+.toolbar-row-filters { display: grid; grid-template-columns: repeat(auto-fit, minmax(175px, 1fr)); gap: var(--space-sm); align-items: center; }
+.filter-select {
+    padding: 9px var(--space-md); border: 1px solid var(--color-border); border-radius: var(--radius-sm);
+    font-size: var(--text-sm); font-family: var(--font-family); background: white;
+    cursor: pointer; transition: border-color var(--transition-fast); width: 100%;
+}
+.filter-select:focus { outline: none; border-color: var(--color-primary-light); box-shadow: 0 0 0 3px rgba(46,173,96,0.1); }
+.filter-select.active { border-color: var(--color-primary-light); background: var(--color-primary-bg); }
+.hidden { display: none !important; }
+
+/* Filter Pills */
+.active-filters { display: flex; flex-wrap: wrap; gap: var(--space-sm); margin-top: var(--space-sm); }
+.filter-pill {
+    display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px;
+    border-radius: 20px; font-size: var(--text-xs); font-weight: 500;
+    background: var(--color-primary-bg); color: var(--color-primary);
+    border: 1px solid rgba(46,173,96,0.2);
+}
+.filter-pill button {
+    background: none; border: none; cursor: pointer; font-size: var(--text-sm);
+    color: var(--color-primary); padding: 0; line-height: 1; opacity: 0.7;
+    transition: opacity var(--transition-fast);
+}
+.filter-pill button:hover { opacity: 1; }
+
+/* ============================================
+   CARDS SECTION
+   ============================================ */
+.results-section { padding: var(--space-2xl) var(--space-lg); }
+.results-inner { max-width: 1200px; margin: 0 auto; }
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(480px, 1fr)); gap: var(--space-lg); }
+
+/* Empty State */
+.empty-state { grid-column: 1/-1; text-align: center; padding: var(--space-4xl) var(--space-lg); }
+.empty-state-icon { font-size: 3.5rem; opacity: 0.25; margin-bottom: var(--space-md); }
+.empty-state h2 { font-size: var(--text-2xl); margin-bottom: var(--space-sm); }
+.empty-state p { font-size: var(--text-base); color: var(--color-text-muted); margin-bottom: var(--space-lg); }
+
+/* ============================================
+   CARD
+   ============================================ */
+.card {
+    background: white; border: 1px solid var(--color-border); border-radius: var(--radius-lg);
+    border-left: 4px solid var(--color-border-hover); padding: var(--space-lg);
+    cursor: pointer; transition: box-shadow var(--transition-base), transform var(--transition-base);
+    animation: cardIn 0.3s ease-out;
+}
+.card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-3px); }
+.card:focus-visible { outline: 2px solid var(--color-primary-light); outline-offset: 2px; }
+.card.effort-low { border-left-color: var(--color-primary-light); }
+.card.effort-medium { border-left-color: var(--color-amber); }
+.card.effort-high { border-left-color: var(--color-red); }
+@keyframes cardIn { from{opacity:0;transform:translateY(12px)} to{opacity:1;transform:translateY(0)} }
+
+.card-header { display: flex; justify-content: space-between; align-items: flex-start; gap: var(--space-sm); margin-bottom: var(--space-sm); }
+.card-title { font-size: var(--text-xl); font-weight: 600; margin: 0; flex: 1; }
+.card-chevron { font-size: var(--text-sm); color: var(--color-text-light); transition: transform var(--transition-base); flex-shrink: 0; margin-top: 4px; }
+.card.expanded .card-chevron { transform: rotate(180deg); }
+.card-outcome { font-size: var(--text-sm); color: var(--color-text-secondary); font-style: italic; margin-bottom: var(--space-md); }
+
+/* Badges */
+.card-badges { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: var(--space-md); }
+.badge {
+    display: inline-flex; align-items: center; gap: 5px; padding: 3px 10px;
+    border-radius: 4px; font-size: var(--text-xs); font-weight: 500; white-space: nowrap; line-height: 1.5;
+}
+.badge-effort-low { background: var(--color-primary-bg); color: var(--color-primary); }
+.badge-effort-medium { background: var(--color-amber-bg); color: var(--color-amber); }
+.badge-effort-high { background: var(--color-red-bg); color: var(--color-red); }
+.badge-quick-win { background: var(--color-primary-bg); color: var(--color-primary); }
+.badge-cost { background: var(--color-gray-100); color: var(--color-primary-light); font-weight: 700; }
+.badge-ansatz { background: var(--color-gray-100); color: var(--color-text-secondary); }
+
+.card-footer { display: flex; justify-content: space-between; align-items: center; padding-top: var(--space-sm); border-top: 1px solid var(--color-border); }
+.card-details-link { color: var(--color-primary-light); font-weight: 600; font-size: var(--text-sm); text-decoration: none; }
+.card-details-link:hover { color: var(--color-primary-hover); }
+.card-timeline { font-size: var(--text-xs); color: var(--color-text-light); }
+
+/* Expanded Content */
+.card-expanded { display: none; }
+.card.expanded .card-expanded { display: block; margin-top: 20px; animation: expandIn 0.3s ease; }
+@keyframes expandIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:translateY(0)} }
+
+.description-box {
+    background: var(--color-primary-bg); border-left: 4px solid var(--color-primary-light);
+    padding: var(--space-md); border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    margin-bottom: 20px; font-style: italic; color: var(--color-text-secondary);
+    font-size: var(--text-sm); line-height: 1.75;
+}
+.metrics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: var(--space-sm); margin-bottom: 20px; }
+.metric-card { background: var(--color-gray-50); padding: var(--space-md); border-radius: var(--radius-md); border: 1px solid var(--color-border); }
+.metric-label { font-size: var(--text-xs); color: var(--color-text-light); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; margin-bottom: var(--space-xs); }
+.metric-value { font-size: var(--text-sm); font-weight: 600; }
+
+.impl-section { padding-top: 20px; border-top: 1px solid var(--color-border); margin-bottom: 16px; }
+.section-heading { font-size: var(--text-sm); font-weight: 600; margin-bottom: var(--space-sm); }
+.impl-row { display: flex; justify-content: space-between; align-items: center; padding: var(--space-sm) 0; border-bottom: 1px solid var(--color-border); font-size: var(--text-sm); }
+.impl-row:last-child { border-bottom: none; }
+.impl-label { font-weight: 500; color: var(--color-text-secondary); }
+.impl-value { display: flex; align-items: center; gap: var(--space-sm); font-weight: 600; }
+.coverage-bar { width: 80px; height: 8px; background: var(--color-border); border-radius: 4px; overflow: hidden; }
+.coverage-fill { height: 100%; border-radius: 4px; }
+.coverage-fill.high { background: var(--color-primary-light); }
+.coverage-fill.medium { background: var(--color-amber); }
+.coverage-fill.low { background: var(--color-red); }
+.coverage-note {
+    font-size: var(--text-xs); color: var(--color-text-secondary); margin-top: var(--space-sm);
+    padding: var(--space-sm) var(--space-md); background: var(--color-gray-50);
+    border-radius: var(--radius-sm); border-left: 3px solid var(--color-amber);
+}
+
+.tools-section { margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--color-border); }
+.tools-grid { display: flex; flex-wrap: wrap; gap: var(--space-sm); }
+.tool-badge {
+    display: inline-flex; align-items: center; gap: 4px; padding: 6px 12px;
+    border-radius: var(--radius-sm); background: var(--color-gray-100); color: var(--color-text-secondary);
+    text-decoration: none; font-size: var(--text-xs); font-weight: 500;
+    border: 1px solid var(--color-border); transition: all var(--transition-fast);
+}
+.tool-badge:hover { background: var(--color-border); color: var(--color-text); }
+.tool-badge.eu { background: var(--color-eu-blue-bg); color: var(--color-eu-blue); border-color: var(--color-eu-blue-border); }
+.tool-badge.eu:hover { background: var(--color-eu-blue-border); }
+.tool-size { font-size: 5px; letter-spacing: 1px; }
+.timeline-link { display: inline-block; margin-top: var(--space-md); color: var(--color-primary-light); text-decoration: none; font-weight: 600; font-size: var(--text-sm); }
+.timeline-link:hover { color: var(--color-primary-hover); }
+
+/* CTA Banner */
+.cta-banner {
+    grid-column: 1/-1; background: linear-gradient(135deg, var(--color-primary-bg), white);
+    border: 1px solid var(--color-primary-light); border-radius: var(--radius-lg);
+    padding: var(--space-xl) var(--space-lg); text-align: center;
+}
+.cta-banner p { font-size: var(--text-lg); font-weight: 500; margin-bottom: var(--space-md); }
+
+/* Bottom CTA */
+.cta-section { padding: var(--space-3xl) var(--space-lg); text-align: center; }
+.cta-card {
+    max-width: 640px; margin: 0 auto;
+    background: linear-gradient(135deg, var(--color-primary-bg), white);
+    border: 1px solid var(--color-primary-light); border-radius: var(--radius-xl);
+    padding: var(--space-2xl) var(--space-xl);
+}
+.cta-card h2 { font-size: var(--text-2xl); margin-bottom: var(--space-sm); }
+.cta-card p { color: var(--color-text-secondary); margin-bottom: var(--space-lg); }
+
+/* ============================================
+   MODAL
+   ============================================ */
+.modal-backdrop {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.4);
+    z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(2px);
+}
+.modal-backdrop.open { display: flex; }
+.modal-content {
+    background: white; border-radius: var(--radius-xl); padding: var(--space-xl);
+    max-width: 520px; width: 90%; max-height: 80vh; overflow-y: auto;
+    box-shadow: 0 24px 64px rgba(0,0,0,0.2); animation: modalIn 0.2s ease;
+}
+@keyframes modalIn { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
+.modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--space-lg); }
+.modal-header h2 { font-size: var(--text-2xl); }
+.modal-close { background: none; border: none; font-size: var(--text-xl); cursor: pointer; color: var(--color-text-light); padding: var(--space-xs); }
+.modal-close:hover { color: var(--color-text); }
+.modal-close:focus-visible { outline: 2px solid var(--color-primary-light); outline-offset: 2px; }
+.legend-group { margin-bottom: var(--space-lg); }
+.legend-group h3 { font-size: var(--text-sm); font-weight: 600; margin-bottom: var(--space-sm); }
+.legend-item { display: flex; align-items: center; gap: var(--space-sm); margin-bottom: 6px; font-size: var(--text-sm); color: var(--color-text-secondary); }
+.legend-swatch { width: 24px; height: 24px; border-radius: 4px; flex-shrink: 0; border: 1px solid var(--color-border); }
+.legend-bar { width: 36px; height: 8px; border-radius: 4px; flex-shrink: 0; }
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.site-footer { background: var(--color-gray-900); color: white; padding: var(--space-2xl) var(--space-lg); margin-top: var(--space-3xl); }
+.footer-inner { max-width: 1200px; margin: 0 auto; }
+.footer-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: var(--space-xl); margin-bottom: var(--space-xl); }
+.footer-brand { font-size: var(--text-sm); color: var(--color-text-light); }
+.footer-brand strong { color: white; }
+.footer-links { display: flex; gap: var(--space-lg); flex-wrap: wrap; }
+.footer-link { color: var(--color-border-hover); text-decoration: none; font-size: var(--text-sm); transition: color var(--transition-fast); }
+.footer-link:hover { color: white; }
+.footer-divider { height: 1px; background: var(--color-gray-700); margin-bottom: var(--space-lg); }
+.footer-bottom { font-size: var(--text-xs); color: var(--color-text-muted); }
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+    .hero { padding: var(--space-2xl) var(--space-md) var(--space-xl); }
+    .hero h1 { font-size: var(--text-3xl); }
+    .hero-subtitle { font-size: var(--text-base); }
+    .hero-ctas { flex-direction: column; align-items: stretch; }
+    .toolbar-row-top { flex-wrap: wrap; }
+    .search-input { min-width: 0; width: 100%; flex: 1 1 100%; }
+    .toolbar-row-filters { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
+    .cards-grid { grid-template-columns: 1fr; }
+    .card { padding: var(--space-md); }
+    .card-title { font-size: var(--text-lg); }
+    .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-top { flex-direction: column; }
+}
+@media (max-width: 480px) {
+    .hero h1 { font-size: var(--text-2xl); }
+    .toolbar-row-filters { grid-template-columns: 1fr; }
+    .metrics-grid { grid-template-columns: 1fr; }
+}
     </style>
 </head>
 <body>
-    <section class="hero">
-        <div class="hero-container">
-            <h1>GenAI Use-Case-Finder</h1>
-            <p class="subheadline">Finden Sie die passenden KI-Lösungen für Ihre Rolle – 52 praxiserprobte Use Cases mit Tools, Aufwand und Kostenrahmen.</p>
-            <div class="hero-cta-group">
-                <a href="https://www.plan-a-consulting.ai/kontakt" target="_blank" class="btn btn-primary">Beratungsgespräch vereinbaren</a>
-                <button class="btn btn-secondary" onclick="document.querySelector('.filter-toolbar').scrollIntoView({ behavior: 'smooth' })">Use Cases entdecken ↓</button>
+
+<header class="hero">
+    <div class="hero-inner">
+        <h1>GenAI Use-Case-Finder</h1>
+        <p class="hero-subtitle">Finden Sie die passenden KI-Anwendungsfälle für Ihre Rolle – 52 praxiserprobte Use Cases mit Tools, Aufwand und Kostenrahmen.</p>
+        <div class="hero-ctas">
+            <a href="https://www.plan-a-consulting.ai/kontakt" target="_blank" rel="noopener" class="btn btn-primary">Beratungsgespräch vereinbaren</a>
+            <button class="btn btn-secondary" id="scroll-to-filters" type="button">Direkt Use Cases entdecken &#8595;</button>
+        </div>
+        <details class="info-accordion">
+            <summary>So funktioniert dieser Finder</summary>
+            <div class="info-accordion-body">
+                <p><strong>Filtern nach Rolle, Ansatz, Aufwand</strong><br>Wählen Sie Ihre Rolle oder Abteilung, den KI-Ansatz und den gewünschten Implementierungsaufwand.</p>
+                <p><strong>Freitextsuche</strong><br>Suchen Sie nach Use-Case-Namen, Rollen oder Ergebnissen.</p>
+                <p><strong>Klick für Details</strong><br>Klicken Sie auf eine Karte, um Beschreibungen, Tools, Kosten und Timelines zu sehen.</p>
+                <p><strong>Farbcodierung</strong><br>Grüner Rand = Einfach &middot; Gelb = Moderat &middot; Rot = Komplex</p>
             </div>
-            <div class="accordion" id="accordion-how-it-works">
-                <div class="accordion-header">
-                    So funktioniert dieser Finder
-                    <span class="accordion-icon">▼</span>
-                </div>
-                <div class="accordion-content">
-                    <p><strong>Filtern nach Rolle, Ansatz, Aufwand</strong><br>Wählen Sie Ihre Rolle oder Abteilung, den KI-Ansatz (Standardlösung, Hybrid, Eigenentwicklung) und den gewünschten Implementierungsaufwand.</p>
-                    <p><strong>Freitextsuche</strong><br>Suchen Sie nach Use-Case-Namen, Rollen oder Ergebnissen, um schnell das Passende zu finden.</p>
-                    <p><strong>Click for Details</strong><br>Klicken Sie auf eine Karte, um vollständige Beschreibungen, Tools, Kosten und Timelines zu sehen.</p>
-                    <p><strong>Card-Farben zeigen Aufwand</strong><br>Grüne Linke Rahmen = Einfach | Amber = Moderat | Rot = Komplex</p>
-                </div>
-            </div>
+        </details>
+    </div>
+</header>
+
+<nav class="filter-toolbar" id="filter-toolbar" aria-label="Use-Case-Filter">
+    <div class="toolbar-inner">
+        <div class="toolbar-row-top">
+            <label for="search-input" class="sr-only">Suche</label>
+            <input type="search" id="search-input" class="search-input" placeholder="Nach Use-Case, Rolle oder Outcome suchen..." autocomplete="off">
+            <span class="results-counter" aria-live="polite"><strong id="counter">52</strong> von 52 Use Cases</span>
+            <button class="legend-btn" type="button" title="Legende anzeigen" aria-label="Legende anzeigen" id="open-legend">?</button>
+        </div>
+        <div class="toolbar-row-filters">
+            <label for="filter-role" class="sr-only">Rolle</label>
+            <select id="filter-role" class="filter-select">
+                <option value="">Rolle – Alle</option>
+                <option value="allbereich">Alle Bereiche</option>
+                <option value="admin">Assistenz / Admin</option>
+                <option value="compliance">Compliance / Recht</option>
+                <option value="finance">Controlling / Finance</option>
+                <option value="ecom">E-Commerce / PM</option>
+                <option value="lead">Führungskraft / Management</option>
+                <option value="hr">HR / Recruiting</option>
+                <option value="it">IT / Entwicklung</option>
+                <option value="service">Kundenservice / Support</option>
+                <option value="mktg">Marketing / Kommunikation</option>
+                <option value="oe">OE / Personalentwicklung</option>
+                <option value="quality">Qualität / Operations</option>
+                <option value="sales">Vertrieb / Sales</option>
+            </select>
+            <label for="filter-ansatz" class="sr-only">KI-Ansatz</label>
+            <select id="filter-ansatz" class="filter-select">
+                <option value="">KI-Ansatz – Alle</option>
+                <option value="buy">Buy (Standardlösung)</option>
+                <option value="hybrid">Hybrid (Kombination)</option>
+                <option value="build">Build (Eigenentwicklung)</option>
+            </select>
+            <label for="filter-coverage" class="sr-only">Abdeckung</label>
+            <select id="filter-coverage" class="filter-select">
+                <option value="">Abdeckung – Alle</option>
+                <option value="high">Hoch (75 %+)</option>
+                <option value="medium">Mittel (50–74 %)</option>
+                <option value="low">Niedrig (&lt;50 %)</option>
+            </select>
+            <label for="filter-effort" class="sr-only">Aufwand</label>
+            <select id="filter-effort" class="filter-select">
+                <option value="">Aufwand – Alle</option>
+                <option value="low">Einfach</option>
+                <option value="medium">Moderat</option>
+                <option value="high">Komplex</option>
+            </select>
+            <button id="btn-reset" class="btn btn-ghost btn-sm hidden" type="button">Filter zurücksetzen</button>
+        </div>
+        <div class="active-filters" id="active-filters" aria-label="Aktive Filter"></div>
+    </div>
+</nav>
+
+<div class="modal-backdrop" id="legend-modal" role="dialog" aria-modal="true" aria-label="Legende">
+    <div class="modal-content" id="legend-modal-content">
+        <div class="modal-header">
+            <h2>Legende</h2>
+            <button class="modal-close" type="button" id="close-legend" aria-label="Schließen">&#10005;</button>
+        </div>
+        <div class="legend-group">
+            <h3>Aufwand (Linke Kartenfarbe)</h3>
+            <div class="legend-item"><div class="legend-swatch" style="border-left:4px solid var(--color-primary-light);background:white"></div><span><strong>Einfach</strong> – Schnelle Implementierung, Quick Wins</span></div>
+            <div class="legend-item"><div class="legend-swatch" style="border-left:4px solid var(--color-amber);background:white"></div><span><strong>Moderat</strong> – Mittlere Komplexität, 4–8 Wochen</span></div>
+            <div class="legend-item"><div class="legend-swatch" style="border-left:4px solid var(--color-red);background:white"></div><span><strong>Komplex</strong> – Hoher Aufwand, 10+ Wochen</span></div>
+        </div>
+        <div class="legend-group">
+            <h3>KI-Ansatz</h3>
+            <div class="legend-item"><div class="legend-bar" style="background:var(--color-primary-light)"></div><span><strong>Buy</strong> – Standardlösung</span></div>
+            <div class="legend-item"><div class="legend-bar" style="background:var(--color-amber)"></div><span><strong>Hybrid</strong> – Standard + Custom</span></div>
+            <div class="legend-item"><div class="legend-bar" style="background:var(--color-red)"></div><span><strong>Build</strong> – Eigenentwicklung</span></div>
+        </div>
+        <div class="legend-group">
+            <h3>Indikatoren</h3>
+            <div class="legend-item"><span>&#9889; <strong>Quick-Win</strong> – Kurze Implementierung, hoher Nutzen</span></div>
+            <div class="legend-item"><span><strong>&#8364; / &#8364;&#8364; / &#8364;&#8364;&#8364;</strong> – Kostenrahmen niedrig bis hoch</span></div>
+            <div class="legend-item"><span><strong style="color:var(--color-eu-blue)">Blau markierte Tools</strong> – EU-Anbieter / DSGVO</span></div>
+        </div>
+    </div>
+</div>
+
+<main>
+    <section class="results-section" aria-label="Use Cases">
+        <div class="results-inner">
+            <div class="cards-grid" id="cards-grid"></div>
         </div>
     </section>
-
-    <div class="filter-toolbar" id="filter-toolbar">
-        <div class="toolbar-content">
-            <div class="toolbar-top">
-                <input type="text" id="search-input" class="search-input" placeholder="Nach Use-Case, Rolle oder Outcome suchen...">
-                <span class="results-counter"><span id="counter">52</span> von 52 Use Cases</span>
-                <button class="legend-btn" title="Legende" onclick="openLegendModal()">?</button>
-            </div>
-            <div class="toolbar-filters">
-                <select id="filter-role" class="filter-select">
-                    <option value="">Rolle – Alle</option>
-                    <option value="allbereich">Alle Bereiche</option>
-                    <option value="admin">Assistenz / Admin</option>
-                    <option value="compliance">Compliance / Recht</option>
-                    <option value="finance">Controlling / Finance</option>
-                    <option value="ecom">E-Commerce / PM</option>
-                    <option value="lead">Führungskraft / Management</option>
-                    <option value="hr">HR / Recruiting</option>
-                    <option value="it">IT / Entwicklung</option>
-                    <option value="service">Kundenservice / Support</option>
-                    <option value="mktg">Marketing / Kommunikation</option>
-                    <option value="oe">OE / Personalentwicklung</option>
-                    <option value="quality">Qualität / Operations</option>
-                    <option value="sales">Vertrieb / Sales</option>
-                </select>
-                <select id="filter-ansatz" class="filter-select">
-                    <option value="">KI-Ansatz – Alle</option>
-                    <option value="buy">Buy (Standardlösung)</option>
-                    <option value="hybrid">Hybrid (Kombination)</option>
-                    <option value="build">Build (Eigenentwicklung)</option>
-                </select>
-                <select id="filter-coverage" class="filter-select">
-                    <option value="">Standardlösung-Abdeckung – Alle</option>
-                    <option value="high">Hoch (75%+)</option>
-                    <option value="medium">Mittel (50-74%)</option>
-                    <option value="low">Niedrig (&lt;50%)</option>
-                </select>
-                <select id="filter-effort" class="filter-select">
-                    <option value="">Aufwand – Alle</option>
-                    <option value="low">Einfach</option>
-                    <option value="medium">Moderat</option>
-                    <option value="high">Komplex</option>
-                </select>
-                <button id="btn-reset" class="btn btn-ghost btn-reset reset-hidden" onclick="resetFilters()">Filter zurücksetzen</button>
-            </div>
+    <section class="cta-section" aria-label="Beratung">
+        <div class="cta-card">
+            <h2>Bereit für den nächsten Schritt?</h2>
+            <p>Lassen Sie uns gemeinsam herausfinden, welche KI-Use-Cases den größten Hebel für Ihr Unternehmen bieten.</p>
+            <a href="https://www.plan-a-consulting.ai/kontakt" target="_blank" rel="noopener" class="btn btn-primary">Beratungsgespräch vereinbaren</a>
         </div>
-    </div>
+    </section>
+</main>
 
-    <div class="modal" id="legend-modal" onclick="closeLegendModal(event)">
-        <div class="modal-content" onclick="event.stopPropagation()">
-            <div class="modal-header">
-                <h2>Legende</h2>
-                <button class="modal-close" onclick="closeLegendModal()">✕</button>
-            </div>
-            <div class="legend-section">
-                <h3>Aufwand (Linke Rahmen-Farbe)</h3>
-                <div class="legend-item">
-                    <div class="legend-color" style="border-left: 4px solid var(--green); background: white;"></div>
-                    <span><strong>Einfach</strong> – Kurze Implementierung, schnelle Gewinne</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="border-left: 4px solid #CA8A04; background: white;"></div>
-                    <span><strong>Moderat</strong> – Mittlere Komplexität, 4-8 Wochen</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-color" style="border-left: 4px solid var(--red); background: white;"></div>
-                    <span><strong>Komplex</strong> – Hoher Aufwand, 10+ Wochen oder Custom Development</span>
-                </div>
-            </div>
-            <div class="legend-section">
-                <h3>KI-Ansatz</h3>
-                <div class="legend-item">
-                    <div class="legend-bar" style="background: var(--green);"></div>
-                    <span><strong>Buy</strong> – Ready-made Standardlösung</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-bar" style="background: #CA8A04;"></div>
-                    <span><strong>Hybrid</strong> – Kombination aus Standard + Custom</span>
-                </div>
-                <div class="legend-item">
-                    <div class="legend-bar" style="background: var(--red);"></div>
-                    <span><strong>Build</strong> – Custom Development / Eigenentwicklung</span>
-                </div>
-            </div>
-            <div class="legend-section">
-                <h3>Standardlösung-Abdeckung</h3>
-                <div class="legend-item">
-                    <span>Prozentsatz, den eine Standardlösung des Use-Cases abdecken kann. Der Rest erfordert Konfiguration oder Custom Development.</span>
-                </div>
-            </div>
-            <div class="legend-section">
-                <h3>Indikatoren</h3>
-                <div class="legend-item">
-                    <span>⚡ <strong>Quick-Win</strong> – Kurze Implementierung mit hohem Nutzen</span>
-                </div>
-                <div class="legend-item">
-                    <span><strong>€, €€, €€€</strong> – Kostenrahmen von niedrig bis hoch</span>
-                </div>
-                <div class="legend-item">
-                    <span><strong style="color: #0A4F8C;">Blau markierte Tools</strong> – EU-Anbieter mit DSGVO-Compliance</span>
-                </div>
-                <div class="legend-item">
-                    <span><strong>Tool-Größe</strong> – Startup (●) | Scale-up (●●) | Enterprise (●●●)</span>
-                </div>
-            </div>
+<footer class="site-footer">
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">Eine Perspektive von <strong>plan a – AI Solutions</strong></div>
+            <nav class="footer-links" aria-label="Footer-Navigation">
+                <a href="https://www.plan-a-consulting.ai/ki-wissen" class="footer-link" target="_blank" rel="noopener">KI-Wissen Hub</a>
+                <a href="#" class="footer-link">Use-Case-Finder</a>
+                <a href="https://www.plan-a-consulting.ai/ki-nutzen-timeline" class="footer-link" target="_blank" rel="noopener">Nutzen-Timeline</a>
+                <a href="https://www.plan-a-consulting.ai/technologie-timeline" class="footer-link" target="_blank" rel="noopener">Technologie-Timeline</a>
+            </nav>
         </div>
+        <div class="footer-divider"></div>
+        <div class="footer-bottom">&copy; 2025 plan a consulting. Alle Rechte vorbehalten.</div>
     </div>
+</footer>
 
-    <div class="cards-container">
-        <div class="cards-grid" id="cards-grid"></div>
-    </div>
+<script>
+var DATA=[{nr:1,rolle:"Alle Bereiche",roleKey:"allbereich",usecase:"Meeting-Protokolle",beschreibung:"KI zeichnet Meetings auf, erstellt automatisch Zusammenfassungen, extrahiert Action Items und verteilt Protokolle an Teilnehmer.",outcome:"75 % Zeitersparnis bei Protokollen",ansatz:"Buy",coverage:85,coverageLabel:"85 %",tools:[{name:"Fathom",url:"https://fathom.video",eu:false,size:1},{name:"tl;dv",url:"https://tldv.io",eu:true,size:1},{name:"Otter.ai",url:"https://otter.ai",eu:false,size:1},{name:"Fireflies",url:"https://fireflies.ai",eu:false,size:1},{name:"Granola",url:"https://www.granola.ai",eu:false,size:1}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:1},{nr:2,rolle:"Alle Bereiche",roleKey:"allbereich",usecase:"Internes Wissensmanagement",beschreibung:"KI durchsucht Wikis, Dokumente und Chat-Verläufe und liefert präzise Antworten auf Mitarbeiterfragen.",outcome:"70 % schnellere Informationssuche",ansatz:"Hybrid",coverage:70,coverageLabel:"70 %",coverageNote:"Interne Wissensdatenbanken erfordern unternehmensspezifische Datenanbindung, Berechtigungskonzepte und Feintuning auf Fachbegriffe.",tools:[{name:"Notion AI",url:"https://notion.so",eu:false,size:2},{name:"Glean",url:"https://www.glean.com",eu:false,size:2},{name:"Confluence AI",url:"https://www.atlassian.com/software/confluence",eu:false,size:3},{name:"Microsoft Copilot Studio",url:"https://www.microsoft.com/copilot-studio",eu:false,size:2},{name:"LangDock",url:"https://langdock.com",eu:true,size:1}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:6},{nr:3,rolle:"Assistenz / Admin",roleKey:"admin",usecase:"E-Mail-Entwürfe und Korrespondenz",beschreibung:"KI schlägt Antworten vor, formuliert E-Mails im passenden Ton und hilft bei Standardkorrespondenz wie Einladungen oder Absagen.",outcome:"60 % schnellere Antwortzeit",ansatz:"Buy",coverage:80,coverageLabel:"80 %",coverageNote:"Tonalität, Anredeformen und unternehmensspezifische Textbausteine müssen individuell konfiguriert werden.",tools:[{name:"MS Copilot",url:"https://www.microsoft.com/copilot",eu:false,size:3},{name:"Grammarly",url:"https://grammarly.com",eu:false,size:2},{name:"MailMaestro",url:"https://mailmaestro.com",eu:false,size:1},{name:"Lavender",url:"https://www.getlavender.com",eu:false,size:1}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:1},{nr:4,rolle:"Assistenz / Admin",roleKey:"admin",usecase:"Dokumentenzusammenfassungen",beschreibung:"Lange Berichte, Verträge oder Studien werden auf die Kernaussagen komprimiert – in Sekunden statt Stunden.",outcome:"80 % weniger Lesezeit",ansatz:"Buy",coverage:75,coverageLabel:"75 %",coverageNote:"Fachspezifische Terminologie und Zusammenfassungstiefe müssen je nach Dokumenttyp und Branche angepasst werden.",tools:[{name:"Claude for Work",url:"https://claude.ai",eu:false,size:3},{name:"ChatGPT Enterprise",url:"https://openai.com",eu:false,size:3},{name:"Wordtune",url:"https://www.wordtune.com",eu:false,size:1},{name:"LangDock",url:"https://langdock.com",eu:true,size:1}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:1},{nr:5,rolle:"Compliance / Recht",roleKey:"compliance",usecase:"Vertragsanalyse",beschreibung:"KI erkennt Klauseln, Risiken und Abweichungen in Verträgen und markiert kritische Stellen zur juristischen Prüfung.",outcome:"70 % schnellere Prüfung",ansatz:"Hybrid",coverage:60,coverageLabel:"60 %",coverageNote:"Branchenspezifische Klauselwerke und interne Compliance-Regeln müssen manuell eingerichtet und kontinuierlich gepflegt werden.",tools:[{name:"Kira Systems",url:"https://kirasystems.com",eu:false,size:1},{name:"Juro",url:"https://juro.com",eu:true,size:2},{name:"Ironclad",url:"https://ironcladapp.com",eu:false,size:2},{name:"Luminance",url:"https://www.luminance.com",eu:true,size:2},{name:"ContractPodAi",url:"https://contractpodai.com",eu:true,size:1}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:8},{nr:6,rolle:"Compliance / Recht",roleKey:"compliance",usecase:"Compliance und Regulatorik",beschreibung:"Automatische Prüfung von Geschäftsprozessen gegen regulatorische Anforderungen, mit Alerts bei Verstößen oder Änderungen.",outcome:"80 % weniger manuelle Prüfzeit",ansatz:"Build",coverage:55,coverageLabel:"55 %",coverageNote:"Regulatorische Anforderungen sind stark branchen- und länderspezifisch — automatische Prüfregeln müssen individuell definiert werden.",tools:[{name:"ComplyAdvantage",url:"https://complyadvantage.com",eu:true,size:1},{name:"Ascent RegTech",url:"https://www.ascent.io",eu:false,size:1},{name:"CUBE",url:"https://www.cube.global",eu:false,size:1},{name:"Relativity",url:"https://www.relativity.com",eu:false,size:2}],effort:"high",quickWin:false,costRange:"EUREUREUR",timelineWeeks:16},{nr:7,rolle:"Controlling / Finance",roleKey:"finance",usecase:"Finanzberichterstattung",beschreibung:"KI erstellt Monats- und Quartalsberichte aus Finanzdaten, generiert Kommentare zu Abweichungen und formatiert Reports.",outcome:"60 % schnellere Berichtserstellung",ansatz:"Hybrid",coverage:50,coverageLabel:"50 %",coverageNote:"Finanzberichte erfordern Anbindung an interne ERP-/Buchhaltungssysteme und unternehmenseigene Berichtsformate.",tools:[{name:"Vena",url:"https://vena.io",eu:false,size:2},{name:"Workiva",url:"https://www.workiva.com",eu:false,size:3},{name:"Yseop",url:"https://www.yseop.com",eu:true,size:1},{name:"Salesforce Einstein",url:"https://www.salesforce.com",eu:false,size:3}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:10},{nr:8,rolle:"Controlling / Finance",roleKey:"finance",usecase:"Datenanalyse Self-Service",beschreibung:"Mitarbeiter stellen Fragen in natürlicher Sprache an Dashboards und erhalten Antworten, ohne SQL oder BI-Tools zu beherrschen.",outcome:"80 % weniger BI-Anfragen",ansatz:"Buy",coverage:55,coverageLabel:"55 %",coverageNote:"Self-Service-Analysen benötigen Anbindung an firmeninterne Datenquellen und semantische Modellierung der Geschäftslogik.",tools:[{name:"Qlik Sense",url:"https://www.qlik.com",eu:false,size:3},{name:"ThoughtSpot",url:"https://www.thoughtspot.com",eu:false,size:2},{name:"Tableau AI",url:"https://www.tableau.com",eu:false,size:3},{name:"Databricks AI",url:"https://www.databricks.com",eu:false,size:3}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:6},{nr:9,rolle:"E-Commerce / Produktmanagement",roleKey:"ecom",usecase:"Produktbeschreibungen",beschreibung:"KI generiert SEO-optimierte Produkttexte aus Stammdaten, Bildern und Attributen – für hunderte Artikel gleichzeitig.",outcome:"80 % automatisiert",ansatz:"Hybrid",coverage:70,coverageLabel:"70 %",coverageNote:"Produkttexte müssen an Markentonalität, Zielgruppensprache und kanalspezifische Anforderungen angepasst werden.",tools:[{name:"TextCortex",url:"https://textcortex.com",eu:true,size:1},{name:"Describely",url:"https://describely.ai",eu:false,size:1},{name:"Akeneo AI",url:"https://www.akeneo.com",eu:true,size:2},{name:"Mistral AI",url:"https://mistral.ai",eu:true,size:2},{name:"Copy.ai",url:"https://copy.ai",eu:false,size:1}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:4},{nr:10,rolle:"E-Commerce / Produktmanagement",roleKey:"ecom",usecase:"Kundenfeedback-Analyse",beschreibung:"Bewertungen, Support-Tickets und Umfragen werden automatisch nach Themen, Stimmung und Dringlichkeit kategorisiert.",outcome:"Analysezyklus: 3 Monate zu 1 Tag",ansatz:"Hybrid",coverage:65,coverageLabel:"65 %",coverageNote:"Feedback-Kategorien und Sentiment-Regeln müssen auf branchenspezifische Themen und Unternehmenssprache trainiert werden.",tools:[{name:"Medallia",url:"https://www.medallia.com",eu:false,size:3},{name:"Idiomatic",url:"https://www.idiomatic.io",eu:false,size:1},{name:"Qualtrics",url:"https://www.qualtrics.com",eu:false,size:3},{name:"Zendesk QA",url:"https://www.zendesk.com",eu:false,size:3}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:8},{nr:11,rolle:"Führungskraft / Management",roleKey:"lead",usecase:"Strategische Entscheidungsunterstützung",beschreibung:"KI recherchiert Marktdaten, fasst Studien zusammen und erstellt Entscheidungsvorlagen mit Pro/Contra-Analysen.",outcome:"50 % schnellere Entscheidungsvorbereitung",ansatz:"Build",coverage:45,coverageLabel:"45 %",coverageNote:"Strategische Entscheidungen erfordern unternehmensspezifischen Kontext, interne Daten und menschliche Urteilskraft.",tools:[{name:"Perplexity Pro",url:"https://www.perplexity.ai",eu:false,size:2},{name:"Claude",url:"https://claude.ai",eu:false,size:3},{name:"Mistral AI",url:"https://mistral.ai",eu:true,size:2},{name:"LangDock",url:"https://langdock.com",eu:true,size:1}],effort:"high",quickWin:false,costRange:"EUREUREUR",timelineWeeks:12},{nr:12,rolle:"Führungskraft / Management",roleKey:"lead",usecase:"Management-Briefings und Reporting",beschreibung:"Automatische Erstellung von Präsentationen und Executive Summaries aus verschiedenen Datenquellen und Berichten.",outcome:"75 % weniger Aufwand",ansatz:"Hybrid",coverage:50,coverageLabel:"50 %",coverageNote:"Management-Reports benötigen Anbindung an interne KPIs, Datenquellen und unternehmensspezifische Berichtsformate.",tools:[{name:"Gamma",url:"https://www.gamma.app",eu:false,size:2},{name:"Beautiful.ai",url:"https://www.beautiful.ai",eu:false,size:2},{name:"MS Copilot",url:"https://www.microsoft.com/copilot",eu:false,size:3},{name:"Power BI Copilot",url:"https://powerbi.microsoft.com",eu:false,size:3}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:6},{nr:13,rolle:"HR / Recruiting",roleKey:"hr",usecase:"Stellenausschreibungen und Recruiting",beschreibung:"KI erstellt Stellenanzeigen, screent Bewerbungen und schlägt passende Kandidaten basierend auf Anforderungsprofilen vor.",outcome:"40 % schnellere Kandidatenvorauswahl",ansatz:"Buy",coverage:60,coverageLabel:"60 %",coverageNote:"Stellenprofile, Bewertungskriterien und kulturelle Passung müssen individuell konfiguriert werden.",tools:[{name:"Beamery",url:"https://beamery.com",eu:true,size:2},{name:"Phenom",url:"https://www.phenom.com",eu:false,size:2},{name:"Workday Paradox",url:"https://www.workday.com",eu:false,size:3},{name:"Eightfold AI",url:"https://www.eightfold.ai",eu:false,size:2},{name:"HireVue",url:"https://www.hirevue.com",eu:false,size:2}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:2},{nr:14,rolle:"HR / Recruiting",roleKey:"hr",usecase:"Onboarding-Begleitung",beschreibung:"Neue Mitarbeiter werden durch einen KI-Assistenten begleitet, der Fragen beantwortet, Schulungen zuweist und Prozesse erklärt.",outcome:"40 % kürzere Einarbeitungszeit",ansatz:"Build",coverage:60,coverageLabel:"60 %",coverageNote:"Onboarding-Inhalte, Prozessabläufe und Ansprechpartner sind hochgradig unternehmensindividuell.",tools:[{name:"Talmundo",url:"https://talmundo.com",eu:true,size:1},{name:"Enboarder",url:"https://enboarder.com",eu:false,size:1},{name:"SAP Joule",url:"https://www.sap.com",eu:true,size:3},{name:"Leena AI",url:"https://www.leena.ai",eu:false,size:1}],effort:"high",quickWin:false,costRange:"EUREUREUR",timelineWeeks:12},{nr:15,rolle:"IT / Entwicklung",roleKey:"it",usecase:"Code-Assistenz",beschreibung:"KI schlägt Code-Vervollständigungen vor, erklärt bestehenden Code, findet Bugs und generiert Boilerplate-Code.",outcome:"25 % höhere Entwicklerproduktivität",ansatz:"Buy",coverage:85,coverageLabel:"85 %",tools:[{name:"GitHub Copilot",url:"https://github.com/copilot",eu:false,size:3},{name:"Cursor",url:"https://www.cursor.com",eu:false,size:2},{name:"Claude Code",url:"https://www.anthropic.com/claude-code",eu:false,size:3},{name:"Windsurf (Cognition)",url:"https://www.codeium.com",eu:false,size:2},{name:"Tabnine",url:"https://www.tabnine.com",eu:false,size:1}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:1},{nr:16,rolle:"IT / Entwicklung",roleKey:"it",usecase:"IT-Helpdesk und Support",beschreibung:"KI beantwortet häufige IT-Fragen automatisch, löst Standardprobleme und eskaliert komplexe Tickets an Spezialisten.",outcome:"55 % schnellere Erstlösung",ansatz:"Hybrid",coverage:70,coverageLabel:"70 %",coverageNote:"IT-Helpdesk erfordert Anbindung an interne Wissensdatenbanken, Ticketsysteme und unternehmensspezifische Lösungswege.",tools:[{name:"ServiceNow",url:"https://www.servicenow.com",eu:false,size:3},{name:"Aisera",url:"https://www.aisera.com",eu:false,size:2},{name:"Nexthink",url:"https://www.nexthink.com",eu:false,size:2},{name:"Freshservice AI",url:"https://freshservice.com",eu:false,size:2}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:8},{nr:17,rolle:"Kundenservice / Support",roleKey:"service",usecase:"Kundenservice-Chatbot",beschreibung:"Ein KI-Bot beantwortet Kundenanfragen rund um die Uhr, löst Standardfälle selbstständig und übergibt komplexe Fälle an Mitarbeiter.",outcome:"50 % weniger Tickets an Agenten",ansatz:"Buy",coverage:75,coverageLabel:"75 %",coverageNote:"Chatbot-Antworten müssen auf Produktkatalog, FAQs und unternehmensspezifische Prozesse trainiert werden.",tools:[{name:"Cognigy (NICE)",url:"https://www.cognigy.com",eu:true,size:2},{name:"Parloa",url:"https://www.parloa.com",eu:true,size:2},{name:"Zendesk AI",url:"https://www.zendesk.com",eu:false,size:3},{name:"Intercom Fin",url:"https://www.intercom.com",eu:true,size:3},{name:"Ada",url:"https://www.ada.support",eu:false,size:2}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:6},{nr:18,rolle:"Vertrieb / Marketing",roleKey:"sales",usecase:"Personalisierte Kundenansprache",beschreibung:"KI analysiert Kundenverhalten und erstellt individuelle Angebote, E-Mails und Produktempfehlungen je nach Kundenprofil.",outcome:"+25 % Conversion Rate",ansatz:"Hybrid",coverage:55,coverageLabel:"55 %",coverageNote:"Personalisierung erfordert Anbindung an CRM-Daten, Kaufhistorie und individuelle Kundensegmentierung.",tools:[{name:"Salesforce Einstein",url:"https://www.salesforce.com",eu:false,size:3},{name:"HubSpot AI",url:"https://www.hubspot.com",eu:false,size:3},{name:"Dynamic Yield",url:"https://www.dynamicyield.com",eu:false,size:2},{name:"Braze",url:"https://www.braze.com",eu:false,size:2},{name:"Adobe Sensei",url:"https://www.adobe.com",eu:false,size:3}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:8},{nr:19,rolle:"Marketing / Kommunikation",roleKey:"mktg",usecase:"Marketing-Content",beschreibung:"KI erstellt Blog-Artikel, Social-Media-Posts, Newsletter-Texte und Werbecopy – angepasst an Zielgruppe und Kanal.",outcome:"5x mehr Entwürfe pro Woche",ansatz:"Hybrid",coverage:70,coverageLabel:"70 %",coverageNote:"Content muss an Markenrichtlinien, Tonalität und kanalspezifische Formate angepasst werden.",tools:[{name:"Neuroflash",url:"https://neuroflash.com",eu:true,size:2},{name:"Jasper",url:"https://www.jasper.ai",eu:false,size:2},{name:"Mistral AI",url:"https://mistral.ai",eu:true,size:2},{name:"Acrolinx",url:"https://www.acrolinx.com",eu:true,size:1},{name:"Writesonic",url:"https://writesonic.com",eu:false,size:1}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:2},{nr:20,rolle:"Marketing / Kommunikation",roleKey:"mktg",usecase:"Übersetzung und Lokalisierung",beschreibung:"Texte, Websites und Dokumente werden automatisch in mehrere Sprachen übersetzt und kulturell angepasst.",outcome:"90 % weniger Übersetzungskosten",ansatz:"Buy",coverage:80,coverageLabel:"80 %",coverageNote:"Fachterminologie und branchenspezifische Begriffe erfordern Glossare und Qualitätssicherungs-Workflows.",tools:[{name:"DeepL Pro",url:"https://www.deepl.com",eu:true,size:3},{name:"Lokalise",url:"https://lokalise.com",eu:true,size:1},{name:"Phrase",url:"https://phrase.com",eu:true,size:2},{name:"memoQ",url:"https://www.memoq.com",eu:true,size:1},{name:"Smartcat",url:"https://www.smartcat.com",eu:false,size:1}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:2},{nr:21,rolle:"Personal- / Organisationsentwicklung",roleKey:"oe",usecase:"Schulungs- und Trainingsmaterial",beschreibung:"KI erstellt Lernvideos mit virtuellen Avataren, generiert Quizfragen und baut interaktive Schulungsmodule.",outcome:"85 % schnellere Erstellung",ansatz:"Hybrid",coverage:55,coverageLabel:"55 %",coverageNote:"Schulungsinhalte müssen auf unternehmensspezifische Prozesse, Tools und Compliance-Anforderungen zugeschnitten werden.",tools:[{name:"Synthesia",url:"https://www.synthesia.io",eu:true,size:2},{name:"Colossyan",url:"https://www.colossyan.com",eu:true,size:1},{name:"ElevenLabs",url:"https://elevenlabs.io",eu:true,size:2},{name:"HeyGen",url:"https://www.heygen.com",eu:false,size:2},{name:"D-ID",url:"https://www.d-id.com",eu:false,size:1}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:6},{nr:22,rolle:"Personal- / Organisationsentwicklung",roleKey:"oe",usecase:"Change-Kommunikation",beschreibung:"KI unterstützt bei der Erstellung von Kommunikationsplänen, FAQ-Dokumenten und Mitarbeiter-Updates bei Veränderungsprozessen.",outcome:"60 % weniger Aufwand",ansatz:"Hybrid",coverage:40,coverageLabel:"40 %",coverageNote:"Change-Kommunikation ist hochgradig kontextabhängig — Kultur, Stakeholder und Veränderungshistorie müssen berücksichtigt werden.",tools:[{name:"Staffbase",url:"https://staffbase.com",eu:true,size:2},{name:"Haiilo",url:"https://www.haiilo.com",eu:true,size:2},{name:"LumApps",url:"https://www.lumapps.com",eu:true,size:2},{name:"Beekeeper",url:"https://www.beekeeper.io",eu:true,size:2},{name:"Workvivo",url:"https://www.workvivo.com",eu:false,size:3}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:8},{nr:23,rolle:"Qualität / Operations",roleKey:"quality",usecase:"Prozessdokumentation (SOPs)",beschreibung:"KI beobachtet Arbeitsschritte am Bildschirm und erstellt automatisch bebilderte Schritt-für-Schritt-Anleitungen.",outcome:"75 % schnellere Erstellung",ansatz:"Hybrid",coverage:60,coverageLabel:"60 %",coverageNote:"SOPs müssen auf interne Prozesse, Screenshots eigener Systeme und unternehmensspezifische Schrittfolgen angepasst werden.",tools:[{name:"Scribe",url:"https://scribe.com",eu:false,size:1},{name:"Tango",url:"https://www.tango.ai",eu:false,size:1},{name:"Whale",url:"https://www.whale.io",eu:true,size:1},{name:"Trainual",url:"https://trainual.com",eu:false,size:1}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:2},{nr:24,rolle:"Qualität / Operations",roleKey:"quality",usecase:"Audit- und Qualitätssicherung",beschreibung:"KI sammelt Nachweise, prüft Checklisten und erstellt Audit-Reports mit automatischer Abweichungserkennung.",outcome:"50 % weniger Vorbereitungszeit",ansatz:"Build",coverage:45,coverageLabel:"45 %",coverageNote:"Audit-Kriterien, Prüfstandards und Nachweispflichten sind branchen- und regulierungsspezifisch.",tools:[{name:"AuditBoard",url:"https://auditboard.com",eu:false,size:2},{name:"ComplianceQuest",url:"https://www.compliancequest.com",eu:false,size:1},{name:"Qualio",url:"https://www.qualio.com",eu:false,size:1},{name:"MasterControl",url:"https://www.mastercontrol.com",eu:false,size:2},{name:"SafetyCulture",url:"https://safetyculture.com",eu:false,size:2}],effort:"high",quickWin:false,costRange:"EUREUREUR",timelineWeeks:12},{nr:25,rolle:"Vertrieb / Sales",roleKey:"sales",usecase:"Angebotserstellung",beschreibung:"KI erstellt Angebotsdokumente aus Vorlagen, befüllt sie mit kundenspezifischen Daten und passt Texte an.",outcome:"30 % kürzere Durchlaufzeit",ansatz:"Build",coverage:35,coverageLabel:"35 %",coverageNote:"Angebote erfordern individuelle Preiskalkulation, Leistungsbeschreibungen und unternehmenseigene Vorlagen.",tools:[{name:"PandaDoc AI",url:"https://www.pandadoc.com",eu:false,size:2},{name:"GetAccept",url:"https://www.getaccept.com",eu:true,size:2},{name:"Qwilr",url:"https://www.qwilr.com",eu:false,size:1},{name:"DealHub",url:"https://dealhub.io",eu:false,size:1},{name:"Proposify",url:"https://www.proposify.com",eu:false,size:1}],effort:"high",quickWin:false,costRange:"EUREUREUR",timelineWeeks:10},{nr:26,rolle:"Vertrieb / Sales",roleKey:"sales",usecase:"RFP-/Ausschreibungsbearbeitung",beschreibung:"KI analysiert Ausschreibungsunterlagen, findet passende Textbausteine und erstellt Antwortentwürfe für Vergabeverfahren.",outcome:"60 % schnellere Bearbeitungszeit",ansatz:"Hybrid",coverage:50,coverageLabel:"50 %",coverageNote:"Ausschreibungsantworten müssen auf spezifische Vergabekriterien, Referenzen und Unternehmenskennzahlen zugeschnitten werden.",tools:[{name:"Responsive",url:"https://responsive.io",eu:false,size:2},{name:"Loopio",url:"https://loopio.com",eu:false,size:2},{name:"AutoRFP.ai",url:"https://autorfp.ai",eu:false,size:1},{name:"Ombud",url:"https://www.ombud.com",eu:false,size:1}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:8},{nr:27,rolle:"Alle Bereiche",roleKey:"allbereich",usecase:"Präsentationen erstellen",beschreibung:"KI generiert Foliensätze aus Stichpunkten oder Dokumenten – mit Layout, Grafiken und einheitlichem Design.",outcome:"70 % schnellere Folienerstellung",ansatz:"Buy",coverage:80,coverageLabel:"80 %",coverageNote:"Präsentationen erfordern unternehmensspezifische Vorlagen, CI-konforme Farben und Schriften sowie inhaltliche Anpassung.",tools:[{name:"Gamma",url:"https://www.gamma.app",eu:false,size:2},{name:"Beautiful.ai",url:"https://www.beautiful.ai",eu:false,size:2},{name:"Mistral Le Chat",url:"https://chat.mistral.ai",eu:true,size:2},{name:"Napkin AI",url:"https://www.napkin.ai",eu:false,size:1},{name:"Canva AI",url:"https://www.canva.com",eu:false,size:3}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:1},{nr:28,rolle:"Alle Bereiche",roleKey:"allbereich",usecase:"Recherche & Informationsaufbereitung",beschreibung:"KI durchsucht Quellen, fasst Ergebnisse zusammen und erstellt strukturierte Briefings zu beliebigen Themen.",outcome:"60 % weniger Recherchezeit",ansatz:"Buy",coverage:75,coverageLabel:"75 %",coverageNote:"Recherche-Ergebnisse müssen auf Branchenkontext, interne Fragestellungen und Qualitätsstandards geprüft werden.",tools:[{name:"Perplexity Pro",url:"https://www.perplexity.ai",eu:false,size:2},{name:"Claude",url:"https://claude.ai",eu:false,size:3},{name:"Gemini Advanced",url:"https://gemini.google.com",eu:false,size:3},{name:"Elicit",url:"https://elicit.com",eu:false,size:1},{name:"Consensus",url:"https://consensus.app",eu:false,size:1}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:1},{nr:29,rolle:"Assistenz / Admin",roleKey:"admin",usecase:"Posteingang sortieren und priorisieren",beschreibung:"KI kategorisiert eingehende E-Mails nach Dringlichkeit und Thema und schlägt Prioritäten für die Bearbeitung vor.",outcome:"50 % weniger Zeit für E-Mail-Triage",ansatz:"Buy",coverage:70,coverageLabel:"70 %",coverageNote:"E-Mail-Kategorien und Prioritätsregeln müssen auf individuelle Arbeitsweisen und Rollenanforderungen konfiguriert werden.",tools:[{name:"MS Copilot (Outlook)",url:"https://www.microsoft.com/copilot",eu:false,size:3},{name:"SaneBox",url:"https://www.sanebox.com",eu:false,size:1},{name:"Shortwave",url:"https://www.shortwave.com",eu:false,size:1},{name:"Spark AI",url:"https://sparkmailapp.com",eu:false,size:1}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:1},{nr:30,rolle:"Assistenz / Admin",roleKey:"admin",usecase:"Termine koordinieren und planen",beschreibung:"KI findet optimale Zeitfenster, schlägt Termine vor, vermeidet Konflikte und plant Meetings automatisch ein.",outcome:"40 % weniger Planungsaufwand",ansatz:"Buy",coverage:75,coverageLabel:"75 %",coverageNote:"Terminregeln, Pufferzeiten und Priorisierungen müssen an persönliche Arbeitsmuster angepasst werden.",tools:[{name:"Reclaim.ai",url:"https://reclaim.ai",eu:false,size:1},{name:"Motion",url:"https://www.usemotion.com",eu:false,size:1},{name:"Calendly AI",url:"https://calendly.com",eu:false,size:2},{name:"Cal.com AI",url:"https://cal.com",eu:false,size:2}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:1},{nr:31,rolle:"Compliance / Recht",roleKey:"compliance",usecase:"Gesetzesänderungen überwachen",beschreibung:"KI scannt Gesetzesblätter und Regulierungsdatenbanken und meldet relevante Änderungen für Ihr Unternehmen.",outcome:"90 % weniger manuelle Recherche",ansatz:"Buy",coverage:60,coverageLabel:"60 %",coverageNote:"Relevante Gesetze und Regulierungen müssen nach Branche, Rechtsgebiet und Unternehmensstandorten konfiguriert werden.",tools:[{name:"CUBE",url:"https://www.cube.global",eu:false,size:1},{name:"Ascent RegTech",url:"https://www.ascent.io",eu:false,size:1},{name:"Lexology",url:"https://www.lexology.com",eu:true,size:1},{name:"Thomson Reuters Practical Law",url:"https://www.thomsonreuters.com",eu:false,size:3}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:6},{nr:32,rolle:"Compliance / Recht",roleKey:"compliance",usecase:"Verträge gegen Standardklauseln prüfen",beschreibung:"KI vergleicht eingereichte Verträge mit Ihren Standardklauseln und markiert Abweichungen und fehlende Passagen.",outcome:"65 % schnellere Vertragsprüfung",ansatz:"Hybrid",coverage:55,coverageLabel:"55 %",coverageNote:"Standardklauseln und Prüfregeln müssen individuell definiert und regelmäßig aktualisiert werden.",tools:[{name:"Luminance",url:"https://www.luminance.com",eu:true,size:2},{name:"Juro",url:"https://juro.com",eu:true,size:2},{name:"ContractPodAi",url:"https://contractpodai.com",eu:true,size:1},{name:"Kira Systems",url:"https://kirasystems.com",eu:false,size:1},{name:"Ironclad",url:"https://ironcladapp.com",eu:false,size:2}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:8},{nr:33,rolle:"Controlling / Finance",roleKey:"finance",usecase:"Rechnungen und Konten abgleichen",beschreibung:"KI gleicht Eingangsrechnungen mit Bestellungen und Lieferscheinen ab und markiert Unstimmigkeiten automatisch.",outcome:"80 % weniger manueller Abgleich",ansatz:"Buy",coverage:70,coverageLabel:"70 %",coverageNote:"Kontenrahmen, Buchungslogik und Abgleichregeln sind unternehmens- und ERP-spezifisch.",tools:[{name:"Yokoy",url:"https://yokoy.io",eu:true,size:2},{name:"Candis",url:"https://www.candis.io",eu:true,size:1},{name:"Tipalti",url:"https://tipalti.com",eu:false,size:2},{name:"BlackLine",url:"https://www.blackline.com",eu:false,size:3},{name:"Stampli",url:"https://www.stampli.com",eu:false,size:1}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:6},{nr:34,rolle:"Controlling / Finance",roleKey:"finance",usecase:"Monatsberichte und Dashboards befüllen",beschreibung:"KI zieht Daten aus verschiedenen Systemen zusammen und befüllt Reporting-Templates und Dashboard-Kennzahlen.",outcome:"60 % schnellere Berichtserstellung",ansatz:"Hybrid",coverage:55,coverageLabel:"55 %",coverageNote:"Berichtsstrukturen, KPI-Definitionen und Datenquellen sind in jedem Unternehmen unterschiedlich.",tools:[{name:"Power BI Copilot",url:"https://powerbi.microsoft.com",eu:false,size:3},{name:"Vena",url:"https://vena.io",eu:false,size:2},{name:"Jedox",url:"https://www.jedox.com",eu:true,size:2},{name:"Lucanet",url:"https://www.lucanet.com",eu:true,size:2}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:8},{nr:35,rolle:"E-Commerce / Produktmanagement",roleKey:"ecom",usecase:"Nachbestellungen und Lagerplanung",beschreibung:"KI prognostiziert Nachfrage basierend auf Verkaufsdaten und Saisonmustern und schlägt optimale Bestellmengen vor.",outcome:"30 % weniger Überbestände",ansatz:"Build",coverage:50,coverageLabel:"50 %",coverageNote:"Nachfrageprognosen erfordern historische Verkaufsdaten, Saisonmuster und lieferantenspezifische Vorlaufzeiten.",tools:[{name:"Blue Yonder",url:"https://blueyonder.com",eu:false,size:3},{name:"Relex Solutions",url:"https://www.relexsolutions.com",eu:true,size:2},{name:"Inventory Planner",url:"https://www.inventory-planner.com",eu:false,size:1},{name:"Netstock",url:"https://www.netstock.com",eu:false,size:1}],effort:"high",quickWin:false,costRange:"EUREUREUR",timelineWeeks:12},{nr:36,rolle:"E-Commerce / Produktmanagement",roleKey:"ecom",usecase:"Cross-Selling-Vorschläge im Shop",beschreibung:"KI analysiert Kaufmuster und zeigt Kunden passende Zusatzprodukte an.",outcome:"+15 % durchschnittlicher Warenkorbwert",ansatz:"Buy",coverage:65,coverageLabel:"65 %",coverageNote:"Cross-Selling-Logik muss auf Produktkatalog, Margen und Kundensegmente abgestimmt werden.",tools:[{name:"Dynamic Yield",url:"https://www.dynamicyield.com",eu:false,size:2},{name:"Nosto",url:"https://www.nosto.com",eu:true,size:2},{name:"Algolia Recommend",url:"https://www.algolia.com",eu:false,size:2},{name:"Clerk.io",url:"https://www.clerk.io",eu:true,size:1},{name:"Bloomreach",url:"https://www.bloomreach.com",eu:false,size:2}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:6},{nr:37,rolle:"Führungskraft / Management",roleKey:"lead",usecase:"Mitarbeitergespräche vorbereiten",beschreibung:"KI fasst Leistungsdaten, Feedback und Zielvereinbarungen zusammen und erstellt einen Gesprächsleitfaden.",outcome:"50 % weniger Vorbereitungszeit",ansatz:"Buy",coverage:60,coverageLabel:"60 %",coverageNote:"Leistungsdaten, Zielvereinbarungen und Feedback-Quellen sind unternehmens- und HR-systemspezifisch.",tools:[{name:"Leapsome",url:"https://www.leapsome.com",eu:true,size:2},{name:"Culture Amp",url:"https://www.cultureamp.com",eu:false,size:3},{name:"Lattice",url:"https://lattice.com",eu:false,size:2},{name:"15Five",url:"https://www.15five.com",eu:false,size:1},{name:"Personio",url:"https://www.personio.com",eu:true,size:2}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:2},{nr:38,rolle:"Führungskraft / Management",roleKey:"lead",usecase:"Business Cases und Szenarien rechnen",beschreibung:"KI modelliert verschiedene Szenarien mit Annahmen, berechnet ROI und erstellt Entscheidungsvorlagen mit Grafiken.",outcome:"40 % schnellere Entscheidungsvorlagen",ansatz:"Hybrid",coverage:45,coverageLabel:"45 %",coverageNote:"Business Cases erfordern unternehmensspezifische Annahmen, Kostensätze und Bewertungsmodelle.",tools:[{name:"Causal",url:"https://www.causal.app",eu:false,size:1},{name:"Pigment",url:"https://www.gopigment.com",eu:true,size:2},{name:"ChatGPT Enterprise",url:"https://openai.com",eu:false,size:3},{name:"Claude",url:"https://claude.ai",eu:false,size:3}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:6},{nr:39,rolle:"HR / Recruiting",roleKey:"hr",usecase:"Bewerbungen vorsortieren und matchen",beschreibung:"KI vergleicht Lebensläufe mit Stellenprofilen, bewertet die Passung und erstellt eine Rangfolge der Kandidaten.",outcome:"50 % schnellere Vorauswahl",ansatz:"Buy",coverage:65,coverageLabel:"65 %",coverageNote:"Matching-Kriterien, Gewichtungen und Kulturfit-Faktoren müssen individuell definiert werden.",tools:[{name:"Eightfold AI",url:"https://www.eightfold.ai",eu:false,size:2},{name:"HireVue",url:"https://www.hirevue.com",eu:false,size:2},{name:"Textkernel",url:"https://www.textkernel.com",eu:true,size:1},{name:"Phenom",url:"https://www.phenom.com",eu:false,size:2},{name:"d.vinci",url:"https://www.dvinci.de",eu:true,size:1}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:2},{nr:40,rolle:"HR / Recruiting",roleKey:"hr",usecase:"Individuelle Entwicklungspläne erstellen",beschreibung:"KI schlägt basierend auf Kompetenzprofilen und Karrierezielen passende Schulungen und Entwicklungsschritte vor.",outcome:"60 % weniger Aufwand bei der Planung",ansatz:"Hybrid",coverage:50,coverageLabel:"50 %",coverageNote:"Kompetenzmodelle, Karrierepfade und verfügbare Schulungen sind unternehmensindividuell.",tools:[{name:"Leapsome",url:"https://www.leapsome.com",eu:true,size:2},{name:"Degreed",url:"https://degreed.com",eu:false,size:2},{name:"EdCast",url:"https://www.edcast.com",eu:false,size:3},{name:"365Talents",url:"https://www.365talents.com",eu:true,size:1},{name:"Cornerstone",url:"https://www.cornerstoneondemand.com",eu:false,size:3}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:8},{nr:41,rolle:"IT / Entwicklung",roleKey:"it",usecase:"Fehlerursachen in Logs finden",beschreibung:"KI analysiert Server-Logs, erkennt Anomalien und korreliert Fehler über verschiedene Systeme hinweg zur Ursachenfindung.",outcome:"70 % schnellere Fehleranalyse",ansatz:"Buy",coverage:75,coverageLabel:"75 %",coverageNote:"Log-Formate, Systemarchitektur und Fehler-Korrelationen sind infrastrukturspezifisch.",tools:[{name:"Datadog",url:"https://www.datadoghq.com",eu:false,size:3},{name:"Dynatrace",url:"https://www.dynatrace.com",eu:true,size:3},{name:"Grafana AI",url:"https://grafana.com",eu:false,size:2},{name:"New Relic AI",url:"https://newrelic.com",eu:false,size:3},{name:"Sentry",url:"https://sentry.io",eu:false,size:1}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:2},{nr:42,rolle:"IT / Entwicklung",roleKey:"it",usecase:"Testfälle schreiben und automatisieren",beschreibung:"KI generiert Testszenarien aus Anforderungen, schreibt Testcode und identifiziert fehlende Testabdeckung.",outcome:"50 % weniger manueller Testaufwand",ansatz:"Buy",coverage:70,coverageLabel:"70 %",coverageNote:"Testszenarien müssen auf Geschäftslogik, Systemarchitektur und Akzeptanzkriterien abgestimmt werden.",tools:[{name:"Testim",url:"https://www.testim.io",eu:false,size:2},{name:"Mabl",url:"https://www.mabl.com",eu:false,size:2},{name:"Katalon",url:"https://katalon.com",eu:false,size:2},{name:"Diffblue",url:"https://www.diffblue.com",eu:true,size:1},{name:"Qodo",url:"https://www.qodo.ai",eu:false,size:1}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:4},{nr:43,rolle:"Kundenservice / Support",roleKey:"service",usecase:"Wiederkehrende Beschwerden erkennen",beschreibung:"KI clustert Support-Tickets nach Themen, erkennt Häufungen und meldet systematische Probleme frühzeitig.",outcome:"60 % schnellere Problemerkennung",ansatz:"Hybrid",coverage:60,coverageLabel:"60 %",coverageNote:"Beschwerdekategorien, Eskalationsregeln und Produktzuordnungen sind unternehmensspezifisch.",tools:[{name:"Medallia",url:"https://www.medallia.com",eu:false,size:3},{name:"Qualtrics",url:"https://www.qualtrics.com",eu:false,size:3},{name:"MonkeyLearn",url:"https://monkeylearn.com",eu:false,size:1},{name:"Zendesk Explore",url:"https://www.zendesk.com",eu:false,size:3},{name:"Idiomatic",url:"https://www.idiomatic.io",eu:false,size:1}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:6},{nr:44,rolle:"Kundenservice / Support",roleKey:"service",usecase:"Kundenanfragen in mehreren Sprachen beantworten",beschreibung:"KI übersetzt Kundenanfragen in Echtzeit, generiert Antworten in der Kundensprache und pflegt eine mehrsprachige Wissensdatenbank.",outcome:"80 % weniger Sprachbarrieren",ansatz:"Buy",coverage:75,coverageLabel:"75 %",coverageNote:"Fachterminologie, Produktnamen und branchenspezifische Begriffe erfordern eigene Glossare.",tools:[{name:"DeepL Pro",url:"https://www.deepl.com",eu:true,size:3},{name:"ElevenLabs",url:"https://elevenlabs.io",eu:true,size:2},{name:"Cognigy (NICE)",url:"https://www.cognigy.com",eu:true,size:2},{name:"Zendesk AI",url:"https://www.zendesk.com",eu:false,size:3},{name:"Intercom Fin",url:"https://www.intercom.com",eu:true,size:3}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:2},{nr:45,rolle:"Marketing / Kommunikation",roleKey:"mktg",usecase:"Content-Ideen bewerten und priorisieren",beschreibung:"KI analysiert Suchtrends, Wettbewerber-Content und Engagement-Daten und schlägt die vielversprechendsten Themen vor.",outcome:"40 % effizientere Content-Planung",ansatz:"Buy",coverage:60,coverageLabel:"60 %",coverageNote:"Content-Bewertungskriterien müssen auf Unternehmensstrategie, Zielgruppen und Kanalmix abgestimmt werden.",tools:[{name:"BuzzSumo",url:"https://buzzsumo.com",eu:false,size:2},{name:"Semrush",url:"https://www.semrush.com",eu:false,size:2},{name:"Clearscope",url:"https://www.clearscope.io",eu:false,size:1},{name:"MarketMuse",url:"https://www.marketmuse.com",eu:false,size:1},{name:"Neuroflash",url:"https://neuroflash.com",eu:true,size:2}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:2},{nr:46,rolle:"Marketing / Kommunikation",roleKey:"mktg",usecase:"Zielgruppen für Kampagnen segmentieren",beschreibung:"KI bildet Kundensegmente basierend auf Verhalten, Demografie und Kaufhistorie für gezieltere Kampagnen.",outcome:"+20 % Kampagnen-Performance",ansatz:"Hybrid",coverage:55,coverageLabel:"55 %",coverageNote:"Segmentierungskriterien hängen von CRM-Datenqualität, Kundenprofilen und Geschäftsmodell ab.",tools:[{name:"HubSpot AI",url:"https://www.hubspot.com",eu:false,size:3},{name:"Salesforce CDP",url:"https://www.salesforce.com",eu:false,size:3},{name:"Segment",url:"https://segment.com",eu:false,size:2},{name:"Insider",url:"https://useinsider.com",eu:true,size:2},{name:"Bloomreach",url:"https://www.bloomreach.com",eu:false,size:2}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:8},{nr:47,rolle:"Personal- / Organisationsentwicklung",roleKey:"oe",usecase:"Engpässe in Arbeitsabläufen identifizieren",beschreibung:"KI analysiert Prozessdaten und Durchlaufzeiten, erkennt Flaschenhälse und schlägt Optimierungsmaßnahmen vor.",outcome:"35 % schnellere Prozessoptimierung",ansatz:"Build",coverage:40,coverageLabel:"40 %",coverageNote:"Process Mining erfordert Anbindung an operative Systeme und individuelle Definition von Soll-Prozessen.",tools:[{name:"Celonis",url:"https://www.celonis.com",eu:true,size:3},{name:"Signavio",url:"https://www.signavio.com",eu:true,size:3},{name:"UiPath Process Mining",url:"https://www.uipath.com",eu:false,size:3},{name:"ARIS",url:"https://www.softwareag.com",eu:true,size:3}],effort:"high",quickWin:false,costRange:"EUREUREUR",timelineWeeks:12},{nr:48,rolle:"Personal- / Organisationsentwicklung",roleKey:"oe",usecase:"Befragungsergebnisse zusammenfassen",beschreibung:"KI wertet Freitextantworten aus Mitarbeiterbefragungen aus, erkennt Themen-Cluster und erstellt Management-Summaries.",outcome:"70 % weniger Auswertungszeit",ansatz:"Buy",coverage:65,coverageLabel:"65 %",coverageNote:"Auswertungskategorien und Handlungsableitungen müssen auf Befragungsdesign und Unternehmenskultur abgestimmt werden.",tools:[{name:"Culture Amp",url:"https://www.cultureamp.com",eu:false,size:3},{name:"Peakon (Workday)",url:"https://www.workday.com",eu:false,size:3},{name:"Leapsome",url:"https://www.leapsome.com",eu:true,size:2},{name:"Honestly",url:"https://www.honestly.com",eu:true,size:1},{name:"Officevibe",url:"https://officevibe.com",eu:false,size:1}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:2},{nr:49,rolle:"Qualität / Operations",roleKey:"quality",usecase:"Prüfprotokolle erstellen und auswerten",beschreibung:"KI digitalisiert Prüfprotokolle, wertet Messwerte aus und erkennt Abweichungen von Toleranzen automatisch.",outcome:"55 % weniger Dokumentationsaufwand",ansatz:"Hybrid",coverage:50,coverageLabel:"50 %",coverageNote:"Prüfkriterien, Toleranzwerte und Protokollformate sind branchen- und produktspezifisch.",tools:[{name:"SafetyCulture (iAuditor)",url:"https://safetyculture.com",eu:false,size:2},{name:"Qualio",url:"https://www.qualio.com",eu:false,size:1},{name:"MasterControl",url:"https://www.mastercontrol.com",eu:false,size:2},{name:"ComplianceQuest",url:"https://www.compliancequest.com",eu:false,size:1},{name:"Parsable",url:"https://www.parsable.com",eu:false,size:1}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:6},{nr:50,rolle:"Qualität / Operations",roleKey:"quality",usecase:"Audit-Berichte zusammenstellen",beschreibung:"KI sammelt Nachweise aus verschiedenen Quellen, prüft Vollständigkeit und formatiert den Audit-Report.",outcome:"60 % schnellere Audit-Vorbereitung",ansatz:"Hybrid",coverage:50,coverageLabel:"50 %",coverageNote:"Audit-Scope, Nachweispflichten und Berichtsformate variieren je nach Standard und Branche.",tools:[{name:"AuditBoard",url:"https://auditboard.com",eu:false,size:2},{name:"Workiva",url:"https://www.workiva.com",eu:false,size:3},{name:"Diligent",url:"https://www.diligent.com",eu:false,size:2},{name:"MS Copilot (Word)",url:"https://www.microsoft.com/copilot",eu:false,size:3},{name:"Claude",url:"https://claude.ai",eu:false,size:3}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:8},{nr:51,rolle:"Vertrieb / Sales",roleKey:"sales",usecase:"Verkaufschancen bewerten und priorisieren",beschreibung:"KI bewertet Leads und Opportunities nach Abschlusswahrscheinlichkeit und empfiehlt, welche Deals Priorität bekommen.",outcome:"+20 % Win Rate durch besseres Scoring",ansatz:"Buy",coverage:60,coverageLabel:"60 %",coverageNote:"Scoring-Kriterien, Gewichtungen und Pipeline-Definitionen sind vertriebsstrategiespezifisch.",tools:[{name:"Salesforce Einstein",url:"https://www.salesforce.com",eu:false,size:3},{name:"HubSpot AI",url:"https://www.hubspot.com",eu:false,size:3},{name:"Clari",url:"https://www.clari.com",eu:false,size:2},{name:"Gong",url:"https://www.gong.io",eu:false,size:2},{name:"6sense",url:"https://6sense.com",eu:false,size:2}],effort:"medium",quickWin:false,costRange:"EUREUR",timelineWeeks:6},{nr:52,rolle:"Vertrieb / Sales",roleKey:"sales",usecase:"Kundengespräche analysieren und verbessern",beschreibung:"KI transkribiert Verkaufsgespräche, analysiert Gesprächsmuster und gibt Coaching-Tipps für bessere Abschlussquoten.",outcome:"30 % höhere Abschlussquote",ansatz:"Buy",coverage:70,coverageLabel:"70 %",coverageNote:"Gesprächsbewertungskriterien und Coaching-Empfehlungen müssen auf Verkaufsmethodik und Branche angepasst werden.",tools:[{name:"Gong",url:"https://www.gong.io",eu:false,size:2},{name:"Chorus (ZoomInfo)",url:"https://www.zoominfo.com",eu:false,size:3},{name:"Jiminny",url:"https://www.jiminny.com",eu:true,size:1},{name:"Modjo",url:"https://www.modjo.ai",eu:true,size:1},{name:"Clari Copilot",url:"https://www.clari.com",eu:false,size:2}],effort:"low",quickWin:true,costRange:"EUR",timelineWeeks:2}];
+var TOTAL=DATA.length;
+var ROLE_COLORS={allbereich:{text:"#8a8a9a",bg:"#f5f5f7"},admin:{text:"#CA8A04",bg:"#FEFCE8"},compliance:{text:"#5c1444",bg:"#f3e6ee"},finance:{text:"#0369A1",bg:"#F0F9FF"},ecom:{text:"#EA580C",bg:"#FFF7ED"},lead:{text:"#1a7a3e",bg:"#e8f7ee"},hr:{text:"#DB2777",bg:"#FDF2F8"},it:{text:"#7C3AED",bg:"#F5F3FF"},service:{text:"#0891B2",bg:"#ECFEFF"},mktg:{text:"#DC2626",bg:"#FEF2F2"},oe:{text:"#059669",bg:"#F0FDF4"},quality:{text:"#92400E",bg:"#FFFBEB"},sales:{text:"#4338CA",bg:"#EEF2FF"}};
+var ROLE_LABELS={allbereich:"Alle Bereiche",admin:"Assistenz / Admin",compliance:"Compliance / Recht",finance:"Controlling / Finance",ecom:"E-Commerce / PM",lead:"Führungskraft",hr:"HR / Recruiting",it:"IT / Entwicklung",service:"Kundenservice",mktg:"Marketing / Komm.",oe:"OE / Personalentwicklung",quality:"Qualität / Operations",sales:"Vertrieb / Sales"};
+var ROLE_ORDER=["allbereich","admin","compliance","finance","ecom","lead","hr","it","service","mktg","oe","quality","sales"];
+var EFFORT_LABELS={low:"Einfach",medium:"Moderat",high:"Komplex"};
+var ANSATZ_LABELS={buy:"Buy (Standardlösung)",hybrid:"Hybrid (Kombination)",build:"Build (Eigenentwicklung)"};
+var filters={role:"",ansatz:"",coverage:"",effort:"",search:""};
+var grid=document.getElementById("cards-grid");
+var counterEl=document.getElementById("counter");
+var searchInput=document.getElementById("search-input");
+var resetBtn=document.getElementById("btn-reset");
+var activeFiltersEl=document.getElementById("active-filters");
 
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="footer-branding">
-                    Eine Perspektive von <strong>plan a – AI Solutions</strong>
-                </div>
-                <div class="footer-links">
-                    <a href="https://www.plan-a-consulting.ai/ki-wissen" class="footer-link">KI-Wissen Hub</a>
-                    <a href="#" class="footer-link">Use-Case-Finder</a>
-                    <a href="https://www.plan-a-consulting.ai/ki-nutzen-timeline" class="footer-link">Nutzen-Timeline</a>
-                    <a href="https://www.plan-a-consulting.ai/technologie-timeline" class="footer-link">Technologie-Timeline</a>
-                </div>
-            </div>
-            <div class="footer-divider"></div>
-            <div class="footer-bottom">
-                © 2025 plan a consulting. Alle Rechte vorbehalten.
-            </div>
-        </div>
-    </footer>
+function costSymbols(r){return"\u20AC".repeat((r.match(/EUR/g)||[]).length)}
+function ansatzColor(a){var l=a.toLowerCase();return l==="buy"?"var(--color-primary-light)":l==="hybrid"?"var(--color-amber)":"var(--color-red)"}
+function coverageLevel(c){return c>=75?"high":c>=50?"medium":"low"}
+function esc(s){var d=document.createElement("div");d.textContent=s||"";return d.innerHTML}
 
-    <script>
-        const DATA = [
-            {nr:1, rolle:"Alle Bereiche", roleKey:"allbereich", usecase:"Meeting-Protokolle", beschreibung:"KI zeichnet Meetings auf, erstellt automatisch Zusammenfassungen, extrahiert Action Items und verteilt Protokolle an Teilnehmer.", outcome:"75 % Zeitersparnis bei Protokollen", ansatz:"Buy", coverage:85, coverageLabel:"85 %", tools:[{name:"Fathom",url:"https://fathom.video",eu:false,size:1},{name:"tl;dv",url:"https://tldv.io",eu:true,size:1},{name:"Otter.ai",url:"https://otter.ai",eu:false,size:1},{name:"Fireflies",url:"https://fireflies.ai",eu:false,size:1},{name:"Granola",url:"https://www.granola.ai",eu:false,size:1}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:1},
-            {nr:2, rolle:"Alle Bereiche", roleKey:"allbereich", usecase:"Internes Wissensmanagement", beschreibung:"KI durchsucht Wikis, Dokumente und Chat-Verläufe und liefert präzise Antworten auf Mitarbeiterfragen – wie eine interne Suchmaschine mit Verstand.", outcome:"70 % schnellere Informationssuche", ansatz:"Hybrid", coverage:70, coverageLabel:"70 %", coverageNote:"Interne Wissensdatenbanken erfordern unternehmensspezifische Datenanbindung, Berechtigungskonzepte und Feintuning auf Fachbegriffe.", tools:[{name:"Notion AI",url:"https://notion.so",eu:false,size:2},{name:"Glean",url:"https://www.glean.com",eu:false,size:2},{name:"Confluence AI",url:"https://www.atlassian.com/software/confluence",eu:false,size:3},{name:"Microsoft Copilot Studio",url:"https://www.microsoft.com/copilot-studio",eu:false,size:2},{name:"LangDock",url:"https://langdock.com",eu:true,size:1}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:6},
-            {nr:3, rolle:"Assistenz / Admin", roleKey:"admin", usecase:"E-Mail-Entwürfe und Korrespondenz", beschreibung:"KI schlägt Antworten vor, formuliert E-Mails im passenden Ton und hilft bei Standardkorrespondenz wie Einladungen oder Absagen.", outcome:"60 % schnellere Antwortzeit", ansatz:"Buy", coverage:80, coverageLabel:"80 %", tools:[{name:"MS Copilot",url:"https://www.microsoft.com/copilot",eu:false,size:3},{name:"Grammarly",url:"https://grammarly.com",eu:false,size:2},{name:"MailMaestro",url:"https://mailmaestro.com",eu:false,size:1},{name:"Lavender",url:"https://www.getlavender.com",eu:false,size:1}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:1, coverageNote:"Tonalität, Anredeformen und unternehmensspezifische Textbausteine müssen individuell konfiguriert werden."},
-            {nr:4, rolle:"Assistenz / Admin", roleKey:"admin", usecase:"Dokumentenzusammenfassungen", beschreibung:"Lange Berichte, Verträge oder Studien werden auf die Kernaussagen komprimiert – in Sekunden statt Stunden.", outcome:"80 % weniger Lesezeit", ansatz:"Buy", coverage:75, coverageLabel:"75 %", tools:[{name:"Claude for Work",url:"https://claude.ai",eu:false,size:3},{name:"ChatGPT Enterprise",url:"https://openai.com",eu:false,size:3},{name:"Wordtune",url:"https://www.wordtune.com",eu:false,size:1},{name:"LangDock",url:"https://langdock.com",eu:true,size:1}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:1, coverageNote:"Fachspezifische Terminologie und Zusammenfassungstiefe müssen je nach Dokumenttyp und Branche angepasst werden."},
-            {nr:5, rolle:"Compliance / Recht", roleKey:"compliance", usecase:"Vertragsanalyse", beschreibung:"KI erkennt Klauseln, Risiken und Abweichungen in Verträgen und markiert kritische Stellen zur juristischen Prüfung.", outcome:"70 % schnellere Prüfung", ansatz:"Hybrid", coverage:60, coverageLabel:"60 %", coverageNote:"Branchenspezifische Klauselwerke und interne Compliance-Regeln müssen manuell eingerichtet und kontinuierlich gepflegt werden.", tools:[{name:"Kira Systems",url:"https://kirasystems.com",eu:false,size:1},{name:"Juro",url:"https://juro.com",eu:true,size:2},{name:"Ironclad",url:"https://ironcladapp.com",eu:false,size:2},{name:"Luminance",url:"https://www.luminance.com",eu:true,size:2},{name:"ContractPodAi",url:"https://contractpodai.com",eu:true,size:1}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:8},
-            {nr:6, rolle:"Compliance / Recht", roleKey:"compliance", usecase:"Compliance und Regulatorik", beschreibung:"Automatische Prüfung von Geschäftsprozessen gegen regulatorische Anforderungen, mit Alerts bei Verstößen oder Änderungen.", outcome:"80 % weniger manuelle Prüfzeit", ansatz:"Build", coverage:55, coverageLabel:"55 %", coverageNote:"Regulatorische Anforderungen sind stark branchen- und länderspezifisch — automatische Prüfregeln müssen individuell definiert werden.", tools:[{name:"ComplyAdvantage",url:"https://complyadvantage.com",eu:true,size:1},{name:"Ascent RegTech",url:"https://www.ascent.io",eu:false,size:1},{name:"CUBE",url:"https://www.cube.global",eu:false,size:1},{name:"Relativity",url:"https://www.relativity.com",eu:false,size:2}], effort:"high", quickWin:false, costRange:"EUREUREUR", timelineWeeks:16},
-            {nr:7, rolle:"Controlling / Finance", roleKey:"finance", usecase:"Finanzberichterstattung", beschreibung:"KI erstellt Monats- und Quartalsberichte aus Finanzdaten, generiert Kommentare zu Abweichungen und formatiert Reports.", outcome:"60 % schnellere Berichtserstellung", ansatz:"Hybrid", coverage:50, coverageLabel:"50 %", coverageNote:"Finanzberichte erfordern Anbindung an interne ERP-/Buchhaltungssysteme und unternehmenseigene Berichtsformate.", tools:[{name:"Vena",url:"https://vena.io",eu:false,size:2},{name:"Workiva",url:"https://www.workiva.com",eu:false,size:3},{name:"Yseop",url:"https://www.yseop.com",eu:true,size:1},{name:"Salesforce Einstein",url:"https://www.salesforce.com",eu:false,size:3}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:10},
-            {nr:8, rolle:"Controlling / Finance", roleKey:"finance", usecase:"Datenanalyse Self-Service", beschreibung:"Mitarbeiter stellen Fragen in natürlicher Sprache an Dashboards und erhalten Antworten, ohne SQL oder BI-Tools zu beherrschen.", outcome:"80 % weniger BI-Anfragen", ansatz:"Buy", coverage:55, coverageLabel:"55 %", coverageNote:"Self-Service-Analysen benötigen Anbindung an firmeninterne Datenquellen und semantische Modellierung der Geschäftslogik.", tools:[{name:"Qlik Sense",url:"https://www.qlik.com",eu:false,size:3},{name:"ThoughtSpot",url:"https://www.thoughtspot.com",eu:false,size:2},{name:"Tableau AI",url:"https://www.tableau.com",eu:false,size:3},{name:"Databricks AI",url:"https://www.databricks.com",eu:false,size:3}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:6},
-            {nr:9, rolle:"E-Commerce / Produktmanagement", roleKey:"ecom", usecase:"Produktbeschreibungen", beschreibung:"KI generiert SEO-optimierte Produkttexte aus Stammdaten, Bildern und Attributen – für hunderte Artikel gleichzeitig.", outcome:"80 % automatisiert", ansatz:"Hybrid", coverage:70, coverageLabel:"70 %", coverageNote:"Produkttexte müssen an Markentonalität, Zielgruppensprache und kanalspezifische Anforderungen angepasst werden.", tools:[{name:"TextCortex",url:"https://textcortex.com",eu:true,size:1},{name:"Describely",url:"https://describely.ai",eu:false,size:1},{name:"Akeneo AI",url:"https://www.akeneo.com",eu:true,size:2},{name:"Mistral AI",url:"https://mistral.ai",eu:true,size:2},{name:"Copy.ai",url:"https://copy.ai",eu:false,size:1}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:4},
-            {nr:10, rolle:"E-Commerce / Produktmanagement", roleKey:"ecom", usecase:"Kundenfeedback-Analyse", beschreibung:"Bewertungen, Support-Tickets und Umfragen werden automatisch nach Themen, Stimmung und Dringlichkeit kategorisiert.", outcome:"Analysezyklus: 3 Monate zu 1 Tag", ansatz:"Hybrid", coverage:65, coverageLabel:"65 %", coverageNote:"Feedback-Kategorien und Sentiment-Regeln müssen auf branchenspezifische Themen und Unternehmenssprache trainiert werden.", tools:[{name:"Medallia",url:"https://www.medallia.com",eu:false,size:3},{name:"Idiomatic",url:"https://www.idiomatic.io",eu:false,size:1},{name:"Qualtrics",url:"https://www.qualtrics.com",eu:false,size:3},{name:"Zendesk QA",url:"https://www.zendesk.com",eu:false,size:3}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:8},
-            {nr:11, rolle:"Führungskraft / Management", roleKey:"lead", usecase:"Strategische Entscheidungsunterstützung", beschreibung:"KI recherchiert Marktdaten, fasst Studien zusammen und erstellt Entscheidungsvorlagen mit Pro/Contra-Analysen.", outcome:"50 % schnellere Entscheidungsvorbereitung", ansatz:"Build", coverage:45, coverageLabel:"45 %", coverageNote:"Strategische Entscheidungen erfordern unternehmensspezifischen Kontext, interne Daten und menschliche Urteilskraft.", tools:[{name:"Perplexity Pro",url:"https://www.perplexity.ai",eu:false,size:2},{name:"Claude",url:"https://claude.ai",eu:false,size:3},{name:"Mistral AI",url:"https://mistral.ai",eu:true,size:2},{name:"LangDock",url:"https://langdock.com",eu:true,size:1}], effort:"high", quickWin:false, costRange:"EUREUREUR", timelineWeeks:12},
-            {nr:12, rolle:"Führungskraft / Management", roleKey:"lead", usecase:"Management-Briefings und Reporting", beschreibung:"Automatische Erstellung von Präsentationen und Executive Summaries aus verschiedenen Datenquellen und Berichten.", outcome:"75 % weniger Aufwand", ansatz:"Hybrid", coverage:50, coverageLabel:"50 %", coverageNote:"Management-Reports benötigen Anbindung an interne KPIs, Datenquellen und unternehmensspezifische Berichtsformate.", tools:[{name:"Gamma",url:"https://www.gamma.app",eu:false,size:2},{name:"Beautiful.ai",url:"https://www.beautiful.ai",eu:false,size:2},{name:"MS Copilot",url:"https://www.microsoft.com/copilot",eu:false,size:3},{name:"Power BI Copilot",url:"https://powerbi.microsoft.com",eu:false,size:3}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:6},
-            {nr:13, rolle:"HR / Recruiting", roleKey:"hr", usecase:"Stellenausschreibungen und Recruiting", beschreibung:"KI erstellt Stellenanzeigen, screent Bewerbungen und schlägt passende Kandidaten basierend auf Anforderungsprofilen vor.", outcome:"40 % schnellere Kandidatenvorauswahl", ansatz:"Buy", coverage:60, coverageLabel:"60 %", coverageNote:"Stellenprofile, Bewertungskriterien und kulturelle Passung müssen individuell konfiguriert werden.", tools:[{name:"Beamery",url:"https://beamery.com",eu:true,size:2},{name:"Phenom",url:"https://www.phenom.com",eu:false,size:2},{name:"Workday Paradox",url:"https://www.workday.com",eu:false,size:3},{name:"Eightfold AI",url:"https://www.eightfold.ai",eu:false,size:2},{name:"HireVue",url:"https://www.hirevue.com",eu:false,size:2}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:2},
-            {nr:14, rolle:"HR / Recruiting", roleKey:"hr", usecase:"Onboarding-Begleitung", beschreibung:"Neue Mitarbeiter werden durch einen KI-Assistenten begleitet, der Fragen beantwortet, Schulungen zuweist und Prozesse erklärt.", outcome:"40 % kürzere Einarbeitungszeit", ansatz:"Build", coverage:60, coverageLabel:"60 %", coverageNote:"Onboarding-Inhalte, Prozessabläufe und Ansprechpartner sind hochgradig unternehmensindividuell.", tools:[{name:"Talmundo",url:"https://talmundo.com",eu:true,size:1},{name:"Enboarder",url:"https://enboarder.com",eu:false,size:1},{name:"SAP Joule",url:"https://www.sap.com",eu:true,size:3},{name:"Leena AI",url:"https://www.leena.ai",eu:false,size:1}], effort:"high", quickWin:false, costRange:"EUREUREUR", timelineWeeks:12},
-            {nr:15, rolle:"IT / Entwicklung", roleKey:"it", usecase:"Code-Assistenz", beschreibung:"KI schlägt Code-Vervollständigungen vor, erklärt bestehenden Code, findet Bugs und generiert Boilerplate-Code.", outcome:"25 % höhere Entwicklerproduktivität", ansatz:"Buy", coverage:85, coverageLabel:"85 %", tools:[{name:"GitHub Copilot",url:"https://github.com/copilot",eu:false,size:3},{name:"Cursor",url:"https://www.cursor.com",eu:false,size:2},{name:"Claude Code",url:"https://www.anthropic.com/claude-code",eu:false,size:3},{name:"Windsurf (Cognition)",url:"https://www.codeium.com",eu:false,size:2},{name:"Tabnine",url:"https://www.tabnine.com",eu:false,size:1}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:1},
-            {nr:16, rolle:"IT / Entwicklung", roleKey:"it", usecase:"IT-Helpdesk und Support", beschreibung:"KI beantwortet häufige IT-Fragen automatisch, löst Standardprobleme und eskaliert komplexe Tickets an Spezialisten.", outcome:"55 % schnellere Erstlösung", ansatz:"Hybrid", coverage:70, coverageLabel:"70 %", coverageNote:"IT-Helpdesk erfordert Anbindung an interne Wissensdatenbanken, Ticketsysteme und unternehmensspezifische Lösungswege.", tools:[{name:"ServiceNow",url:"https://www.servicenow.com",eu:false,size:3},{name:"Aisera",url:"https://www.aisera.com",eu:false,size:2},{name:"Nexthink",url:"https://www.nexthink.com",eu:false,size:2},{name:"Freshservice AI",url:"https://freshservice.com",eu:false,size:2}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:8},
-            {nr:17, rolle:"Kundenservice / Support", roleKey:"service", usecase:"Kundenservice-Chatbot", beschreibung:"Ein KI-Bot beantwortet Kundenanfragen rund um die Uhr, löst Standardfälle selbstständig und übergibt komplexe Fälle an Mitarbeiter.", outcome:"50 % weniger Tickets an Agenten", ansatz:"Buy", coverage:75, coverageLabel:"75 %", coverageNote:"Chatbot-Antworten müssen auf Produktkatalog, FAQs und unternehmensspezifische Prozesse trainiert werden.", tools:[{name:"Cognigy (NICE)",url:"https://www.cognigy.com",eu:true,size:2},{name:"Parloa",url:"https://www.parloa.com",eu:true,size:2},{name:"Zendesk AI",url:"https://www.zendesk.com",eu:false,size:3},{name:"Intercom Fin",url:"https://www.intercom.com",eu:true,size:3},{name:"Ada",url:"https://www.ada.support",eu:false,size:2}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:6},
-            {nr:18, rolle:"Vertrieb / Marketing", roleKey:"sales", usecase:"Personalisierte Kundenansprache", beschreibung:"KI analysiert Kundenverhalten und erstellt individuelle Angebote, E-Mails und Produktempfehlungen je nach Kundenprofil.", outcome:"+25 % Conversion Rate", ansatz:"Hybrid", coverage:55, coverageLabel:"55 %", coverageNote:"Personalisierung erfordert Anbindung an CRM-Daten, Kaufhistorie und individuelle Kundensegmentierung.", tools:[{name:"Salesforce Einstein",url:"https://www.salesforce.com",eu:false,size:3},{name:"HubSpot AI",url:"https://www.hubspot.com",eu:false,size:3},{name:"Dynamic Yield",url:"https://www.dynamicyield.com",eu:false,size:2},{name:"Braze",url:"https://www.braze.com",eu:false,size:2},{name:"Adobe Sensei",url:"https://www.adobe.com",eu:false,size:3}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:8},
-            {nr:19, rolle:"Marketing / Kommunikation", roleKey:"mktg", usecase:"Marketing-Content", beschreibung:"KI erstellt Blog-Artikel, Social-Media-Posts, Newsletter-Texte und Werbecopy – angepasst an Zielgruppe und Kanal.", outcome:"5x mehr Entwürfe pro Woche", ansatz:"Hybrid", coverage:70, coverageLabel:"70 %", coverageNote:"Content muss an Markenrichtlinien, Tonalität und kanalspezifische Formate angepasst werden.", tools:[{name:"Neuroflash",url:"https://neuroflash.com",eu:true,size:2},{name:"Jasper",url:"https://www.jasper.ai",eu:false,size:2},{name:"Mistral AI",url:"https://mistral.ai",eu:true,size:2},{name:"Acrolinx",url:"https://www.acrolinx.com",eu:true,size:1},{name:"Writesonic",url:"https://writesonic.com",eu:false,size:1}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:2},
-            {nr:20, rolle:"Marketing / Kommunikation", roleKey:"mktg", usecase:"Übersetzung und Lokalisierung", beschreibung:"Texte, Websites und Dokumente werden automatisch in mehrere Sprachen übersetzt und kulturell angepasst.", outcome:"90 % weniger Übersetzungskosten", ansatz:"Buy", coverage:80, coverageLabel:"80 %", coverageNote:"Fachterminologie und branchenspezifische Begriffe erfordern Glossare und Qualitätssicherungs-Workflows.", tools:[{name:"DeepL Pro",url:"https://www.deepl.com",eu:true,size:3},{name:"Lokalise",url:"https://lokalise.com",eu:true,size:1},{name:"Phrase",url:"https://phrase.com",eu:true,size:2},{name:"memoQ",url:"https://www.memoq.com",eu:true,size:1},{name:"Smartcat",url:"https://www.smartcat.com",eu:false,size:1}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:2},
-            {nr:21, rolle:"Personal- / Organisationsentwicklung", roleKey:"oe", usecase:"Schulungs- und Trainingsmaterial", beschreibung:"KI erstellt Lernvideos mit virtuellen Avataren, generiert Quizfragen und baut interaktive Schulungsmodule.", outcome:"85 % schnellere Erstellung", ansatz:"Hybrid", coverage:55, coverageLabel:"55 %", coverageNote:"Schulungsinhalte müssen auf unternehmensspezifische Prozesse, Tools und Compliance-Anforderungen zugeschnitten werden.", tools:[{name:"Synthesia",url:"https://www.synthesia.io",eu:true,size:2},{name:"Colossyan",url:"https://www.colossyan.com",eu:true,size:1},{name:"ElevenLabs",url:"https://elevenlabs.io",eu:true,size:2},{name:"HeyGen",url:"https://www.heygen.com",eu:false,size:2},{name:"D-ID",url:"https://www.d-id.com",eu:false,size:1}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:6},
-            {nr:22, rolle:"Personal- / Organisationsentwicklung", roleKey:"oe", usecase:"Change-Kommunikation", beschreibung:"KI unterstützt bei der Erstellung von Kommunikationsplänen, FAQ-Dokumenten und Mitarbeiter-Updates bei Veränderungsprozessen.", outcome:"60 % weniger Aufwand", ansatz:"Hybrid", coverage:40, coverageLabel:"40 %", coverageNote:"Change-Kommunikation ist hochgradig kontextabhängig — Kultur, Stakeholder und Veränderungshistorie müssen berücksichtigt werden.", tools:[{name:"Staffbase",url:"https://staffbase.com",eu:true,size:2},{name:"Haiilo",url:"https://www.haiilo.com",eu:true,size:2},{name:"LumApps",url:"https://www.lumapps.com",eu:true,size:2},{name:"Beekeeper",url:"https://www.beekeeper.io",eu:true,size:2},{name:"Workvivo",url:"https://www.workvivo.com",eu:false,size:3}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:8},
-            {nr:23, rolle:"Qualität / Operations", roleKey:"quality", usecase:"Prozessdokumentation (SOPs)", beschreibung:"KI beobachtet Arbeitsschritte am Bildschirm und erstellt automatisch bebilderte Schritt-für-Schritt-Anleitungen.", outcome:"75 % schnellere Erstellung", ansatz:"Hybrid", coverage:60, coverageLabel:"60 %", coverageNote:"SOPs müssen auf interne Prozesse, Screenshots eigener Systeme und unternehmensspezifische Schrittfolgen angepasst werden.", tools:[{name:"Scribe",url:"https://scribe.com",eu:false,size:1},{name:"Tango",url:"https://www.tango.ai",eu:false,size:1},{name:"Whale",url:"https://www.whale.io",eu:true,size:1},{name:"Trainual",url:"https://trainual.com",eu:false,size:1}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:2},
-            {nr:24, rolle:"Qualität / Operations", roleKey:"quality", usecase:"Audit- und Qualitätssicherung", beschreibung:"KI sammelt Nachweise, prüft Checklisten und erstellt Audit-Reports mit automatischer Abweichungserkennung.", outcome:"50 % weniger Vorbereitungszeit", ansatz:"Build", coverage:45, coverageLabel:"45 %", coverageNote:"Audit-Kriterien, Prüfstandards und Nachweispflichten sind branchen- und regulierungsspezifisch.", tools:[{name:"AuditBoard",url:"https://auditboard.com",eu:false,size:2},{name:"ComplianceQuest",url:"https://www.compliancequest.com",eu:false,size:1},{name:"Qualio",url:"https://www.qualio.com",eu:false,size:1},{name:"MasterControl",url:"https://www.mastercontrol.com",eu:false,size:2},{name:"SafetyCulture",url:"https://safetyculture.com",eu:false,size:2}], effort:"high", quickWin:false, costRange:"EUREUREUR", timelineWeeks:12},
-            {nr:25, rolle:"Vertrieb / Sales", roleKey:"sales", usecase:"Angebotserstellung", beschreibung:"KI erstellt Angebotsdokumente aus Vorlagen, befüllt sie mit kundenspezifischen Daten und passt Texte an.", outcome:"30 % kürzere Durchlaufzeit", ansatz:"Build", coverage:35, coverageLabel:"35 %", coverageNote:"Angebote erfordern individuelle Preiskalkulation, Leistungsbeschreibungen und unternehmenseigene Vorlagen.", tools:[{name:"PandaDoc AI",url:"https://www.pandadoc.com",eu:false,size:2},{name:"GetAccept",url:"https://www.getaccept.com",eu:true,size:2},{name:"Qwilr",url:"https://www.qwilr.com",eu:false,size:1},{name:"DealHub",url:"https://dealhub.io",eu:false,size:1},{name:"Proposify",url:"https://www.proposify.com",eu:false,size:1}], effort:"high", quickWin:false, costRange:"EUREUREUR", timelineWeeks:10},
-            {nr:26, rolle:"Vertrieb / Sales", roleKey:"sales", usecase:"RFP-/Ausschreibungsbearbeitung", beschreibung:"KI analysiert Ausschreibungsunterlagen, findet passende Textbausteine und erstellt Antwortentwürfe für Vergabeverfahren.", outcome:"60 % schnellere Bearbeitungszeit", ansatz:"Hybrid", coverage:50, coverageLabel:"50 %", coverageNote:"Ausschreibungsantworten müssen auf spezifische Vergabekriterien, Referenzen und Unternehmenskennzahlen zugeschnitten werden.", tools:[{name:"Responsive",url:"https://responsive.io",eu:false,size:2},{name:"Loopio",url:"https://loopio.com",eu:false,size:2},{name:"AutoRFP.ai",url:"https://autorfp.ai",eu:false,size:1},{name:"Ombud",url:"https://www.ombud.com",eu:false,size:1}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:8},
-            {nr:27, rolle:"Alle Bereiche", roleKey:"allbereich", usecase:"Präsentationen erstellen", beschreibung:"KI generiert Foliensätze aus Stichpunkten oder Dokumenten – mit Layout, Grafiken und einheitlichem Design.", outcome:"70 % schnellere Folienerstellung", ansatz:"Buy", coverage:80, coverageLabel:"80 %", coverageNote:"Präsentationen erfordern unternehmensspezifische Vorlagen, CI-konforme Farben und Schriften sowie inhaltliche Anpassung.", tools:[{name:"Gamma",url:"https://www.gamma.app",eu:false,size:2},{name:"Beautiful.ai",url:"https://www.beautiful.ai",eu:false,size:2},{name:"Mistral Le Chat",url:"https://chat.mistral.ai",eu:true,size:2},{name:"Napkin AI",url:"https://www.napkin.ai",eu:false,size:1},{name:"Canva AI",url:"https://www.canva.com",eu:false,size:3}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:1},
-            {nr:28, rolle:"Alle Bereiche", roleKey:"allbereich", usecase:"Recherche & Informationsaufbereitung", beschreibung:"KI durchsucht Quellen, fasst Ergebnisse zusammen und erstellt strukturierte Briefings zu beliebigen Themen.", outcome:"60 % weniger Recherchezeit", ansatz:"Buy", coverage:75, coverageLabel:"75 %", coverageNote:"Recherche-Ergebnisse müssen auf Branchenkontext, interne Fragestellungen und Qualitätsstandards geprüft werden.", tools:[{name:"Perplexity Pro",url:"https://www.perplexity.ai",eu:false,size:2},{name:"Claude",url:"https://claude.ai",eu:false,size:3},{name:"Gemini Advanced",url:"https://gemini.google.com",eu:false,size:3},{name:"Elicit",url:"https://elicit.com",eu:false,size:1},{name:"Consensus",url:"https://consensus.app",eu:false,size:1}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:1},
-            {nr:29, rolle:"Assistenz / Admin", roleKey:"admin", usecase:"Posteingang sortieren und priorisieren", beschreibung:"KI kategorisiert eingehende E-Mails nach Dringlichkeit und Thema und schlägt Prioritäten für die Bearbeitung vor.", outcome:"50 % weniger Zeit für E-Mail-Triage", ansatz:"Buy", coverage:70, coverageLabel:"70 %", coverageNote:"E-Mail-Kategorien und Prioritätsregeln müssen auf individuelle Arbeitsweisen und Rollenanforderungen konfiguriert werden.", tools:[{name:"MS Copilot (Outlook)",url:"https://www.microsoft.com/copilot",eu:false,size:3},{name:"SaneBox",url:"https://www.sanebox.com",eu:false,size:1},{name:"Shortwave",url:"https://www.shortwave.com",eu:false,size:1},{name:"Spark AI",url:"https://sparkmailapp.com",eu:false,size:1}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:1},
-            {nr:30, rolle:"Assistenz / Admin", roleKey:"admin", usecase:"Termine koordinieren und planen", beschreibung:"KI findet optimale Zeitfenster, schlägt Termine vor, vermeidet Konflikte und plant Meetings automatisch ein.", outcome:"40 % weniger Planungsaufwand", ansatz:"Buy", coverage:75, coverageLabel:"75 %", coverageNote:"Terminregeln, Pufferzeiten und Priorisierungen müssen an persönliche Arbeitsmuster angepasst werden.", tools:[{name:"Reclaim.ai",url:"https://reclaim.ai",eu:false,size:1},{name:"Motion",url:"https://www.usemotion.com",eu:false,size:1},{name:"Calendly AI",url:"https://calendly.com",eu:false,size:2},{name:"Cal.com AI",url:"https://cal.com",eu:false,size:2}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:1},
-            {nr:31, rolle:"Compliance / Recht", roleKey:"compliance", usecase:"Gesetzesänderungen überwachen", beschreibung:"KI scannt Gesetzesblätter und Regulierungsdatenbanken und meldet relevante Änderungen für Ihr Unternehmen.", outcome:"90 % weniger manuelle Recherche", ansatz:"Buy", coverage:60, coverageLabel:"60 %", coverageNote:"Relevante Gesetze und Regulierungen müssen nach Branche, Rechtsgebiet und Unternehmensstandorten konfiguriert werden.", tools:[{name:"CUBE",url:"https://www.cube.global",eu:false,size:1},{name:"Ascent RegTech",url:"https://www.ascent.io",eu:false,size:1},{name:"Lexology",url:"https://www.lexology.com",eu:true,size:1},{name:"Thomson Reuters Practical Law",url:"https://www.thomsonreuters.com",eu:false,size:3}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:6},
-            {nr:32, rolle:"Compliance / Recht", roleKey:"compliance", usecase:"Verträge gegen Standardklauseln prüfen", beschreibung:"KI vergleicht eingereichte Verträge mit Ihren Standardklauseln und markiert Abweichungen und fehlende Passagen.", outcome:"65 % schnellere Vertragsprüfung", ansatz:"Hybrid", coverage:55, coverageLabel:"55 %", coverageNote:"Standardklauseln und Prüfregeln müssen individuell definiert und regelmäßig aktualisiert werden.", tools:[{name:"Luminance",url:"https://www.luminance.com",eu:true,size:2},{name:"Juro",url:"https://juro.com",eu:true,size:2},{name:"ContractPodAi",url:"https://contractpodai.com",eu:true,size:1},{name:"Kira Systems",url:"https://kirasystems.com",eu:false,size:1},{name:"Ironclad",url:"https://ironcladapp.com",eu:false,size:2}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:8},
-            {nr:33, rolle:"Controlling / Finance", roleKey:"finance", usecase:"Rechnungen und Konten abgleichen", beschreibung:"KI gleicht Eingangsrechnungen mit Bestellungen und Lieferscheinen ab und markiert Unstimmigkeiten automatisch.", outcome:"80 % weniger manueller Abgleich", ansatz:"Buy", coverage:70, coverageLabel:"70 %", coverageNote:"Kontenrahmen, Buchungslogik und Abgleichregeln sind unternehmens- und ERP-spezifisch.", tools:[{name:"Yokoy",url:"https://yokoy.io",eu:true,size:2},{name:"Candis",url:"https://www.candis.io",eu:true,size:1},{name:"Tipalti",url:"https://tipalti.com",eu:false,size:2},{name:"BlackLine",url:"https://www.blackline.com",eu:false,size:3},{name:"Stampli",url:"https://www.stampli.com",eu:false,size:1}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:6},
-            {nr:34, rolle:"Controlling / Finance", roleKey:"finance", usecase:"Monatsberichte und Dashboards befüllen", beschreibung:"KI zieht Daten aus verschiedenen Systemen zusammen und befüllt Reporting-Templates und Dashboard-Kennzahlen.", outcome:"60 % schnellere Berichtserstellung", ansatz:"Hybrid", coverage:55, coverageLabel:"55 %", coverageNote:"Berichtsstrukturen, KPI-Definitionen und Datenquellen sind in jedem Unternehmen unterschiedlich.", tools:[{name:"Power BI Copilot",url:"https://powerbi.microsoft.com",eu:false,size:3},{name:"Vena",url:"https://vena.io",eu:false,size:2},{name:"Jedox",url:"https://www.jedox.com",eu:true,size:2},{name:"Lucanet",url:"https://www.lucanet.com",eu:true,size:2}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:8},
-            {nr:35, rolle:"E-Commerce / Produktmanagement", roleKey:"ecom", usecase:"Nachbestellungen und Lagerplanung", beschreibung:"KI prognostiziert Nachfrage basierend auf Verkaufsdaten und Saisonmustern und schlägt optimale Bestellmengen vor.", outcome:"30 % weniger Überbestände", ansatz:"Build", coverage:50, coverageLabel:"50 %", coverageNote:"Nachfrageprognosen erfordern historische Verkaufsdaten, Saisonmuster und lieferantenspezifische Vorlaufzeiten.", tools:[{name:"Blue Yonder",url:"https://blueyonder.com",eu:false,size:3},{name:"Relex Solutions",url:"https://www.relexsolutions.com",eu:true,size:2},{name:"Inventory Planner",url:"https://www.inventory-planner.com",eu:false,size:1},{name:"Netstock",url:"https://www.netstock.com",eu:false,size:1}], effort:"high", quickWin:false, costRange:"EUREUREUR", timelineWeeks:12},
-            {nr:36, rolle:"E-Commerce / Produktmanagement", roleKey:"ecom", usecase:"Cross-Selling-Vorschläge im Shop", beschreibung:"KI analysiert Kaufmuster und zeigt Kunden passende Zusatzprodukte an – 'Kunden kauften auch' mit KI-Intelligenz.", outcome:"+15 % durchschnittlicher Warenkorbwert", ansatz:"Buy", coverage:65, coverageLabel:"65 %", coverageNote:"Cross-Selling-Logik muss auf Produktkatalog, Margen und Kundensegmente abgestimmt werden.", tools:[{name:"Dynamic Yield",url:"https://www.dynamicyield.com",eu:false,size:2},{name:"Nosto",url:"https://www.nosto.com",eu:true,size:2},{name:"Algolia Recommend",url:"https://www.algolia.com",eu:false,size:2},{name:"Clerk.io",url:"https://www.clerk.io",eu:true,size:1},{name:"Bloomreach",url:"https://www.bloomreach.com",eu:false,size:2}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:6},
-            {nr:37, rolle:"Führungskraft / Management", roleKey:"lead", usecase:"Mitarbeitergespräche vorbereiten", beschreibung:"KI fasst Leistungsdaten, Feedback und Zielvereinbarungen zusammen und erstellt einen Gesprächsleitfaden.", outcome:"50 % weniger Vorbereitungszeit", ansatz:"Buy", coverage:60, coverageLabel:"60 %", coverageNote:"Leistungsdaten, Zielvereinbarungen und Feedback-Quellen sind unternehmens- und HR-systemspezifisch.", tools:[{name:"Leapsome",url:"https://www.leapsome.com",eu:true,size:2},{name:"Culture Amp",url:"https://www.cultureamp.com",eu:false,size:3},{name:"Lattice",url:"https://lattice.com",eu:false,size:2},{name:"15Five",url:"https://www.15five.com",eu:false,size:1},{name:"Personio",url:"https://www.personio.com",eu:true,size:2}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:2},
-            {nr:38, rolle:"Führungskraft / Management", roleKey:"lead", usecase:"Business Cases und Szenarien rechnen", beschreibung:"KI modelliert verschiedene Szenarien mit Annahmen, berechnet ROI und erstellt Entscheidungsvorlagen mit Grafiken.", outcome:"40 % schnellere Entscheidungsvorlagen", ansatz:"Hybrid", coverage:45, coverageLabel:"45 %", coverageNote:"Business Cases erfordern unternehmensspezifische Annahmen, Kostensätze und Bewertungsmodelle.", tools:[{name:"Causal",url:"https://www.causal.app",eu:false,size:1},{name:"Pigment",url:"https://www.gopigment.com",eu:true,size:2},{name:"ChatGPT Enterprise",url:"https://openai.com",eu:false,size:3},{name:"Claude",url:"https://claude.ai",eu:false,size:3}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:6},
-            {nr:39, rolle:"HR / Recruiting", roleKey:"hr", usecase:"Bewerbungen vorsortieren und matchen", beschreibung:"KI vergleicht Lebensläufe mit Stellenprofilen, bewertet die Passung und erstellt eine Rangfolge der Kandidaten.", outcome:"50 % schnellere Vorauswahl", ansatz:"Buy", coverage:65, coverageLabel:"65 %", coverageNote:"Matching-Kriterien, Gewichtungen und Kulturfit-Faktoren müssen individuell definiert werden.", tools:[{name:"Eightfold AI",url:"https://www.eightfold.ai",eu:false,size:2},{name:"HireVue",url:"https://www.hirevue.com",eu:false,size:2},{name:"Textkernel",url:"https://www.textkernel.com",eu:true,size:1},{name:"Phenom",url:"https://www.phenom.com",eu:false,size:2},{name:"d.vinci",url:"https://www.dvinci.de",eu:true,size:1}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:2},
-            {nr:40, rolle:"HR / Recruiting", roleKey:"hr", usecase:"Individuelle Entwicklungspläne erstellen", beschreibung:"KI schlägt basierend auf Kompetenzprofilen und Karrierezielen passende Schulungen und Entwicklungsschritte vor.", outcome:"60 % weniger Aufwand bei der Planung", ansatz:"Hybrid", coverage:50, coverageLabel:"50 %", coverageNote:"Kompetenzmodelle, Karrierepfade und verfügbare Schulungen sind unternehmensindividuell.", tools:[{name:"Leapsome",url:"https://www.leapsome.com",eu:true,size:2},{name:"Degreed",url:"https://degreed.com",eu:false,size:2},{name:"EdCast",url:"https://www.edcast.com",eu:false,size:3},{name:"365Talents",url:"https://www.365talents.com",eu:true,size:1},{name:"Cornerstone",url:"https://www.cornerstoneondemand.com",eu:false,size:3}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:8},
-            {nr:41, rolle:"IT / Entwicklung", roleKey:"it", usecase:"Fehlerursachen in Logs finden", beschreibung:"KI analysiert Server-Logs, erkennt Anomalien und korreliert Fehler über verschiedene Systeme hinweg zur Ursachenfindung.", outcome:"70 % schnellere Fehleranalyse", ansatz:"Buy", coverage:75, coverageLabel:"75 %", coverageNote:"Log-Formate, Systemarchitektur und Fehler-Korrelationen sind infrastrukturspezifisch.", tools:[{name:"Datadog",url:"https://www.datadoghq.com",eu:false,size:3},{name:"Dynatrace",url:"https://www.dynatrace.com",eu:true,size:3},{name:"Grafana AI",url:"https://grafana.com",eu:false,size:2},{name:"New Relic AI",url:"https://newrelic.com",eu:false,size:3},{name:"Sentry",url:"https://sentry.io",eu:false,size:1}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:2},
-            {nr:42, rolle:"IT / Entwicklung", roleKey:"it", usecase:"Testfälle schreiben und automatisieren", beschreibung:"KI generiert Testszenarien aus Anforderungen, schreibt Testcode und identifiziert fehlende Testabdeckung.", outcome:"50 % weniger manueller Testaufwand", ansatz:"Buy", coverage:70, coverageLabel:"70 %", coverageNote:"Testszenarien müssen auf Geschäftslogik, Systemarchitektur und Akzeptanzkriterien abgestimmt werden.", tools:[{name:"Testim",url:"https://www.testim.io",eu:false,size:2},{name:"Mabl",url:"https://www.mabl.com",eu:false,size:2},{name:"Katalon",url:"https://katalon.com",eu:false,size:2},{name:"Diffblue",url:"https://www.diffblue.com",eu:true,size:1},{name:"Qodo",url:"https://www.qodo.ai",eu:false,size:1}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:4},
-            {nr:43, rolle:"Kundenservice / Support", roleKey:"service", usecase:"Wiederkehrende Beschwerden erkennen", beschreibung:"KI clustert Support-Tickets nach Themen, erkennt Häufungen und meldet systematische Probleme frühzeitig.", outcome:"60 % schnellere Problemerkennung", ansatz:"Hybrid", coverage:60, coverageLabel:"60 %", coverageNote:"Beschwerdekategorien, Eskalationsregeln und Produktzuordnungen sind unternehmensspezifisch.", tools:[{name:"Medallia",url:"https://www.medallia.com",eu:false,size:3},{name:"Qualtrics",url:"https://www.qualtrics.com",eu:false,size:3},{name:"MonkeyLearn",url:"https://monkeylearn.com",eu:false,size:1},{name:"Zendesk Explore",url:"https://www.zendesk.com",eu:false,size:3},{name:"Idiomatic",url:"https://www.idiomatic.io",eu:false,size:1}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:6},
-            {nr:44, rolle:"Kundenservice / Support", roleKey:"service", usecase:"Kundenanfragen in mehreren Sprachen beantworten", beschreibung:"KI übersetzt Kundenanfragen in Echtzeit, generiert Antworten in der Kundensprache und pflegt eine mehrsprachige Wissensdatenbank.", outcome:"80 % weniger Sprachbarrieren", ansatz:"Buy", coverage:75, coverageLabel:"75 %", coverageNote:"Fachterminologie, Produktnamen und branchenspezifische Begriffe erfordern eigene Glossare.", tools:[{name:"DeepL Pro",url:"https://www.deepl.com",eu:true,size:3},{name:"ElevenLabs",url:"https://elevenlabs.io",eu:true,size:2},{name:"Cognigy (NICE)",url:"https://www.cognigy.com",eu:true,size:2},{name:"Zendesk AI",url:"https://www.zendesk.com",eu:false,size:3},{name:"Intercom Fin",url:"https://www.intercom.com",eu:true,size:3}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:2},
-            {nr:45, rolle:"Marketing / Kommunikation", roleKey:"mktg", usecase:"Content-Ideen bewerten und priorisieren", beschreibung:"KI analysiert Suchtrends, Wettbewerber-Content und Engagement-Daten und schlägt die vielversprechendsten Themen vor.", outcome:"40 % effizientere Content-Planung", ansatz:"Buy", coverage:60, coverageLabel:"60 %", coverageNote:"Content-Bewertungskriterien müssen auf Unternehmensstrategie, Zielgruppen und Kanalmix abgestimmt werden.", tools:[{name:"BuzzSumo",url:"https://buzzsumo.com",eu:false,size:2},{name:"Semrush",url:"https://www.semrush.com",eu:false,size:2},{name:"Clearscope",url:"https://www.clearscope.io",eu:false,size:1},{name:"MarketMuse",url:"https://www.marketmuse.com",eu:false,size:1},{name:"Neuroflash",url:"https://neuroflash.com",eu:true,size:2}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:2},
-            {nr:46, rolle:"Marketing / Kommunikation", roleKey:"mktg", usecase:"Zielgruppen für Kampagnen segmentieren", beschreibung:"KI bildet Kundensegmente basierend auf Verhalten, Demografie und Kaufhistorie für gezieltere Kampagnen.", outcome:"+20 % Kampagnen-Performance", ansatz:"Hybrid", coverage:55, coverageLabel:"55 %", coverageNote:"Segmentierungskriterien hängen von CRM-Datenqualität, Kundenprofilen und Geschäftsmodell ab.", tools:[{name:"HubSpot AI",url:"https://www.hubspot.com",eu:false,size:3},{name:"Salesforce CDP",url:"https://www.salesforce.com",eu:false,size:3},{name:"Segment",url:"https://segment.com",eu:false,size:2},{name:"Insider",url:"https://useinsider.com",eu:true,size:2},{name:"Bloomreach",url:"https://www.bloomreach.com",eu:false,size:2}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:8},
-            {nr:47, rolle:"Personal- / Organisationsentwicklung", roleKey:"oe", usecase:"Engpässe in Arbeitsabläufen identifizieren", beschreibung:"KI analysiert Prozessdaten und Durchlaufzeiten, erkennt Flaschenhälse und schlägt Optimierungsmaßnahmen vor.", outcome:"35 % schnellere Prozessoptimierung", ansatz:"Build", coverage:40, coverageLabel:"40 %", coverageNote:"Process Mining erfordert Anbindung an operative Systeme und individuelle Definition von Soll-Prozessen.", tools:[{name:"Celonis",url:"https://www.celonis.com",eu:true,size:3},{name:"Signavio",url:"https://www.signavio.com",eu:true,size:3},{name:"UiPath Process Mining",url:"https://www.uipath.com",eu:false,size:3},{name:"ARIS",url:"https://www.softwareag.com",eu:true,size:3}], effort:"high", quickWin:false, costRange:"EUREUREUR", timelineWeeks:12},
-            {nr:48, rolle:"Personal- / Organisationsentwicklung", roleKey:"oe", usecase:"Befragungsergebnisse zusammenfassen", beschreibung:"KI wertet Freitextantworten aus Mitarbeiterbefragungen aus, erkennt Themen-Cluster und erstellt Management-Summaries.", outcome:"70 % weniger Auswertungszeit", ansatz:"Buy", coverage:65, coverageLabel:"65 %", coverageNote:"Auswertungskategorien und Handlungsableitungen müssen auf Befragungsdesign und Unternehmenskultur abgestimmt werden.", tools:[{name:"Culture Amp",url:"https://www.cultureamp.com",eu:false,size:3},{name:"Peakon (Workday)",url:"https://www.workday.com",eu:false,size:3},{name:"Leapsome",url:"https://www.leapsome.com",eu:true,size:2},{name:"Honestly",url:"https://www.honestly.com",eu:true,size:1},{name:"Officevibe",url:"https://officevibe.com",eu:false,size:1}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:2},
-            {nr:49, rolle:"Qualität / Operations", roleKey:"quality", usecase:"Prüfprotokolle erstellen und auswerten", beschreibung:"KI digitalisiert Prüfprotokolle, wertet Messwerte aus und erkennt Abweichungen von Toleranzen automatisch.", outcome:"55 % weniger Dokumentationsaufwand", ansatz:"Hybrid", coverage:50, coverageLabel:"50 %", coverageNote:"Prüfkriterien, Toleranzwerte und Protokollformate sind branchen- und produktspezifisch.", tools:[{name:"SafetyCulture (iAuditor)",url:"https://safetyculture.com",eu:false,size:2},{name:"Qualio",url:"https://www.qualio.com",eu:false,size:1},{name:"MasterControl",url:"https://www.mastercontrol.com",eu:false,size:2},{name:"ComplianceQuest",url:"https://www.compliancequest.com",eu:false,size:1},{name:"Parsable",url:"https://www.parsable.com",eu:false,size:1}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:6},
-            {nr:50, rolle:"Qualität / Operations", roleKey:"quality", usecase:"Audit-Berichte zusammenstellen", beschreibung:"KI sammelt Nachweise aus verschiedenen Quellen, prüft Vollständigkeit und formatiert den Audit-Report.", outcome:"60 % schnellere Audit-Vorbereitung", ansatz:"Hybrid", coverage:50, coverageLabel:"50 %", coverageNote:"Audit-Scope, Nachweispflichten und Berichtsformate variieren je nach Standard und Branche.", tools:[{name:"AuditBoard",url:"https://auditboard.com",eu:false,size:2},{name:"Workiva",url:"https://www.workiva.com",eu:false,size:3},{name:"Diligent",url:"https://www.diligent.com",eu:false,size:2},{name:"MS Copilot (Word)",url:"https://www.microsoft.com/copilot",eu:false,size:3},{name:"Claude",url:"https://claude.ai",eu:false,size:3}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:8},
-            {nr:51, rolle:"Vertrieb / Sales", roleKey:"sales", usecase:"Verkaufschancen bewerten und priorisieren", beschreibung:"KI bewertet Leads und Opportunities nach Abschlusswahrscheinlichkeit und empfiehlt, welche Deals Priorität bekommen.", outcome:"+20 % Win Rate durch besseres Scoring", ansatz:"Buy", coverage:60, coverageLabel:"60 %", coverageNote:"Scoring-Kriterien, Gewichtungen und Pipeline-Definitionen sind vertriebsstrategiespezifisch.", tools:[{name:"Salesforce Einstein",url:"https://www.salesforce.com",eu:false,size:3},{name:"HubSpot AI",url:"https://www.hubspot.com",eu:false,size:3},{name:"Clari",url:"https://www.clari.com",eu:false,size:2},{name:"Gong",url:"https://www.gong.io",eu:false,size:2},{name:"6sense",url:"https://6sense.com",eu:false,size:2}], effort:"medium", quickWin:false, costRange:"EUREUR", timelineWeeks:6},
-            {nr:52, rolle:"Vertrieb / Sales", roleKey:"sales", usecase:"Kundengespräche analysieren und verbessern", beschreibung:"KI transkribiert Verkaufsgespräche, analysiert Gesprächsmuster und gibt Coaching-Tipps für bessere Abschlussquoten.", outcome:"30 % höhere Abschlussquote", ansatz:"Buy", coverage:70, coverageLabel:"70 %", coverageNote:"Gesprächsbewertungskriterien und Coaching-Empfehlungen müssen auf Verkaufsmethodik und Branche angepasst werden.", tools:[{name:"Gong",url:"https://www.gong.io",eu:false,size:2},{name:"Chorus (ZoomInfo)",url:"https://www.zoominfo.com",eu:false,size:3},{name:"Jiminny",url:"https://www.jiminny.com",eu:true,size:1},{name:"Modjo",url:"https://www.modjo.ai",eu:true,size:1},{name:"Clari Copilot",url:"https://www.clari.com",eu:false,size:2}], effort:"low", quickWin:true, costRange:"EUR", timelineWeeks:2}
-        ];
+function renderCards(items){
+    grid.innerHTML="";
+    if(!items.length){grid.innerHTML='<div class="empty-state"><div class="empty-state-icon">&#128269;</div><h2>Keine Use Cases gefunden</h2><p>Versuchen Sie, Ihre Filter anzupassen oder die Suchbegriffe zu ändern.</p><button class="btn btn-ghost" type="button" onclick="resetFilters()">Filter zurücksetzen</button></div>';return}
+    var f=document.createDocumentFragment();
+    items.forEach(function(item,idx){
+        var rc=ROLE_COLORS[item.roleKey]||{text:"#666",bg:"#f5f5f5"};
+        var el=document.createElement("article");
+        el.className="card effort-"+item.effort;
+        el.setAttribute("tabindex","0");
+        el.setAttribute("role","button");
+        el.setAttribute("aria-expanded","false");
+        var qw=item.quickWin?'<span class="badge badge-quick-win">&#9889; Quick-Win</span>':"";
+        var cost=costSymbols(item.costRange);
+        var cl=coverageLevel(item.coverage);
+        var toolsHtml=(item.tools||[]).map(function(t){var eu=t.eu?" eu":"";var dots="\u25CF".repeat(t.size||1);return'<a href="'+esc(t.url)+'" target="_blank" rel="noopener" class="tool-badge'+eu+'" onclick="event.stopPropagation()">'+esc(t.name)+' <span class="tool-size">'+dots+'</span></a>'}).join("");
+        var noteHtml=item.coverageNote?'<div class="coverage-note"><strong>Warum nicht 100 %?</strong> '+esc(item.coverageNote)+'</div>':"";
+        el.innerHTML='<div class="card-header"><h3 class="card-title">'+esc(item.usecase)+'</h3><span class="card-chevron">&#9662;</span></div><p class="card-outcome">'+esc(item.outcome)+'</p><div class="card-badges"><span class="badge badge-role" style="background:'+rc.bg+';color:'+rc.text+'">'+esc(ROLE_LABELS[item.roleKey]||item.rolle)+'</span><span class="badge badge-effort-'+item.effort+'">'+EFFORT_LABELS[item.effort]+'</span><span class="badge badge-ansatz">'+esc(item.ansatz)+'</span>'+qw+'<span class="badge badge-cost">'+cost+'</span></div><div class="card-footer"><span class="card-details-link">Details ansehen &#8595;</span><span class="card-timeline">'+item.timelineWeeks+' Wo.</span></div><div class="card-expanded"><div class="description-box">'+esc(item.beschreibung)+'</div><div class="metrics-grid"><div class="metric-card"><div class="metric-label">Outcome</div><div class="metric-value">'+esc(item.outcome)+'</div></div><div class="metric-card"><div class="metric-label">Aufwand</div><div class="metric-value">'+EFFORT_LABELS[item.effort]+'</div></div><div class="metric-card"><div class="metric-label">Kosten</div><div class="metric-value">'+cost+'</div></div><div class="metric-card"><div class="metric-label">Timeline</div><div class="metric-value">'+item.timelineWeeks+' Wochen</div></div></div><div class="impl-section"><div class="section-heading">Implementation</div><div class="impl-row"><span class="impl-label">KI-Ansatz</span><span class="impl-value"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:'+ansatzColor(item.ansatz)+'"></span> '+(ANSATZ_LABELS[item.ansatz.toLowerCase()]||item.ansatz)+'</span></div><div class="impl-row"><span class="impl-label">Standardlösung</span><span class="impl-value"><div class="coverage-bar"><div class="coverage-fill '+cl+'" style="width:'+item.coverage+'%"></div></div><span style="font-weight:600;margin-left:8px">'+esc(item.coverageLabel)+'</span></span></div></div>'+noteHtml+'<div class="tools-section"><div class="section-heading">Tools & Lösungen</div><div class="tools-grid">'+toolsHtml+'</div></div><a href="https://www.plan-a-consulting.ai/ki-nutzen-timeline" target="_blank" rel="noopener" class="timeline-link" onclick="event.stopPropagation()">Zur Nutzen-Timeline &#8594;</a></div>';
+        el.addEventListener("click",function(){toggleCard(el)});
+        el.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();toggleCard(el)}});
+        f.appendChild(el);
+        if((idx+1)%15===0&&idx+1<items.length){var cta=document.createElement("div");cta.className="cta-banner";cta.innerHTML='<p>Sie möchten KI in Ihrem Unternehmen einführen?</p><a href="https://www.plan-a-consulting.ai/kontakt" target="_blank" rel="noopener" class="btn btn-primary">Beratungsgespräch vereinbaren</a>';f.appendChild(cta)}
+    });
+    grid.appendChild(f);
+}
 
-        const ROLE_COLORS = {
-            allbereich: { text: "#8a8a9a", bg: "#f5f5f7" },
-            admin: { text: "#CA8A04", bg: "#FEFCE8" },
-            compliance: { text: "#5c1444", bg: "#f3e6ee" },
-            finance: { text: "#0369A1", bg: "#F0F9FF" },
-            ecom: { text: "#EA580C", bg: "#FFF7ED" },
-            lead: { text: "#1a7a3e", bg: "#e8f7ee" },
-            hr: { text: "#DB2777", bg: "#FDF2F8" },
-            it: { text: "#7C3AED", bg: "#F5F3FF" },
-            service: { text: "#0891B2", bg: "#ECFEFF" },
-            mktg: { text: "#DC2626", bg: "#FEF2F2" },
-            oe: { text: "#059669", bg: "#F0FDF4" },
-            quality: { text: "#92400E", bg: "#FFFBEB" },
-            sales: { text: "#4338CA", bg: "#EEF2FF" }
-        };
+function toggleCard(c){var ex=c.classList.toggle("expanded");c.setAttribute("aria-expanded",String(ex))}
 
-        const ROLE_LABELS = {
-            allbereich: "Alle Bereiche", admin: "Assistenz / Admin", compliance: "Compliance / Recht", finance: "Controlling / Finance", ecom: "E-Commerce / PM", lead: "Führungskraft", hr: "HR / Recruiting", it: "IT / Entwicklung", service: "Kundenservice", mktg: "Marketing / Komm.", oe: "OE / Personalentwicklung", quality: "Qualität / Operations", sales: "Vertrieb / Sales"
-        };
+function applyFilters(){
+    var r=DATA.slice();
+    if(filters.role)r=r.filter(function(d){return d.roleKey===filters.role});
+    if(filters.ansatz)r=r.filter(function(d){return d.ansatz.toLowerCase()===filters.ansatz});
+    if(filters.effort)r=r.filter(function(d){return d.effort===filters.effort});
+    if(filters.coverage){r=r.filter(function(d){if(filters.coverage==="high")return d.coverage>=75;if(filters.coverage==="medium")return d.coverage>=50&&d.coverage<75;if(filters.coverage==="low")return d.coverage<50;return true})}
+    if(filters.search){var s=filters.search.toLowerCase();r=r.filter(function(d){return d.usecase.toLowerCase().indexOf(s)!==-1||d.rolle.toLowerCase().indexOf(s)!==-1||d.outcome.toLowerCase().indexOf(s)!==-1})}
+    r.sort(function(a,b){var ra=ROLE_ORDER.indexOf(a.roleKey),rb=ROLE_ORDER.indexOf(b.roleKey);if(ra!==rb)return ra-rb;return a.nr-b.nr});
+    renderCards(r);
+    counterEl.textContent=r.length;
+    updateUI();
+}
 
-        let currentFilters = { role: "", ansatz: "", coverage: "", effort: "", search: "" };
+function updateUI(){
+    var has=filters.role||filters.ansatz||filters.coverage||filters.effort||filters.search;
+    if(has){resetBtn.classList.remove("hidden")}else{resetBtn.classList.add("hidden")}
+    ["role","ansatz","coverage","effort"].forEach(function(k){var sel=document.getElementById("filter-"+k);if(sel){sel.value=filters[k];if(filters[k])sel.classList.add("active");else sel.classList.remove("active")}});
+    var pills=[];
+    if(filters.role)pills.push({key:"role",label:"Rolle: "+(ROLE_LABELS[filters.role]||filters.role)});
+    if(filters.ansatz)pills.push({key:"ansatz",label:"Ansatz: "+(ANSATZ_LABELS[filters.ansatz]||filters.ansatz)});
+    if(filters.coverage){var cl=filters.coverage==="high"?"Hoch":filters.coverage==="medium"?"Mittel":"Niedrig";pills.push({key:"coverage",label:"Abdeckung: "+cl})}
+    if(filters.effort)pills.push({key:"effort",label:"Aufwand: "+(EFFORT_LABELS[filters.effort]||filters.effort)});
+    if(filters.search)pills.push({key:"search",label:'Suche: "'+filters.search+'"'});
+    activeFiltersEl.innerHTML=pills.map(function(p){return'<span class="filter-pill">'+esc(p.label)+' <button type="button" aria-label="'+esc(p.label)+' entfernen" onclick="removeFilter(\''+p.key+'\')">&#10005;</button></span>'}).join("");
+}
 
-        function getCostEmojis(costRange) {
-            return "€".repeat((costRange.match(/EUR/g) || []).length);
-        }
+function removeFilter(k){filters[k]="";if(k==="search")searchInput.value="";applyFilters()}
+function resetFilters(){filters={role:"",ansatz:"",coverage:"",effort:"",search:""};searchInput.value="";applyFilters()}
 
-        function getApproachColor(ansatz) {
-            const lower = ansatz.toLowerCase();
-            return lower === "buy" ? "#2EAD60" : lower === "hybrid" ? "#CA8A04" : lower === "build" ? "#E83946" : "#6b7280";
-        }
+searchInput.addEventListener("input",function(e){filters.search=e.target.value;applyFilters()});
+["role","ansatz","coverage","effort"].forEach(function(k){document.getElementById("filter-"+k).addEventListener("change",function(e){filters[k]=e.target.value;applyFilters()})});
+resetBtn.addEventListener("click",resetFilters);
+document.getElementById("scroll-to-filters").addEventListener("click",function(){document.getElementById("filter-toolbar").scrollIntoView({behavior:"smooth"})});
+window.addEventListener("scroll",function(){var tb=document.getElementById("filter-toolbar");if(window.scrollY>200)tb.classList.add("scrolled");else tb.classList.remove("scrolled")},{passive:true});
+document.getElementById("open-legend").addEventListener("click",function(){document.getElementById("legend-modal").classList.add("open")});
+document.getElementById("close-legend").addEventListener("click",function(){document.getElementById("legend-modal").classList.remove("open")});
+document.getElementById("legend-modal").addEventListener("click",function(e){if(e.target===this)this.classList.remove("open")});
+document.addEventListener("keydown",function(e){if(e.key==="Escape")document.getElementById("legend-modal").classList.remove("open")});
 
-        function getCoverageColor(coverage) {
-            return coverage >= 75 ? { color: "#2EAD60", level: "high" } : coverage >= 50 ? { color: "#CA8A04", level: "medium" } : { color: "#E83946", level: "low" };
-        }
-
-        function renderCards(items) {
-            const container = document.getElementById("cards-grid");
-            container.innerHTML = "";
-
-            if (items.length === 0) {
-                container.innerHTML = `<div style="grid-column: 1/-1; text-align: center; padding: 80px 24px;"><div style="font-size: 3rem; margin-bottom: 16px; opacity: 0.3;">🔍</div><h2 style="font-size: 1.5rem; color: var(--gray-900); margin-bottom: 12px;">Keine Use Cases gefunden</h2><p style="font-size: 1rem; color: var(--gray-600); margin-bottom: 24px;">Versuchen Sie, Ihre Filter anzupassen oder die Suchbegriffe zu ändern.</p><button class="btn btn-ghost" onclick="resetFilters()">Filter zurücksetzen</button></div>`;
-                return;
-            }
-
-            items.forEach((item, index) => {
-                const colors = ROLE_COLORS[item.roleKey];
-                const effortClass = `effort-${item.effort}`;
-                const card = document.createElement("div");
-                card.className = `card ${effortClass}`;
-                card.dataset.nr = item.nr;
-
-                const quickWinBadge = item.quickWin ? `<span class="badge badge-quick-win">⚡ Quick-Win</span>` : "";
-                const costEmojis = getCostEmojis(item.costRange);
-                const coverageData = getCoverageColor(item.coverage);
-                const coveragePercent = item.coverage;
-
-                card.innerHTML = `
-                    <div class="card-header" onclick="toggleCard(this.closest('.card'))">
-                        <h3 class="card-title">${item.usecase}</h3>
-                        <span class="card-expand-icon">▼</span>
-                    </div>
-                    <p class="card-outcome">${item.outcome}</p>
-                    <div class="card-meta">
-                        <span class="badge badge-role" style="background-color: ${colors.bg}; color: ${colors.text};">${ROLE_LABELS[item.roleKey]}</span>
-                        <span class="badge badge-effort-${item.effort}">${item.effort === "low" ? "Einfach" : item.effort === "medium" ? "Moderat" : "Komplex"}</span>
-                        ${quickWinBadge}
-                        <span class="badge badge-cost"><span style="color: var(--green); font-weight: 600;">${costEmojis}</span></span>
-                    </div>
-                    <div class="card-footer">
-                        <span class="card-details-link" onclick="event.stopPropagation(); toggleCard(this.closest('.card'));">Details ansehen ↓</span>
-                    </div>
-                    <div class="card-expanded-content">
-                        <div class="description-box">${item.beschreibung}</div>
-                        <div class="metrics-grid">
-                            <div class="metric-card"><div class="metric-label">Outcome</div><div class="metric-value">${item.outcome}</div></div>
-                            <div class="metric-card"><div class="metric-label">Aufwand</div><div class="metric-value">${item.effort === "low" ? "Einfach" : item.effort === "medium" ? "Moderat" : "Komplex"}</div></div>
-                            <div class="metric-card"><div class="metric-label">Kosten</div><div class="metric-value">${costEmojis}</div></div>
-                            <div class="metric-card"><div class="metric-label">Timeline</div><div class="metric-value">${item.timelineWeeks} Wochen</div></div>
-                        </div>
-                        <div class="implementation-section">
-                            <div class="section-title">Implementation</div>
-                            <div class="impl-row">
-                                <span class="impl-label">KI-Ansatz</span>
-                                <span class="impl-value"><span style="display: inline-block; width: 12px; height: 12px; border-radius: 2px; background-color: ${getApproachColor(item.ansatz)};"></span> ${item.ansatz === "Buy" ? "Buy (Standardlösung)" : item.ansatz === "Hybrid" ? "Hybrid (Kombination)" : "Build (Eigenentwicklung)"}</span>
-                            </div>
-                            <div class="impl-row">
-                                <span class="impl-label">Standardlösung-Abdeckung</span>
-                                <span class="impl-value"><div class="coverage-bar"><div class="coverage-fill ${coverageData.level}" style="width: ${coveragePercent}%; background-color: ${coverageData.color};"></div></div><span style="font-weight: 600; margin-left: 8px;">${item.coverageLabel}</span></span>
-                            </div>
-                        </div>
-                        ${item.coverageNote ? `<div class="coverage-note"><strong>Warum nicht 100%?</strong><br>${item.coverageNote}</div>` : ""}
-                        <div class="tools-section">
-                            <div class="section-title">Tools & Lösungen</div>
-                            <div class="tools-grid">
-                                ${item.tools.map(tool => {
-                                    const euClass = tool.eu ? "eu" : "";
-                                    const sizeIndicator = "●".repeat(tool.size);
-                                    return `<a href="${tool.url}" target="_blank" class="tool-badge ${euClass}" onclick="event.stopPropagation();">${tool.name}<span class="tool-size">${sizeIndicator}</span></a>`;
-                                }).join("")}
-                            </div>
-                        </div>
-                        <a href="https://www.plan-a-consulting.ai/ki-nutzen-timeline" target="_blank" class="timeline-link" onclick="event.stopPropagation();">Zur Nutzen-Timeline →</a>
-                    </div>
-                `;
-
-                container.appendChild(card);
-
-                if ((index + 1) % 15 === 0 && index + 1 < items.length) {
-                    const ctaBanner = document.createElement("div");
-                    ctaBanner.className = "cta-banner";
-                    ctaBanner.innerHTML = `<p>Sie möchten KI in Ihrem Unternehmen einführen?</p><a href="https://www.plan-a-consulting.ai/kontakt" target="_blank" class="btn btn-primary">Beratungsgespräch vereinbaren</a>`;
-                    container.appendChild(ctaBanner);
-                }
-            });
-        }
-
-        function toggleCard(card) {
-            card.classList.toggle("expanded");
-        }
-
-        function applyFilters() {
-            let filtered = DATA.slice();
-
-            if (currentFilters.role) filtered = filtered.filter(item => item.roleKey === currentFilters.role);
-            if (currentFilters.ansatz) filtered = filtered.filter(item => item.ansatz.toLowerCase() === currentFilters.ansatz.toLowerCase());
-            if (currentFilters.effort) filtered = filtered.filter(item => item.effort === currentFilters.effort);
-            if (currentFilters.coverage) {
-                filtered = filtered.filter(item => {
-                    const coverage = item.coverage;
-                    if (currentFilters.coverage === "high") return coverage >= 75;
-                    if (currentFilters.coverage === "medium") return coverage >= 50 && coverage < 75;
-                    if (currentFilters.coverage === "low") return coverage < 50;
-                    return true;
-                });
-            }
-            if (currentFilters.search) {
-                const search = currentFilters.search.toLowerCase();
-                filtered = filtered.filter(item =>
-                    item.usecase.toLowerCase().includes(search) ||
-                    item.rolle.toLowerCase().includes(search) ||
-                    item.outcome.toLowerCase().includes(search)
-                );
-            }
-
-            filtered.sort((a, b) => {
-                const roleOrder = ["allbereich", "admin", "compliance", "finance", "ecom", "lead", "hr", "it", "service", "mktg", "oe", "quality", "sales"];
-                const roleA = roleOrder.indexOf(a.roleKey);
-                const roleB = roleOrder.indexOf(b.roleKey);
-                if (roleA !== roleB) return roleA - roleB;
-                return a.nr - b.nr;
-            });
-
-            renderCards(filtered);
-            updateCounter(filtered.length);
-        }
-
-        function updateCounter(count) {
-            document.getElementById("counter").textContent = count;
-        }
-
-        function updateFilterUI() {
-            const hasActiveFilters = Object.values(currentFilters).some(v => v);
-            Object.keys(currentFilters).forEach(key => {
-                const select = document.getElementById(`filter-${key}`);
-                if (select) {
-                    select.value = currentFilters[key];
-                    if (currentFilters[key]) {
-                        select.classList.add("active");
-                    } else {
-                        select.classList.remove("active");
-                    }
-                }
-            });
-            const resetBtn = document.getElementById("btn-reset");
-            if (hasActiveFilters) {
-                resetBtn.classList.remove("reset-hidden");
-            } else {
-                resetBtn.classList.add("reset-hidden");
-            }
-        }
-
-        function resetFilters() {
-            currentFilters = { role: "", ansatz: "", coverage: "", effort: "", search: "" };
-            document.getElementById("search-input").value = "";
-            updateFilterUI();
-            applyFilters();
-        }
-
-        function openLegendModal() {
-            document.getElementById("legend-modal").classList.add("open");
-        }
-
-        function closeLegendModal(event) {
-            if (!event || event.target.id === "legend-modal") {
-                document.getElementById("legend-modal").classList.remove("open");
-            }
-        }
-
-        document.getElementById("search-input").addEventListener("input", (e) => {
-            currentFilters.search = e.target.value;
-            applyFilters();
-        });
-
-        document.getElementById("filter-role").addEventListener("change", (e) => {
-            currentFilters.role = e.target.value;
-            applyFilters();
-            updateFilterUI();
-        });
-
-        document.getElementById("filter-ansatz").addEventListener("change", (e) => {
-            currentFilters.ansatz = e.target.value;
-            applyFilters();
-            updateFilterUI();
-        });
-
-        document.getElementById("filter-coverage").addEventListener("change", (e) => {
-            currentFilters.coverage = e.target.value;
-            applyFilters();
-            updateFilterUI();
-        });
-
-        document.getElementById("filter-effort").addEventListener("change", (e) => {
-            currentFilters.effort = e.target.value;
-            applyFilters();
-            updateFilterUI();
-        });
-
-        document.getElementById("accordion-how-it-works").addEventListener("click", function() {
-            this.classList.toggle("active");
-        });
-
-        window.addEventListener("scroll", () => {
-            const toolbar = document.getElementById("filter-toolbar");
-            if (window.scrollY > 200) {
-                toolbar.classList.add("scrolled");
-            } else {
-                toolbar.classList.remove("scrolled");
-            }
-        });
-
-        const params = new URLSearchParams(window.location.search);
-        if (params.has("role")) currentFilters.role = params.get("role");
-        if (params.has("ansatz")) currentFilters.ansatz = params.get("ansatz");
-        if (params.has("effort")) currentFilters.effort = params.get("effort");
-        if (params.has("coverage")) currentFilters.coverage = params.get("coverage");
-        if (params.has("search")) {
-            currentFilters.search = params.get("search");
-            document.getElementById("search-input").value = currentFilters.search;
-        }
-
-        updateFilterUI();
-        applyFilters();
-    </script>
+(function(){var p=new URLSearchParams(window.location.search);if(p.has("role"))filters.role=p.get("role");if(p.has("ansatz"))filters.ansatz=p.get("ansatz");if(p.has("effort"))filters.effort=p.get("effort");if(p.has("coverage"))filters.coverage=p.get("coverage");if(p.has("search")){filters.search=p.get("search");searchInput.value=filters.search}})();
+applyFilters();
+</script>
 </body>
 </html>
